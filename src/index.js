@@ -8,6 +8,13 @@ async function run() {
 
     const changelog = await generateChangelog(previousVersion, currentVersion);
 
+    core.info('Here is the generated changelog');
+    core.info('═══════════════════════════════');
+    if ('' === changelog) {
+      core.notice('The changelog is empty');
+    } else {
+      core.info(changelog);
+    }
     core.setOutput('changelog', changelog);
   } catch (error) {
     core.setFailed(error.message);
