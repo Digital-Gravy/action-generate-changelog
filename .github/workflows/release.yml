@@ -42,6 +42,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Push dist directory
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add dist
+          git commit -m "Add dist directory"
+          git push origin HEAD:main  # Adjust the branch name if necessary
+
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
