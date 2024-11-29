@@ -24,11 +24,6 @@ jobs:
             exit 1
           fi
 
-          if git ls-remote --tags origin | grep -q "refs/tags/$TAG_NAME$"; then
-            echo "::error::Tag $TAG_NAME already exists remotely!"
-            exit 1
-          fi
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
