@@ -21,16 +21,16 @@ Add the following step to your workflow:
 - name: Generate Changelog
   uses: Digital-Gravy/action-generate-changelog@v1
   with:
-    previous-version: ${{ github.event.inputs.previous_version }}
-    current-version: ${{ github.event.inputs.current_version }}
+    previous_version: ${{ github.event.inputs.previous_version }}
+    current_version: ${{ github.event.inputs.current_version }}
 ```
 
 ### Inputs
 
 | Input              | Description                          | Required | Default |
 | ------------------ | ------------------------------------ | -------- | ------- |
-| `previous-version` | Previous version tag (e.g., '1.0.0') | Yes      | -       |
-| `current-version`  | New version tag (e.g., '1.1.0')      | Yes      | -       |
+| `previous_version` | Previous version tag (e.g., '1.0.0') | Yes      | -       |
+| `current_version`  | New version tag (e.g., '1.1.0')      | Yes      | -       |
 
 ### Outputs
 
@@ -54,8 +54,8 @@ jobs:
   generate-changelog:
     uses: Digital-Gravy/action-generate-changelog@v1
     with:
-      previous-version: ${{ github.event.inputs.previous_version }}
-      current-version: ${{ github.event.inputs.current_version }}
+      previous_version: ${{ github.event.inputs.previous_version }}
+      current_version: ${{ github.event.inputs.current_version }}
 ```
 
 ## Commit Message Format
@@ -89,7 +89,7 @@ Commits that start with the following prefixes will be excluded from the changel
 
 ### First Release
 
-For the first release, you can omit the `previous-version` input or set it to an empty string. The action will automatically use the first commit as the starting point.
+For the first release, you can omit the `previous_version` input or set it to an empty string. The action will automatically use the first commit as the starting point.
 
 ### Prerelease to Stable
 
