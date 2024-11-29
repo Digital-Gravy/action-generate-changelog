@@ -1,0 +1,19 @@
+# action.yml
+name: Generate Changelog
+description: Generates a changelog from commit messages between releases
+
+inputs:
+  old_version:
+    description: 'Current version before bump'
+    required: true
+  version_bump:
+    description: 'Type of version bump (Build, Major, Minor, Patch)'
+    required: true
+
+outputs:
+  changelog:
+    description: 'Generated changelog content'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
