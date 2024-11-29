@@ -63,12 +63,7 @@ jobs:
           git tag -fa "${MAJOR_VERSION}" -m "Update ${MAJOR_VERSION} tag"
           git push origin "${MAJOR_VERSION}" --force
 
-          # Create GitHub release
+          # Create GitHub release without draft and auto-generate release notes
           gh release create "$TAG_NAME" \
             --title "Release $TAG_NAME" \
-            --draft \
-            --notes "## Release Notes for $TAG_NAME
-
-            <!-- Add release notes here -->
-
-            This release was automatically created by GitHub Actions."
+            --generate-notes
