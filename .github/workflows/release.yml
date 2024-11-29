@@ -46,9 +46,10 @@ jobs:
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
+          git fetch origin main
           git checkout main
           git add dist
-          git commit -m "Add dist directory" || echo "No changes to commit"
+          git commit -m "build: update dist directory" || echo "No changes to commit"
           git push origin main
 
       - name: Create Release
