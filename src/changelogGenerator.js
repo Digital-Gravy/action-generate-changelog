@@ -22,16 +22,17 @@ function validateVersion(version) {
   return cleaned;
 }
 
-function findLastStableVersion() {
+function findEarliestPrerelease(version) {
+  const baseVersion = version.split('-')[0]; // Get the base version without prerelease
   const tags = execSync('git tag -l').toString().trim().split('\n');
   return tags
     .filter((tag) => {
       const cleaned = semver.clean(tag);
-      return cleaned && !isPrerelease(cleaned);
+      return cleaned && isPrerelease(cleaned) && cleaned.startsWith(baseVersion);
     })
     .sort((a, b) => {
       // Use semver compare for proper version sorting
-      return semver.rcompare(semver.clean(a), semver.clean(b));
+      return semver.compare(semver.clean(a), semver.clean(b));
     })[0];
 }
 
@@ -63,11 +64,11 @@ async function generateChangelog(previousVersion, currentVersion) {
         // Verify the tag exists
         execSync(`git rev-parse --verify ${fromRef}`);
 
-        // If going from prerelease to stable, use last stable version instead
+        // If going from prerelease to stable, use earliest prerelease instead
         if (isPrerelease(fromRef) && isStableVersion(targetRef)) {
-          const lastStable = findLastStableVersion();
-          if (lastStable) {
-            fromRef = lastStable;
+          const earliestPrerelease = findEarliestPrerelease(targetRef);
+          if (earliestPrerelease) {
+            fromRef = semver.clean(earliestPrerelease);
           }
         }
       } catch (error) {

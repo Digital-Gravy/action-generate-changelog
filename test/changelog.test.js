@@ -136,30 +136,36 @@ describe('Changelog Generator', () => {
     );
   });
 
-  test('should use last stable version when going from prerelease to stable', async () => {
+  test('should include all prerelease changes when going from prerelease to stable', async () => {
     // Mock sequence:
-    // 1. Check if previous version exists (1.0.0-rc.3)
-    // 2. Get all tags
-    // 3. Get changelog from last stable to current
+    // 1. Verify tag exists
+    // 2. Get all tags to find earliest prerelease
+    // 3. Get changelog from earliest prerelease to current
     childProcess.execSync
-      .mockImplementationOnce(() => Buffer.from('')) // verify 1.0.0-rc.3 exists
+      .mockImplementationOnce(() => Buffer.from('')) // verify tag exists
+      .mockReturnValueOnce(Buffer.from('v1.0.0-dev.2\n' + 'v1.0.0-dev.1\n' + 'v0.9.0'))
       .mockReturnValueOnce(
-        Buffer.from('v1.0.0-rc.3\n' + 'v1.0.0-rc.2\n' + 'v1.0.0-rc.1\n' + 'v0.9.0\n' + 'v0.8.0')
-      )
-      .mockReturnValueOnce(Buffer.from('* feat: new feature\n' + '* fix: important bug'));
+        Buffer.from(
+          '* feat: feature from dev.2\n' + '* feat: feature from dev.1\n' + '* fix: fix from dev.1'
+        )
+      );
 
-    const result = await generateChangelog('1.0.0-rc.3', '1.0.0');
+    const result = await generateChangelog('1.0.0-dev.2', '1.0.0');
 
-    // Should have gotten tags to find last stable version
+    // Should have gotten tags to find earliest prerelease
+    expect(childProcess.execSync).toHaveBeenNthCalledWith(1, 'git rev-parse --verify 1.0.0-dev.2');
     expect(childProcess.execSync).toHaveBeenNthCalledWith(2, 'git tag -l');
 
-    // Should generate changelog from v0.9.0 (last stable) to current
+    // Should generate changelog from v1.0.0-dev.1 to current
     expect(childProcess.execSync).toHaveBeenNthCalledWith(
       3,
-      'git log v0.9.0..1.0.0 --pretty=format:"* %s"'
+      'git log 1.0.0-dev.1..1.0.0 --pretty=format:"* %s"'
     );
 
-    expect(result).toBe('* feat: new feature\n' + '* fix: important bug');
+    // Should include all changes since the first prerelease
+    expect(result).toBe(
+      '* feat: feature from dev.2\n' + '* feat: feature from dev.1\n' + '* fix: fix from dev.1'
+    );
   });
 
   test('should use provided version when not going from prerelease to stable', async () => {
@@ -362,5 +368,31 @@ describe('Changelog Generator', () => {
         '* fix: normal commit',
       ].join('\n')
     );
+  });
+
+  test('should handle single prerelease when going to stable', async () => {
+    // Mock sequence:
+    // 1. Verify tag exists
+    // 2. Get all tags to find earliest prerelease
+    // 3. Get changelog from prerelease to current
+    childProcess.execSync
+      .mockImplementationOnce(() => Buffer.from('')) // verify tag exists
+      .mockReturnValueOnce(Buffer.from('v1.0.0-dev.1\n' + 'v0.9.0'))
+      .mockReturnValueOnce(Buffer.from('* feat: feature from dev.1\n' + '* fix: fix from dev.1'));
+
+    const result = await generateChangelog('1.0.0-dev.1', '1.0.0');
+
+    // Should have gotten tags to find earliest prerelease
+    expect(childProcess.execSync).toHaveBeenNthCalledWith(1, 'git rev-parse --verify 1.0.0-dev.1');
+    expect(childProcess.execSync).toHaveBeenNthCalledWith(2, 'git tag -l');
+
+    // Should generate changelog from the prerelease to current
+    expect(childProcess.execSync).toHaveBeenNthCalledWith(
+      3,
+      'git log 1.0.0-dev.1..1.0.0 --pretty=format:"* %s"'
+    );
+
+    // Should include all changes since the prerelease
+    expect(result).toBe('* feat: feature from dev.1\n' + '* fix: fix from dev.1');
   });
 });
