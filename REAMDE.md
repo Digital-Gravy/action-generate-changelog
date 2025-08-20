@@ -85,6 +85,8 @@ Commits that start with the following prefixes will be excluded from the changel
 - `hide:` or `HIDE:`
 - `bump version` or `BUMP VERSION`
 
+Commits that end with `[hide]` or `[HIDE]` will also be excluded.
+
 ## Special Cases
 
 ### First Release

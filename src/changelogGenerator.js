@@ -100,7 +100,11 @@ async function generateChangelog(previousVersion, currentVersion) {
       .filter((line) => line.trim()) // Remove empty lines
       .filter((line) => {
         const lowerLine = line.toLowerCase();
-        return !lowerLine.startsWith('* hide:') && !lowerLine.startsWith('* bump version');
+        return (
+          !lowerLine.startsWith('* hide:') &&
+          !lowerLine.startsWith('* bump version') &&
+          !lowerLine.endsWith('[hide]')
+        );
       })
       .reduce((acc, line) => {
         line = line.trim();

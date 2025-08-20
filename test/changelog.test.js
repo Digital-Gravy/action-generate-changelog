@@ -242,6 +242,23 @@ describe('Changelog Generator', () => {
     expect(result).toBe('* feat: add new feature\n' + '* fix: resolve bug');
   });
 
+  test('should filter out commits ending with "[hide]"', async () => {
+    // Mock execSync to return mixed commits
+    childProcess.execSync.mockReturnValue(
+      Buffer.from(
+        '* feat: add new feature\n' +
+          '* fix: a bug [hide]\n' +
+          '* chore: another thing [HIDE]\n' +
+          '* fix: another bug'
+      )
+    );
+
+    const result = await generateChangelog('v1.0.0', 'v1.1.0');
+
+    // Verify filtered result
+    expect(result).toBe('* feat: add new feature\n' + '* fix: another bug');
+  });
+
   test('should handle emoji in commit messages', async () => {
     childProcess.execSync.mockReturnValue(
       Buffer.from(['* ✨ feat: add sparkles', '* feat: handle emoji 🚀 in middle'].join('\n'))
