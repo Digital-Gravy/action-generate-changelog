@@ -28279,50 +28279,53 @@ async function generateChangelog(previousVersion, currentVersion) {
       fromRef = execSync('git rev-list --max-parents=0 HEAD').toString().trim();
     }
 
-    // Add bullet points in the git log command format
-    const gitLogCommand = `git log ${fromRef}..${targetRef} --pretty=format:"* %s"`;
-    const changelog = execSync(gitLogCommand).toString();
+    // Get commit data including both subject and body
+    const gitLogCommand = `git log ${fromRef}..${targetRef} --pretty=format:"%s%n%b%n---COMMIT_SEPARATOR---"`;
+    const commitData = execSync(gitLogCommand).toString();
 
-    // Filter out unwanted commits and empty lines
-    const filteredChangelog = changelog
-      .split('\n')
-      .filter((line) => line.trim()) // Remove empty lines
-      .filter((line) => {
-        const lowerLine = line.toLowerCase();
-        return (
-          !lowerLine.startsWith('* hide:') &&
-          !lowerLine.startsWith('* bump version') &&
-          !lowerLine.endsWith('[hide]')
-        );
+    // Parse commits from the git log output
+    const commits = commitData
+      .split('---COMMIT_SEPARATOR---')
+      .filter((commit) => commit.trim())
+      .map((commit) => {
+        const lines = commit.trim().split('\n');
+        const subject = lines[0] || '';
+        const body = lines.slice(1).join('\n').trim();
+        return { subject, body };
       })
-      .reduce((acc, line) => {
-        line = line.trim();
+      .filter((commit) => {
+        const lowerSubject = commit.subject.toLowerCase();
+        return (
+          commit.subject.trim() &&
+          !lowerSubject.startsWith('hide:') &&
+          !lowerSubject.startsWith('bump version') &&
+          !lowerSubject.endsWith('[hide]')
+        );
+      });
 
-        // Standardize bullet points
-        if (line.startsWith('**')) line = line.substring(1); // Remove extra asterisk
-        if (line.startsWith('+')) line = '*' + line.substring(1); // Replace + with *
+    // Generate changelog with unified accordion format
+    const filteredChangelog = commits
+      .map((commit) => {
+        const subject = commit.subject.trim();
+        const body = commit.body.trim();
 
-        // If line doesn't start with *, it's a continuation of the previous line
-        if (!line.startsWith('*')) {
-          if (acc.length > 0) {
-            acc[acc.length - 1] += ' ' + line;
-          }
-          return acc;
+        // Use accordion format for all commits
+        if (!body) {
+          // Empty body - just show the summary without expandable content
+          return `<details>
+<summary>${subject}</summary>
+</details>`;
         }
 
-        // Ensure space after asterisk
-        if (!line.startsWith('* ')) {
-          line = line.replace('*', '* ');
-        }
+        // Commit with body - full accordion format
+        return `<details>
+<summary>${subject}</summary>
 
-        // Only add non-empty bullet points
-        if (line.trim() !== '*' && line.trim() !== '* ') {
-          acc.push(line);
-        }
+${body}
 
-        return acc;
-      }, [])
-      .join('\n');
+</details>`;
+      })
+      .join('\n\n');
 
     return filteredChangelog;
   } catch (error) {
