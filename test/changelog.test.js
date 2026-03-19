@@ -174,7 +174,7 @@ Tested thoroughly.
       .mockReturnValueOnce(Buffer.from('feat: initial commit\n\n---COMMIT_SEPARATOR---'));
 
     const result1 = await generateChangelog('v0.9.0', 'v1.0.0');
-    expect(result1).toBe('* feat: initial commit');
+    expect(result1).toBe(`<details>\n<summary>feat: initial commit</summary>\n</details>`);
 
     jest.clearAllMocks();
 
@@ -200,7 +200,9 @@ Tested thoroughly.
       .mockReturnValueOnce(Buffer.from('v1.0.0-dev.2\n' + 'v1.0.0-dev.1\n' + 'v0.9.0'))
       .mockReturnValueOnce(
         Buffer.from(
-          '* feat: feature from dev.2\n' + '* feat: feature from dev.1\n' + '* fix: fix from dev.1'
+          'feat: feature from dev.2\n\n---COMMIT_SEPARATOR---\n' +
+            'feat: feature from dev.1\n\n---COMMIT_SEPARATOR---\n' +
+            'fix: fix from dev.1\n\n---COMMIT_SEPARATOR---'
         )
       );
 
@@ -213,25 +215,27 @@ Tested thoroughly.
     // Should generate changelog from v1.0.0-dev.1 to current
     expect(childProcess.execSync).toHaveBeenNthCalledWith(
       3,
-      'git log 1.0.0-dev.1..1.0.0 --pretty=format:"* %s"'
+      'git log 1.0.0-dev.1..1.0.0 --pretty=format:"%s%n%b%n---COMMIT_SEPARATOR---"'
     );
 
     // Should include all changes since the first prerelease
     expect(result).toBe(
-      '* feat: feature from dev.2\n' + '* feat: feature from dev.1\n' + '* fix: fix from dev.1'
+      '<details>\n<summary>feat: feature from dev.2</summary>\n</details>\n\n' +
+        '<details>\n<summary>feat: feature from dev.1</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: fix from dev.1</summary>\n</details>'
     );
   });
 
   test('should use provided version when not going from prerelease to stable', async () => {
     childProcess.execSync
       .mockImplementationOnce(() => Buffer.from(''))
-      .mockReturnValueOnce(Buffer.from('* feat: new feature'));
+      .mockReturnValueOnce(Buffer.from('feat: new feature\n\n---COMMIT_SEPARATOR---'));
 
     const _result = await generateChangelog('1.0.0', '1.1.0');
 
     expect(childProcess.execSync).toHaveBeenNthCalledWith(
       2,
-      'git log 1.0.0..1.1.0 --pretty=format:"* %s"'
+      'git log 1.0.0..1.1.0 --pretty=format:"%s%n%b%n---COMMIT_SEPARATOR---"'
     );
   });
 
@@ -292,12 +296,13 @@ Tested thoroughly.
 
     const result = await generateChangelog('v1.0.0', 'v1.1.0');
 
-    // Verify filtered result
-    expect(result).toBe('* feat: add new feature\n\n* fix: resolve bug');
+    expect(result).toBe(
+      '<details>\n<summary>feat: add new feature</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: resolve bug</summary>\n</details>'
+    );
   });
 
   test('should filter out commits ending with "[hide]"', async () => {
-    // Mock execSync to return mixed commits
     childProcess.execSync.mockReturnValue(
       Buffer.from(
         'feat: add new feature\n\n---COMMIT_SEPARATOR---\n' +
@@ -309,42 +314,51 @@ Tested thoroughly.
 
     const result = await generateChangelog('v1.0.0', 'v1.1.0');
 
-    // Verify filtered result
-    expect(result).toBe('* feat: add new feature\n\n* fix: another bug');
+    expect(result).toBe(
+      '<details>\n<summary>feat: add new feature</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: another bug</summary>\n</details>'
+    );
   });
 
   test('should handle emoji in commit messages', async () => {
     childProcess.execSync.mockReturnValue(
       Buffer.from(
-        '✨ feat: add sparkles\n\n---COMMIT_SEPARATOR---\nfeat: handle emoji 🚀 in middle\n\n---COMMIT_SEPARATOR---'
+        '✨ feat: add sparkles\n\n---COMMIT_SEPARATOR---\n' +
+          'feat: handle emoji 🚀 in middle\n\n---COMMIT_SEPARATOR---'
       )
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
     expect(result).toBe(
-      ['* ✨ feat: add sparkles', '* feat: handle emoji 🚀 in middle'].join('\n\n')
+      '<details>\n<summary>✨ feat: add sparkles</summary>\n</details>\n\n' +
+        '<details>\n<summary>feat: handle emoji 🚀 in middle</summary>\n</details>'
     );
   });
 
   test('should handle quotes in commit messages', async () => {
     childProcess.execSync.mockReturnValue(
-      Buffer.from(['* fix: handle "double quotes"', "* feat: handle 'single quotes'"].join('\n'))
+      Buffer.from(
+        'fix: handle "double quotes"\n\n---COMMIT_SEPARATOR---\n' +
+          "feat: handle 'single quotes'\n\n---COMMIT_SEPARATOR---"
+      )
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
     expect(result).toBe(
-      ['* fix: handle "double quotes"', "* feat: handle 'single quotes'"].join('\n')
+      '<details>\n<summary>fix: handle "double quotes"</summary>\n</details>\n\n' +
+        "<details>\n<summary>feat: handle 'single quotes'</summary>\n</details>"
     );
   });
 
   test('should handle multi-line commit messages', async () => {
     childProcess.execSync.mockReturnValue(
-      Buffer.from(['* fix: handle multiple', 'line', 'commit message'].join('\n'))
+      Buffer.from('fix: handle multiple\nline\ncommit message\n---COMMIT_SEPARATOR---')
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
-    // Multi-line commits should be treated as a single commit message
-    expect(result).toBe('* fix: handle multiple line commit message');
+    expect(result).toBe(
+      '<details>\n<summary>fix: handle multiple</summary>\n\nline\ncommit message\n\n</details>'
+    );
   });
 
   test('should handle HTML and Markdown symbols', async () => {
@@ -353,119 +367,109 @@ Tested thoroughly.
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
-    expect(result).toBe('* fix: handle <html> & [markdown] symbols');
+    expect(result).toBe(
+      '<details>\n<summary>fix: handle <html> & [markdown] symbols</summary>\n</details>'
+    );
   });
 
   test('should handle Unicode characters', async () => {
     childProcess.execSync.mockReturnValue(
       Buffer.from(
-        [
-          '* feat: handle Unicode — em dash and … ellipsis',
-          '* fix: handle backslashes \\ and slashes /',
-        ].join('\n')
+        'feat: handle Unicode — em dash and … ellipsis\n\n---COMMIT_SEPARATOR---\n' +
+          'fix: handle backslashes \\ and slashes /\n\n---COMMIT_SEPARATOR---'
       )
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
     expect(result).toBe(
-      [
-        '* feat: handle Unicode — em dash and … ellipsis',
-        '* fix: handle backslashes \\ and slashes /',
-      ].join('\n')
+      '<details>\n<summary>feat: handle Unicode — em dash and … ellipsis</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: handle backslashes \\ and slashes /</summary>\n</details>'
     );
   });
 
   test('should handle parentheses and special characters', async () => {
     childProcess.execSync.mockReturnValue(
       Buffer.from(
-        [
-          '* feat(scope): handle parentheses (like this)',
-          '* fix: handle $ ^ & * special chars',
-        ].join('\n')
+        'feat(scope): handle parentheses (like this)\n\n---COMMIT_SEPARATOR---\n' +
+          'fix: handle $ ^ & * special chars\n\n---COMMIT_SEPARATOR---'
       )
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
     expect(result).toBe(
-      ['* feat(scope): handle parentheses (like this)', '* fix: handle $ ^ & * special chars'].join(
-        '\n'
-      )
+      '<details>\n<summary>feat(scope): handle parentheses (like this)</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: handle $ ^ & * special chars</summary>\n</details>'
     );
   });
 
   test('should handle empty or whitespace-only commit messages', async () => {
     childProcess.execSync.mockReturnValue(
       Buffer.from(
-        [
-          '* feat: normal commit',
-          '*    ', // just whitespace
-          '* feat: another commit',
-          '*', // empty
-          '* fix: final commit',
-        ].join('\n')
+        'feat: normal commit\n\n---COMMIT_SEPARATOR---\n' +
+          '   \n\n---COMMIT_SEPARATOR---\n' +
+          'feat: another commit\n\n---COMMIT_SEPARATOR---\n' +
+          '\n\n---COMMIT_SEPARATOR---\n' +
+          'fix: final commit\n\n---COMMIT_SEPARATOR---'
       )
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
 
-    // Verify empty/whitespace lines are filtered out
     expect(result).toBe(
-      ['* feat: normal commit', '* feat: another commit', '* fix: final commit'].join('\n')
+      '<details>\n<summary>feat: normal commit</summary>\n</details>\n\n' +
+        '<details>\n<summary>feat: another commit</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: final commit</summary>\n</details>'
     );
   });
 
   test('should handle malformed bullet points', async () => {
     childProcess.execSync.mockReturnValue(
       Buffer.from(
-        [
-          '* feat: normal commit',
-          '*feat: missing space',
-          '** fix: double asterisk',
-          ' * chore: leading space',
-          '+ feat: plus instead of asterisk',
-          '* fix: normal commit',
-        ].join('\n')
+        'feat: normal commit\n\n---COMMIT_SEPARATOR---\n' +
+          '*feat: missing space\n\n---COMMIT_SEPARATOR---\n' +
+          '** fix: double asterisk\n\n---COMMIT_SEPARATOR---\n' +
+          ' * chore: leading space\n\n---COMMIT_SEPARATOR---\n' +
+          '+ feat: plus instead of asterisk\n\n---COMMIT_SEPARATOR---\n' +
+          'fix: normal commit\n\n---COMMIT_SEPARATOR---'
       )
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');
 
-    // Verify all commits are properly formatted with consistent bullets
     expect(result).toBe(
-      [
-        '* feat: normal commit',
-        '* feat: missing space',
-        '* fix: double asterisk',
-        '* chore: leading space',
-        '* feat: plus instead of asterisk',
-        '* fix: normal commit',
-      ].join('\n')
+      '<details>\n<summary>feat: normal commit</summary>\n</details>\n\n' +
+        '<details>\n<summary>*feat: missing space</summary>\n</details>\n\n' +
+        '<details>\n<summary>** fix: double asterisk</summary>\n</details>\n\n' +
+        '<details>\n<summary>* chore: leading space</summary>\n</details>\n\n' +
+        '<details>\n<summary>+ feat: plus instead of asterisk</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: normal commit</summary>\n</details>'
     );
   });
 
   test('should handle single prerelease when going to stable', async () => {
-    // Mock sequence:
-    // 1. Verify tag exists
-    // 2. Get all tags to find earliest prerelease
-    // 3. Get changelog from prerelease to current
     childProcess.execSync
       .mockImplementationOnce(() => Buffer.from('')) // verify tag exists
       .mockReturnValueOnce(Buffer.from('v1.0.0-dev.1\n' + 'v0.9.0'))
-      .mockReturnValueOnce(Buffer.from('* feat: feature from dev.1\n' + '* fix: fix from dev.1'));
+      .mockReturnValueOnce(
+        Buffer.from(
+          'feat: feature from dev.1\n\n---COMMIT_SEPARATOR---\n' +
+            'fix: fix from dev.1\n\n---COMMIT_SEPARATOR---'
+        )
+      );
 
     const result = await generateChangelog('1.0.0-dev.1', '1.0.0');
 
-    // Should have gotten tags to find earliest prerelease
     expect(childProcess.execSync).toHaveBeenNthCalledWith(1, 'git rev-parse --verify 1.0.0-dev.1');
     expect(childProcess.execSync).toHaveBeenNthCalledWith(2, 'git tag -l');
 
-    // Should generate changelog from the prerelease to current
     expect(childProcess.execSync).toHaveBeenNthCalledWith(
       3,
-      'git log 1.0.0-dev.1..1.0.0 --pretty=format:"* %s"'
+      'git log 1.0.0-dev.1..1.0.0 --pretty=format:"%s%n%b%n---COMMIT_SEPARATOR---"'
     );
 
-    // Should include all changes since the prerelease
-    expect(result).toBe('* feat: feature from dev.1\n' + '* fix: fix from dev.1');
+    expect(result).toBe(
+      '<details>\n<summary>feat: feature from dev.1</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: fix from dev.1</summary>\n</details>'
+    );
   });
 });
