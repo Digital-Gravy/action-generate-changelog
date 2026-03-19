@@ -22,7 +22,9 @@ describe('Changelog Generator', () => {
 
   test('should generate changelog with single commit (no body)', async () => {
     // Mock execSync to return a single commit without body
-    childProcess.execSync.mockReturnValue(Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---'));
+    childProcess.execSync.mockReturnValue(
+      Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---')
+    );
 
     const result = await generateChangelog('v1.0.0', 'v1.0.1');
 
@@ -39,7 +41,11 @@ describe('Changelog Generator', () => {
 
   test('should generate changelog with single commit with body (accordion format)', async () => {
     // Mock execSync to return a single commit with body
-    childProcess.execSync.mockReturnValue(Buffer.from('feat: add new feature\nThis is the detailed description of the new feature.\n\nIt includes multiple lines.\n---COMMIT_SEPARATOR---'));
+    childProcess.execSync.mockReturnValue(
+      Buffer.from(
+        'feat: add new feature\nThis is the detailed description of the new feature.\n\nIt includes multiple lines.\n---COMMIT_SEPARATOR---'
+      )
+    );
 
     const result = await generateChangelog('v1.0.0', 'v1.0.1');
 
@@ -101,7 +107,9 @@ Tested thoroughly.
   });
 
   test('should use HEAD when current version is empty', async () => {
-    childProcess.execSync.mockReturnValue(Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---'));
+    childProcess.execSync.mockReturnValue(
+      Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---')
+    );
     const _result = await generateChangelog('v1.0.0', '');
     expect(childProcess.execSync).toHaveBeenCalledWith(
       'git log 1.0.0..HEAD --pretty=format:"%s%n%b%n---COMMIT_SEPARATOR---"'
@@ -109,7 +117,9 @@ Tested thoroughly.
   });
 
   test('should use HEAD when current version is undefined', async () => {
-    childProcess.execSync.mockReturnValue(Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---'));
+    childProcess.execSync.mockReturnValue(
+      Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---')
+    );
     const _result = await generateChangelog('v1.0.0', undefined);
     expect(childProcess.execSync).toHaveBeenCalledWith(
       'git log 1.0.0..HEAD --pretty=format:"%s%n%b%n---COMMIT_SEPARATOR---"'
@@ -117,7 +127,9 @@ Tested thoroughly.
   });
 
   test('should use HEAD when current version is null', async () => {
-    childProcess.execSync.mockReturnValue(Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---'));
+    childProcess.execSync.mockReturnValue(
+      Buffer.from('feat: add new feature\n\n---COMMIT_SEPARATOR---')
+    );
     const _result = await generateChangelog('v1.0.0', null);
     expect(childProcess.execSync).toHaveBeenCalledWith(
       'git log 1.0.0..HEAD --pretty=format:"%s%n%b%n---COMMIT_SEPARATOR---"'
@@ -303,7 +315,9 @@ Tested thoroughly.
 
   test('should handle emoji in commit messages', async () => {
     childProcess.execSync.mockReturnValue(
-      Buffer.from('✨ feat: add sparkles\n\n---COMMIT_SEPARATOR---\nfeat: handle emoji 🚀 in middle\n\n---COMMIT_SEPARATOR---')
+      Buffer.from(
+        '✨ feat: add sparkles\n\n---COMMIT_SEPARATOR---\nfeat: handle emoji 🚀 in middle\n\n---COMMIT_SEPARATOR---'
+      )
     );
 
     const result = await generateChangelog('1.0.0', '1.1.0');

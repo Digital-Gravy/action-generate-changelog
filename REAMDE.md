@@ -37,8 +37,8 @@ Add the following step to your workflow:
 
 ### Outputs
 
-| Output      | Description                 |
-| ----------- | --------------------------- |
+| Output      | Description                                          |
+| ----------- | ---------------------------------------------------- |
 | `changelog` | Generated changelog content in HTML accordion format |
 
 ### Example Workflow
@@ -69,32 +69,22 @@ The action generates changelogs in an accordion format using HTML `<details>` an
 
 ```html
 <details>
-<summary>feat: add user authentication system</summary>
+  <summary>feat: add user authentication system</summary>
 
-Implemented comprehensive user authentication including:
-- JWT token management  
-- Password hashing with bcrypt
-- Session timeout handling
-- Multi-factor authentication support
-
-Tested across all supported browsers and devices.
-
+  Implemented comprehensive user authentication including: - JWT token management - Password hashing
+  with bcrypt - Session timeout handling - Multi-factor authentication support Tested across all
+  supported browsers and devices.
 </details>
 
 <details>
-<summary>fix: resolve login redirect issue</summary>
+  <summary>fix: resolve login redirect issue</summary>
 </details>
 
 <details>
-<summary>chore: update dependencies to latest versions</summary>
+  <summary>chore: update dependencies to latest versions</summary>
 
-Updated all packages to their latest stable versions:
-- express: 4.18.0 → 4.19.2
-- mongoose: 6.12.0 → 7.5.0
-- jsonwebtoken: 8.5.1 → 9.0.2
-
-All tests pass with new versions.
-
+  Updated all packages to their latest stable versions: - express: 4.18.0 → 4.19.2 - mongoose:
+  6.12.0 → 7.5.0 - jsonwebtoken: 8.5.1 → 9.0.2 All tests pass with new versions.
 </details>
 ```
 
@@ -129,24 +119,27 @@ The action generates changelog entries from commit messages. For best results, f
 To take full advantage of the accordion format, structure your commits as follows:
 
 **Commit Title (Summary):**
+
 - Keep concise and descriptive (appears in the collapsed accordion)
 - Use conventional commit format: `type: brief description`
 - Example: `feat: add advanced search functionality`
 
 **Commit Body (Details):**
+
 - Provide detailed explanation (appears when accordion is expanded)
 - Include implementation details, reasoning, or impact
 - Use bullet points, lists, or paragraphs as needed
 - Example:
+
   ```
   feat: add advanced search functionality
-  
+
   Implemented elasticsearch integration with the following features:
   - Full-text search across all content
   - Faceted filtering by category and date
   - Auto-complete suggestions with fuzzy matching
   - Search result highlighting
-  
+
   Performance testing shows 95% improvement in search speed.
   Breaking change: Old search API endpoints deprecated.
   ```
