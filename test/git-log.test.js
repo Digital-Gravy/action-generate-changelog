@@ -10,6 +10,10 @@ function mockGitOutput(commits) {
   return commits.map((c) => [c.hash, c.author, c.date, c.subject, c.body].join(FS)).join(RS) + RS;
 }
 
+function findGitLogCall() {
+  return childProcess.execSync.mock.calls.find((c) => c[0].startsWith('git log'))[0];
+}
+
 describe('getCommits', () => {
   test('parses a single commit with all fields', () => {
     childProcess.execSync.mockReturnValue(
@@ -79,26 +83,90 @@ describe('getCommits', () => {
   test('defaults current_version to HEAD when omitted', () => {
     childProcess.execSync.mockReturnValue(Buffer.from(''));
     getCommits('v1.0.0');
-    const call = childProcess.execSync.mock.calls[0][0];
-    expect(call).toContain('v1.0.0..HEAD');
+    expect(findGitLogCall()).toContain('v1.0.0..HEAD');
   });
 
   test('defaults current_version to HEAD when empty string', () => {
     childProcess.execSync.mockReturnValue(Buffer.from(''));
     getCommits('v1.0.0', '');
-    const call = childProcess.execSync.mock.calls[0][0];
-    expect(call).toContain('v1.0.0..HEAD');
+    expect(findGitLogCall()).toContain('v1.0.0..HEAD');
   });
 
   test('uses the configured ASCII record/field separators', () => {
     childProcess.execSync.mockReturnValue(Buffer.from(''));
     getCommits('v1.0.0', 'HEAD');
-    const call = childProcess.execSync.mock.calls[0][0];
+    const call = findGitLogCall();
     expect(call).toContain('%H');
     expect(call).toContain('%an');
     expect(call).toContain('%aI');
     expect(call).toContain('%s');
     expect(call).toContain('%b');
+  });
+
+  describe('v-prefix tolerance', () => {
+    // mock rev-parse to succeed only for refs in `existingRefs`; mock git log to return empty
+    function mockTagsExist(existingRefs) {
+      childProcess.execSync.mockImplementation((cmd) => {
+        if (cmd.startsWith('git rev-parse --verify ')) {
+          const ref = cmd.replace('git rev-parse --verify ', '').replace(/^"|"$/g, '');
+          if (existingRefs.includes(ref)) return Buffer.from('deadbeef\n');
+          const err = new Error(`fatal: Needed a single revision`);
+          throw err;
+        }
+        if (cmd.startsWith('git log ')) return Buffer.from('');
+        return Buffer.from('');
+      });
+    }
+
+    test('input "1.0.0" resolves to tag "1.0.0" when bare tag exists', () => {
+      mockTagsExist(['1.0.0', '1.0.1']);
+      getCommits('1.0.0', '1.0.1');
+      expect(findGitLogCall()).toContain('1.0.0..1.0.1');
+    });
+
+    test('input "1.0.0" resolves to tag "v1.0.0" when only v-prefixed tag exists', () => {
+      mockTagsExist(['v1.0.0', 'v1.0.1']);
+      getCommits('1.0.0', '1.0.1');
+      expect(findGitLogCall()).toContain('v1.0.0..v1.0.1');
+    });
+
+    test('input "v1.0.0" resolves to tag "1.0.0" when only bare tag exists', () => {
+      mockTagsExist(['1.0.0', '1.0.1']);
+      getCommits('v1.0.0', 'v1.0.1');
+      expect(findGitLogCall()).toContain('1.0.0..1.0.1');
+    });
+
+    test('input "v1.0.0" resolves to tag "v1.0.0" when v-prefixed tag exists', () => {
+      mockTagsExist(['v1.0.0', 'v1.0.1']);
+      getCommits('v1.0.0', 'v1.0.1');
+      expect(findGitLogCall()).toContain('v1.0.0..v1.0.1');
+    });
+
+    test('mixed: previous bare, current v-prefixed — each resolves independently', () => {
+      mockTagsExist(['1.0.0', 'v1.0.1']);
+      getCommits('v1.0.0', '1.0.1');
+      expect(findGitLogCall()).toContain('1.0.0..v1.0.1');
+    });
+
+    test('HEAD is never toggled', () => {
+      mockTagsExist(['v1.0.0']);
+      getCommits('1.0.0', 'HEAD');
+      const call = findGitLogCall();
+      expect(call).toContain('v1.0.0..HEAD');
+    });
+
+    test('falls back to input as-given when neither form exists (lets git log error surface)', () => {
+      mockTagsExist([]);
+      childProcess.execSync.mockImplementation((cmd) => {
+        if (cmd.startsWith('git rev-parse --verify ')) {
+          throw new Error('not a valid ref');
+        }
+        if (cmd.startsWith('git log ')) return Buffer.from('');
+        return Buffer.from('');
+      });
+      getCommits('nonexistent', 'HEAD');
+      expect(findGitLogCall()).toContain('nonexistent..HEAD');
+    });
   });
 
   test('throws when previousVersion is missing', () => {

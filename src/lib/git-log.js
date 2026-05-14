@@ -4,12 +4,31 @@ const FS = '\x1f';
 const RS = '\x1e';
 const FORMAT = `%H${FS}%an${FS}%aI${FS}%s${FS}%b${RS}`;
 
+function refExists(ref) {
+  try {
+    execSync(`git rev-parse --verify ${JSON.stringify(ref)}`, { stdio: 'pipe' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function resolveRef(ref) {
+  if (!ref || ref === 'HEAD') return ref;
+  if (refExists(ref)) return ref;
+  const toggled = ref.startsWith('v') ? ref.slice(1) : `v${ref}`;
+  if (refExists(toggled)) return toggled;
+  return ref;
+}
+
 function getCommits(previousVersion, currentVersion) {
   if (!previousVersion) {
     throw new Error('getCommits: previousVersion is required');
   }
   const target = currentVersion && currentVersion.trim() ? currentVersion : 'HEAD';
-  const range = `${previousVersion}..${target}`;
+  const from = resolveRef(previousVersion);
+  const to = resolveRef(target);
+  const range = `${from}..${to}`;
   const cmd = `git log ${range} --pretty=format:${JSON.stringify(FORMAT)}`;
   const output = execSync(cmd).toString();
   return parseGitOutput(output);
