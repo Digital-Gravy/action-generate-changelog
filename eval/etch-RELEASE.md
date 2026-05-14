@@ -20,8 +20,9 @@ Open every release with a short prose summary above the bullet list — typicall
 
 - Confident but not marketing-y.
 - Active voice, present tense.
-- Avoid internal jargon: say "loop block" not "LoopBlock class". Say "AI chat" not "AiChatStore".
-- Inline `code` for variable names, attributes, hook names, feature flags, and short symbols (e.g., `{props.x}`, `RESPECT_ACF_RETURN_FORMAT`, `@click`).
+- Avoid internal jargon: say "loop block" not "LoopBlock class". Say "AI Assistant" (canonical user-facing name) — never "AI chat", "AiChatStore", "AI service".
+- Inline `code` for things the user actually types or configures (attributes, modifier names, dynamic-data scopes). Do NOT inline-code internal symbol names (class names, event names, store names, tool schemas) — drop or rephrase those entirely.
+- Feature-flag names appear in bullets ONLY when the user must flip the flag to opt in (e.g., a workaround flag like `ENABLE_CLEAR_BUFFER_IN_STREAM_REQUEST`). Internal rollout flags (e.g., `ENABLE_AI_TOOL_CALLS_DISPLAY` being turned on in production) are an implementation detail — rephrase as the user-observable outcome ("tool calls now appear in chat"), don't mention the flag.
 - Inline links for external references (docs, migration guides, community threads).
 
 ## Ticket IDs
@@ -46,6 +47,23 @@ Drop entirely:
 - Skill / tooling commits (anything in `notes/`, `.claude/`, or marked `[skip ci]`)
 - Commits tagged `[hide]` or `[ignore]` (already filtered before you see them, but if any slip through, suppress)
 - Code review / linter / formatter commits
+
+### AI Assistant plumbing — always internal
+
+These topics show up in commits but are NOT user-facing, even when the commit messages mention AI Assistant:
+
+- Tool / capability negotiation between plugin and middleware (e.g., "supported_client_capabilities", "tool schema negotiation", "client capability handshake")
+- Wire-protocol details (SSE frames, JSON payload shape, streaming-event ordering for `delta`/`done`/`reasoning` events, retry / buffer / backpressure handling)
+- Middleware routing changes, `/retrieve`, `/health`, or other internal endpoints
+- Tool schema registrations, mocked tool results, fallback wiring
+- Provider abstraction changes (e.g., `OpenAiProvider`, `AiProviderInterface`)
+- Reasoning enable/disable, default model swaps, internal request flags
+
+A change in this area is user-facing only if it produces a behavior the user would notice in chat (e.g., "AI Assistant no longer drops streamed content" describes a visible bug fix). If you can't describe it in terms of what the user sees, drop it.
+
+### Block / format conversion — always internal
+
+Etch ships pipelines that convert between Gutenberg blocks, Etch blocks, and JSON. Commits touching the conversion code (e.g., "convert `etch/condition` through the JSON pipeline", "write block metadata only when block name present") are infrastructure migrations, not user-facing changes. Drop them unless they fix a visible parse error or migration bug in the editor.
 
 ## Breaking changes
 
