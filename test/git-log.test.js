@@ -11,12 +11,16 @@ function mockGitOutput(commits) {
 }
 
 function findGitLogCall() {
-  return childProcess.execSync.mock.calls.find((c) => c[0].startsWith('git log'))[0];
+  const call = childProcess.execFileSync.mock.calls.find(
+    (c) => c[0] === 'git' && Array.isArray(c[1]) && c[1][0] === 'log'
+  );
+  // Return a single-string approximation for assertions that use `.toContain(...)`.
+  return [call[0], ...call[1]].join(' ');
 }
 
 describe('getCommits', () => {
   test('parses a single commit with all fields', () => {
-    childProcess.execSync.mockReturnValue(
+    childProcess.execFileSync.mockReturnValue(
       Buffer.from(
         mockGitOutput([
           {
@@ -42,7 +46,7 @@ describe('getCommits', () => {
   });
 
   test('parses multiple commits', () => {
-    childProcess.execSync.mockReturnValue(
+    childProcess.execFileSync.mockReturnValue(
       Buffer.from(
         mockGitOutput([
           { hash: 'a1', author: 'Dev A', date: '2026-05-13T00:00:00Z', subject: 'feat: one', body: '' },
@@ -58,7 +62,7 @@ describe('getCommits', () => {
   });
 
   test('preserves multi-line body content', () => {
-    childProcess.execSync.mockReturnValue(
+    childProcess.execFileSync.mockReturnValue(
       Buffer.from(
         mockGitOutput([
           {
@@ -76,24 +80,24 @@ describe('getCommits', () => {
   });
 
   test('returns empty array when git log output is empty', () => {
-    childProcess.execSync.mockReturnValue(Buffer.from(''));
+    childProcess.execFileSync.mockReturnValue(Buffer.from(''));
     expect(getCommits('v1.0.0', 'v1.0.0')).toEqual([]);
   });
 
   test('defaults current_version to HEAD when omitted', () => {
-    childProcess.execSync.mockReturnValue(Buffer.from(''));
+    childProcess.execFileSync.mockReturnValue(Buffer.from(''));
     getCommits('v1.0.0');
     expect(findGitLogCall()).toContain('v1.0.0..HEAD');
   });
 
   test('defaults current_version to HEAD when empty string', () => {
-    childProcess.execSync.mockReturnValue(Buffer.from(''));
+    childProcess.execFileSync.mockReturnValue(Buffer.from(''));
     getCommits('v1.0.0', '');
     expect(findGitLogCall()).toContain('v1.0.0..HEAD');
   });
 
   test('uses the configured ASCII record/field separators', () => {
-    childProcess.execSync.mockReturnValue(Buffer.from(''));
+    childProcess.execFileSync.mockReturnValue(Buffer.from(''));
     getCommits('v1.0.0', 'HEAD');
     const call = findGitLogCall();
     expect(call).toContain('%H');
@@ -103,17 +107,37 @@ describe('getCommits', () => {
     expect(call).toContain('%b');
   });
 
+  // Regression: the format string contains raw \x1f / \x1e separators.
+  // Earlier impl JSON.stringify'd it through execSync, which let the shell
+  // pass the literal 6-char sequences "" / "" to git. Git
+  // doesn't interpret those, so the output never contained real separators
+  // and every commit parsed as one mangled blob. This test pins the argv-
+  // passing contract so a regression can't sneak back in.
+  test('REGRESSION: format string reaches subprocess with raw \\x1f / \\x1e bytes', () => {
+    childProcess.execFileSync.mockReturnValue(Buffer.from(''));
+    getCommits('1.0.0', 'HEAD');
+    const logCall = childProcess.execFileSync.mock.calls.find(
+      (c) => c[0] === 'git' && Array.isArray(c[1]) && c[1][0] === 'log'
+    );
+    expect(logCall).toBeDefined();
+    const formatArg = logCall[1].find((a) => typeof a === 'string' && a.startsWith('--pretty=format:'));
+    expect(formatArg).toBeDefined();
+    expect(formatArg).toContain('\x1f');
+    expect(formatArg).toContain('\x1e');
+    expect(formatArg).not.toContain('\\u001f');
+    expect(formatArg).not.toContain('\\u001e');
+  });
+
   describe('v-prefix tolerance', () => {
     // mock rev-parse to succeed only for refs in `existingRefs`; mock git log to return empty
     function mockTagsExist(existingRefs) {
-      childProcess.execSync.mockImplementation((cmd) => {
-        if (cmd.startsWith('git rev-parse --verify ')) {
-          const ref = cmd.replace('git rev-parse --verify ', '').replace(/^"|"$/g, '');
+      childProcess.execFileSync.mockImplementation((cmd, args) => {
+        if (cmd === 'git' && args[0] === 'rev-parse' && args[1] === '--verify') {
+          const ref = args[2];
           if (existingRefs.includes(ref)) return Buffer.from('deadbeef\n');
-          const err = new Error(`fatal: Needed a single revision`);
-          throw err;
+          throw new Error('fatal: Needed a single revision');
         }
-        if (cmd.startsWith('git log ')) return Buffer.from('');
+        if (cmd === 'git' && args[0] === 'log') return Buffer.from('');
         return Buffer.from('');
       });
     }
@@ -157,7 +181,7 @@ describe('getCommits', () => {
 
     test('falls back to input as-given when neither form exists (lets git log error surface)', () => {
       mockTagsExist([]);
-      childProcess.execSync.mockImplementation((cmd) => {
+      childProcess.execFileSync.mockImplementation((cmd) => {
         if (cmd.startsWith('git rev-parse --verify ')) {
           throw new Error('not a valid ref');
         }
@@ -175,7 +199,7 @@ describe('getCommits', () => {
   });
 
   test('handles commits whose subject or body contains unusual characters', () => {
-    childProcess.execSync.mockReturnValue(
+    childProcess.execFileSync.mockReturnValue(
       Buffer.from(
         mockGitOutput([
           {
@@ -194,8 +218,8 @@ describe('getCommits', () => {
   });
 
   test('uses execFile-style argv passing to avoid shell interpretation', () => {
-    childProcess.execSync.mockReturnValue(Buffer.from(''));
+    childProcess.execFileSync.mockReturnValue(Buffer.from(''));
     getCommits('v1.0.0', 'HEAD');
-    expect(childProcess.execSync).toHaveBeenCalled();
+    expect(childProcess.execFileSync).toHaveBeenCalled();
   });
 });

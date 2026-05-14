@@ -22908,13 +22908,13 @@ ${body}
 // src/lib/git-log.js
 var require_git_log = __commonJS({
   "src/lib/git-log.js"(exports2, module2) {
-    var { execSync } = require("child_process");
+    var { execFileSync } = require("child_process");
     var FS = "";
     var RS = "";
     var FORMAT = `%H${FS}%an${FS}%aI${FS}%s${FS}%b${RS}`;
     function refExists(ref) {
       try {
-        execSync(`git rev-parse --verify ${JSON.stringify(ref)}`, { stdio: "pipe" });
+        execFileSync("git", ["rev-parse", "--verify", ref], { stdio: "pipe" });
         return true;
       } catch {
         return false;
@@ -22935,8 +22935,7 @@ var require_git_log = __commonJS({
       const from = resolveRef(previousVersion);
       const to = resolveRef(target);
       const range = `${from}..${to}`;
-      const cmd = `git log ${range} --pretty=format:${JSON.stringify(FORMAT)}`;
-      const output = execSync(cmd).toString();
+      const output = execFileSync("git", ["log", range, `--pretty=format:${FORMAT}`]).toString();
       return parseGitOutput(output);
     }
     function parseGitOutput(output) {
