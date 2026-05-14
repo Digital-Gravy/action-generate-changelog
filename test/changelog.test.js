@@ -320,6 +320,26 @@ Tested thoroughly.
     );
   });
 
+  test('should filter out commits starting with "ignore:" or ending with "[ignore]"', async () => {
+    childProcess.execSync.mockReturnValue(
+      Buffer.from(
+        'feat: add new feature\n\n---COMMIT_SEPARATOR---\n' +
+          'ignore: internal refactor\n\n---COMMIT_SEPARATOR---\n' +
+          'fix: a bug [ignore]\n\n---COMMIT_SEPARATOR---\n' +
+          'IGNORE: skip me\n\n---COMMIT_SEPARATOR---\n' +
+          'chore: another thing [IGNORE]\n\n---COMMIT_SEPARATOR---\n' +
+          'fix: keep me\n\n---COMMIT_SEPARATOR---'
+      )
+    );
+
+    const result = await generateChangelog('v1.0.0', 'v1.1.0');
+
+    expect(result).toBe(
+      '<details>\n<summary>feat: add new feature</summary>\n</details>\n\n' +
+        '<details>\n<summary>fix: keep me</summary>\n</details>'
+    );
+  });
+
   test('should handle emoji in commit messages', async () => {
     childProcess.execSync.mockReturnValue(
       Buffer.from(

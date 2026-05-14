@@ -1,5 +1,6 @@
 const { execSync } = require('child_process');
 const semver = require('semver');
+const { filterCommits } = require('./lib/filter-commits');
 
 function isPrerelease(version) {
   return version && semver.prerelease(version) !== null;
@@ -95,7 +96,7 @@ async function generateChangelog(previousVersion, currentVersion) {
     const commitData = execSync(gitLogCommand).toString();
 
     // Parse commits from the git log output
-    const commits = commitData
+    const parsedCommits = commitData
       .split('---COMMIT_SEPARATOR---')
       .filter((commit) => commit.trim())
       .map((commit) => {
@@ -103,16 +104,8 @@ async function generateChangelog(previousVersion, currentVersion) {
         const subject = lines[0] || '';
         const body = lines.slice(1).join('\n').trim();
         return { subject, body };
-      })
-      .filter((commit) => {
-        const lowerSubject = commit.subject.toLowerCase();
-        return (
-          commit.subject.trim() &&
-          !lowerSubject.startsWith('hide:') &&
-          !lowerSubject.startsWith('bump version') &&
-          !lowerSubject.endsWith('[hide]')
-        );
       });
+    const commits = filterCommits(parsedCommits);
 
     // Generate changelog with unified accordion format
     const filteredChangelog = commits
