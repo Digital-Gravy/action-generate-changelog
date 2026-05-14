@@ -1,0 +1,330 @@
+{
+  "previous_version": "1.4.11",
+  "current_version": "1.4.12",
+  "commits": [
+    {
+      "hash": "2830b28e3d68d6282e9f1c5c8e9b5dd3dd89fe65",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T19:51:41+02:00",
+      "subject": "test(ETC-656): guard ENABLE_AI_USE_MIDDLEWARE stays off in production flags",
+      "body": "Fails CI if config/flags.json accidentally flips the middleware provider\non before the feature is ready to ship. Delete the assertion when ETC-656\nlands.",
+      "ticketIds": [
+        "ETC-656"
+      ]
+    },
+    {
+      "hash": "ea8d590e0d16eed4adba0ae7a04ca1c638a75b67",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T19:26:57+02:00",
+      "subject": "refactor(ETC-656): extract AiProviderFactory and cover flag routing",
+      "body": "Moves the AI provider selection out of AiRoutes::__construct into an\nAiProviderFactory that takes both provider instances and a predicate via\nconstructor injection. AiRoutes now calls AiProviderFactory::default(),\nwhich is the only place that reads the ENABLE_AI_USE_MIDDLEWARE flag.\n\nAdds three focused unit tests that assert the dispatch branches without\ntouching global flag state: predicate-true returns middleware,\npredicate-false returns openai, and the predicate is re-evaluated on each\ncreate() call.",
+      "ticketIds": [
+        "ETC-656"
+      ]
+    },
+    {
+      "hash": "7cce2f9ec97bbbed0ba7ef9c4689a0b111b96661",
+      "author": "Andrea Maccone",
+      "date": "2026-04-15T19:22:49+02:00",
+      "subject": "feat(ETC-666): initial component editor header redesign behind PROPS_PANEL_REDESIGN flag",
+      "body": "",
+      "ticketIds": [
+        "ETC-666"
+      ]
+    },
+    {
+      "hash": "31de466c2789563109704d73c20eee60696f77b9",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-15T14:15:56-03:00",
+      "subject": "chore: add log for middleware event",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "16bcd6db28823ab450ece7068ae731bbc7a30795",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T19:01:09+02:00",
+      "subject": "refactor(ETC-591): consolidate segment action handlers into runSegmentAction",
+      "body": "",
+      "ticketIds": [
+        "ETC-591"
+      ]
+    },
+    {
+      "hash": "64fbb9a5afd560fd32673bd887a361d9adf84c95",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T18:54:59+02:00",
+      "subject": "test(ETC-591): characterize segment action error/warning paths",
+      "body": "",
+      "ticketIds": [
+        "ETC-591"
+      ]
+    },
+    {
+      "hash": "c981da97dcd74b623ea212bfbc5b7155afe95c05",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T18:49:02+02:00",
+      "subject": "refactor(ETC-591): extract AiChatUserMessage component",
+      "body": "",
+      "ticketIds": [
+        "ETC-591"
+      ]
+    },
+    {
+      "hash": "cbe85d2553bce650b5a024081ac641da7fa4c7ab",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T18:39:36+02:00",
+      "subject": "refactor(ETC-591): extract AiChatReasoningBlock component",
+      "body": "",
+      "ticketIds": [
+        "ETC-591"
+      ]
+    },
+    {
+      "hash": "30062d27cd53d08b14da58688a5da3755947f605",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T18:31:35+02:00",
+      "subject": "refactor(ETC-591): extract getReasoningSummaryTitle helper",
+      "body": "",
+      "ticketIds": [
+        "ETC-591"
+      ]
+    },
+    {
+      "hash": "51be7a0b3968877422e7b7c258f53ec06d33b0b8",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T18:10:16+02:00",
+      "subject": "feat(ETC-656): tag ai.provider in wide events for middleware routing",
+      "body": "Adds `ai.provider` to the AI wide event on both providers so the activity\nlog unambiguously shows which path ran when the ENABLE_AI_USE_MIDDLEWARE\nflag flips. MiddlewareProvider also tags `ai.middleware.url`.",
+      "ticketIds": [
+        "ETC-656"
+      ]
+    },
+    {
+      "hash": "c80f848438e93f33dafdfd5bc2738f6b998f5828",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-15T15:31:29+02:00",
+      "subject": "feat(ETC-632): Resizable text area for text prop",
+      "body": "",
+      "ticketIds": [
+        "ETC-632"
+      ]
+    },
+    {
+      "hash": "f90f0400a171f9d4103e092b00a91c34cd5884e2",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-15T09:29:41-03:00",
+      "subject": "feat(assistant): implement the new middleware provider under feature flag",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1a230a5464f390b6119b7d1285ed2458e46b9a77",
+      "author": "Andrea Maccone",
+      "date": "2026-04-15T10:49:14+02:00",
+      "subject": "feat(ETC-652): add ShortcutHint to Add Attributes button",
+      "body": "",
+      "ticketIds": [
+        "ETC-652"
+      ]
+    },
+    {
+      "hash": "d96b0e9e41bac2f9725f2b8341e5519beac728dd",
+      "author": "Andrea Maccone",
+      "date": "2026-04-15T10:49:03+02:00",
+      "subject": "feat(ETC-649): add ShortcutHint component for styled shortcut keys in tooltips",
+      "body": "",
+      "ticketIds": [
+        "ETC-649"
+      ]
+    },
+    {
+      "hash": "597ae87c7a3729274b9aafe072f991c4c7408473",
+      "author": "Andrea Maccone",
+      "date": "2026-04-14T19:37:58+02:00",
+      "subject": "hide(ETC-647): Remove unnecessary icons from HTML Code editor's header",
+      "body": "",
+      "ticketIds": [
+        "ETC-647"
+      ]
+    },
+    {
+      "hash": "84a691c5fa0ec09bf1f9bd99b7a9fc417bd0c76c",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-14T16:14:36+02:00",
+      "subject": "fix: Ensure component edit shortcut works on mac devices",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "af3e80ed48dd140faf823a77755816fe48621a73",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-14T15:20:23+02:00",
+      "subject": "hide(ETC-643): Add create component button to element settings",
+      "body": "",
+      "ticketIds": [
+        "ETC-643"
+      ]
+    },
+    {
+      "hash": "dbd060cafd2c5db61b4d6a76b12798cf8908cf8b",
+      "author": "Jérémy Franck",
+      "date": "2026-04-14T12:05:23+02:00",
+      "subject": "improve(Panels): make the title of UI panels not user-selectable",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "105ec4a20f9e7edda172496942234e8a61dfe723",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-14T12:25:03+02:00",
+      "subject": "feat(ETC-646): Default populator for loop prop",
+      "body": "",
+      "ticketIds": [
+        "ETC-646"
+      ]
+    },
+    {
+      "hash": "26552dae0b697c0266ebb341b4c41f8f7bab2a48",
+      "author": "Andrea Maccone",
+      "date": "2026-04-14T12:14:41+02:00",
+      "subject": "feat(ETC-650): persist component prop accordion open/close state across reloads and navigation",
+      "body": "",
+      "ticketIds": [
+        "ETC-650"
+      ]
+    },
+    {
+      "hash": "276ed22dd80df268e354ad2bb7ae39725659ddf6",
+      "author": "christophsanz",
+      "date": "2026-04-14T12:09:35+02:00",
+      "subject": "chore: remove dead unused useCodeFont prop",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "dbac8a2098ae32a7b304bb55c7dc77383962a9aa",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-14T11:53:50+02:00",
+      "subject": "feat(ETC-645): Default populator for boolean props (wraps in #if)",
+      "body": "",
+      "ticketIds": [
+        "ETC-645"
+      ]
+    },
+    {
+      "hash": "e9c3ed4946474d70bbb930f7f06efa292240f157",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-14T11:24:14+02:00",
+      "subject": "feat: Allow prop population also by click in structure panel",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "9ef5666a560b0dff6ac936096f3445d5bd0b54e9",
+      "author": "Christoph Sanz",
+      "date": "2026-04-14T09:38:24+02:00",
+      "subject": "feat: support for special characters in selectors",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "209a72d85bc55f95e0bf7acc8676b0fac17af518",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-13T20:38:27+02:00",
+      "subject": "refactor(aiChat): extract ai chat input area into its own component, small helpers for some aimode and placeholders",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1782e0bdf72fba1fac3fe853c0a65f8ab7f5c16a",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-13T13:37:32+02:00",
+      "subject": "improve(ETC-616): Allow pasting of rules with same selector into css editor",
+      "body": "",
+      "ticketIds": [
+        "ETC-616"
+      ]
+    }
+  ],
+  "tickets": {
+    "ETC-656": {
+      "id": "ETC-656",
+      "title": "I can send “hello world” and get a streaming response back",
+      "description": "Let's front-load the work by getting the risky part out of the way: \n\nLet's get the plugin, the middleware and Open AI to communicate\n\n**Technical decisions:**\n\n* The endpoint on the middleware side is `/assistant` (already created)\n* A feature flag must be created in the plugin\n* The feature flag is OFF by default\n* We send a dummy message (\"hello\"), not the actual user message\n* The middleware injects something in the message so we can identify it came through the middleware\n\n**Acceptance criteria:**\n\n- [X] Given the feature flag is OFF, the plugin contacts Open AI directly\n- [X] Given the feature flag is ON, I can see a response from Open AI through the middleware being streamed in chunks\n- [X] If I don't receive a response from Open AI under 30 seconds, the middleware sends back an error to the plugin stating the issue\n- [X] If Open AI responds back with an error, the error is forwarded to the plugin\n- [X] If the middleware responds back with an error, the plugin displays it.\n\n**Findings**\n\n* from svelte we receive message\n* from php, we take the messages, we grab the api key, we send to middleware\n* from middleware to php, we reuse the streaming, we reuse the events types, and it goes back to svelte\n* on middleware receives messages and api key\n* sends to open ai\n* receives stream",
+      "state": "Done"
+    },
+    "ETC-666": {
+      "id": "ETC-666",
+      "title": "Component properties panel redesign",
+      "description": "## 🔖 Summary\n\nOur new component properties panel has to support new JSON editor functionality. Because of that, the props panel header design needs a slight re-design.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/4a5b7343-a7ee-4fb3-bcc8-0e9c47d781cf/ba80e2fd-6b02-4c24-aae3-48535c2cb5c1)\n\n## 📗 Acceptance Criteria\n\n1. When previewing a component instance, user can see:\n   * detach component instance icon\n   * edit component icon\n2. When inside the component editor mode, user can see:\n   * a dev switch for the JSON editor\n   * a \"Format JSON\" icon when the JSON editor is enabled\n   * a key icon for showing prop keys\n   * a plus icon for adding component props\n3. Each action icon in the `Component properties` header has a descriptive tooltip (e.g. Key icon = \"Show property keys\")\n4. User sees an actual `component name` instead of \"Component editor\" label\n5. `Component name` turns into a `component key` when the user enables \"Show property keys\" icon button\n6. User no longer sees the purple border around the props\n7. User no longer sees the component description (unnecessary for now)\n8. User no longer sees a `toggle preview` icon",
+      "state": "Done"
+    },
+    "ETC-591": {
+      "id": "ETC-591",
+      "title": "Break up `AiChatContent.svelte` — God component",
+      "description": "# Acceptance criteria:\n\n- [X] All behaviors expressed by `AiChatContent.svelte` are test covered **before** refactoring\n- [X] The refactor breaks up the God component into smaller, separate components\n- [X] `AiChatContent.svelte` and all created files have CodeScene health 10 after the refactor\n- [X] All tests pass after the refactor\n\n# Code smell analysis\n\n**Change frequency:** 1 commit (new), but inherits the 32-commit hotspot pattern from `AiChatContent.svelte`\n\n**Smells found:**\n\n1. **Mixed concerns in one file** — The component handles: (a) message list rendering, (b) user input + keyboard shortcuts, (c) image paste/drop handling, (d) CSS/HTML insert/replace action logic, (e) toast notifications, (f) \\~600 lines of CSS. These are distinct responsibilities that will change for different reasons.\n2. **Duplicated action handler pattern** — `handleInsertCssFromSegment`, `handleInsertHtmlFromSegment`, `handleReplaceHtmlFromSegment` all follow the same try/catch/toast pattern with minor variations. Three functions with identical structure.\n3. **\\~600 lines of CSS** — The markdown styling (headings, code blocks, tables, blockquotes, scrollbars, buttons) is a standalone concern duplicated from the old component. It styles `AiChatSegmentsRenderer` and `AiChatCodeSegment` children via `:global()`, which makes it hard to tell which styles belong to which child.\n\n**Suggested refactoring:**\n\n* **Extract the input area** into a separate `AiChatInputArea.svelte` component. It has its own state (`textareaElement`, `messagesContainer`), its own events (keydown, paste, drop, dragover), and its own rendering (mode switch, pending images, textarea, send button). \\~120 lines of script + \\~80 lines of CSS. This is the most impactful extraction because input handling and message rendering change for different reasons.\n* **Extract markdown CSS** into a shared stylesheet or a wrapper component (e.g. `AiChatMarkdownStyles.svelte` that just wraps `<slot />` with the styles). This removes \\~400 lines from the component and eliminates the `:global()` reach-through.\n* **Safety: Safe** — No tests exist for `AiChatContentNew.svelte` yet (it's behind a flag), but the extractions are mechanical moves that don't change behavior. Once tests are ported from Finding 1, they'll cover the extracted pieces.",
+      "state": "Done"
+    },
+    "ETC-632": {
+      "id": "ETC-632",
+      "title": "Redesign Text Prop Input",
+      "description": "### Summary\n\nImplement vertically stacked layout and other small UI changes for component's `Text Prop` input.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/e4824536-915a-4c50-b5da-56551a3742f8/fea39fcd-6b5b-4c5a-9530-33233113dfd0)\n\n### Acceptance Criteria\n\n* The user can see vertically stacked layout for the `Text prop` input in both the component editor mode and when previewing the component instance.\n* The user can see `Text Prop Icon` when previewing component instance\n* There is a clear indication of what should happen with the `Text prop label` grows too long\n* There is a clear indication of what should happen with the `Text prop value` grows too long\n* User has the ability to resize the value text field",
+      "state": "Done"
+    },
+    "ETC-652": {
+      "id": "ETC-652",
+      "title": "Add Command + Enter keyboard shortcut to \"Add Selector Buttons\"",
+      "description": "Context:\nRight now it's a bit hidden that the user can press CMD + Enter to access the \"Selector/Attribute Add Menu\", to make this more apparent we should add the keyboard shortcut to all the buttons.\n\nAC:\n\n* The user has a visual hint that he can press CMD + Enter to access the selector menu\n* The \"Add Selector to get started\" button has the keyboard shortcut visible",
+      "state": "Done"
+    },
+    "ETC-649": {
+      "id": "ETC-649",
+      "title": "Add \"shortcut\" option to tooltip",
+      "description": "## 🔖 Summary\n\nTooltips should ideally include keyboard shortcuts (e.g., Create a component ⌥+⌘+K). To keep the focus on the primary action, the shortcut should be slightly dimmed because the shortcut itself should serve as a subtle visual guide for the user.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/9e8b130a-946b-4a81-b052-616c6590e4b1/2d38ccac-2a46-4625-a795-da42013eedb2)\n\n## 📗 Acceptance Criteria\n\n* Users can see the shortcut alongside the descriptive label in the tooltip (in some areas of the builder - where appropriate).\n* Shortcut has a slightly lower opacity",
+      "state": "Done"
+    },
+    "ETC-647": {
+      "id": "ETC-647",
+      "title": "Remove unnecessary icons from HTML Code editor's header",
+      "description": "## 📗 Acceptance Criteria\n\n* User can no longer see the \"Duplicate\" & \"Delete\" icons inside the HTML Code editor header\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/93f542b7-86c1-4a75-a9a1-6a343b141989/5508e2a7-e3ef-4215-aed2-034615711fc1)",
+      "state": "Done"
+    },
+    "ETC-643": {
+      "id": "ETC-643",
+      "title": "Add \"Create component\" icon into the \"Element Settings\" panel",
+      "description": "### 🔖 Summary\n\nTo improve discoverability and align with UX best practices, the \"`Create a component`\" action should be moved from the hidden right-click menu to a more prominent and visible location.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/95718445-f150-417c-9307-8f8e7b4bf38a/60da6462-20ab-4ae8-ae83-cf9ae80f779d)\n\n### 📗 Acceptance Criteria\n\n* The user can see a new \"Component icon\" in the Element Settings header.\n* Hovering that icon shows an explanatory tooltip with \"Create a component\" text.\n* Clicking this icon will transform that element into a component and it will take the user directly in the component editor mode\n* Note: \"Create component\" action should still be visible in the right-click menu as well",
+      "state": "Done"
+    },
+    "ETC-646": {
+      "id": "ETC-646",
+      "title": "Default Populator for Loop Prop",
+      "description": "**Context:** \nThere is currently no way to populate loop prop values with the target click, unlike other prop types (e.g. text).\n\n**Acceptance Criteria:**\n\n* A \"target\" icon is shown when hovering a loop prop\n* Clicking the target icon enters \"target mode\"\n* Clicking the target icon again exits \"target mode\"\n* While in target mode, the user can click a block on the canvas\n* On canvas block click, the block is automatically wrapped in an `{#loop}` element with `props.loopProp` as the loop and `item` as the item key, and target mode is exited",
+      "state": "Done"
+    },
+    "ETC-650": {
+      "id": "ETC-650",
+      "title": "Persist Prop Accordion States",
+      "description": "Context:\nCurrently when having props that use accordions do not persist the state of the opened accordions, we should store this in the session storage.\nE.g. using this: [https://runed.dev/docs/utilities/persisted-state](<https://runed.dev/docs/utilities/persisted-state>)\n\nProposed syntax (to make it persist in both the editor and the instance):\n\n```\n{\n  [componentId]: {\n    [propkey]: true/false\n  }\n}\n\n// So like this\n{\n  12: {\n     \"props.group1\": false,\n     \"props.group1.group2\": true\n  }\n}\n```\n\nAC:\n\n- [X] Top-level groups default to open on mount when no persisted state exists\n- [X] Nested groups default to open (editor) / closed (instance) when no persisted state exists\n- [X] Opening/closing a group accordion persists across page reloads (session storage)\n- [X] Opening/closing a group accordion persists across builder navigation (selecting different elements)\n- [X] Accordion state is scoped per component: two different components with a same-named group have independent states\n- [X] Repeater item accordion state is also persisted\n- [X] Editor and instance share the same accordion state",
+      "state": "Done"
+    },
+    "ETC-645": {
+      "id": "ETC-645",
+      "title": "Default Populator for Boolean Prop",
+      "description": "**Context:** \nThere is currently no way to populate boolean prop values with the target, unlike other prop types (e.g. text).\n\n**Acceptance Criteria:**\n\n* A \"target\" icon is shown when hovering a boolean prop\n* Clicking the target icon enters \"target mode\"\n* Clicking the target icon again exits \"target mode\"\n* While in target mode, the user can click a block on the canvas\n* On canvas block click, the block is automatically wrapped in an `{#if}` element with `props.booleanProp` as the condition, and target mode is exited\n\nBonus: \n\n* Make it possible to not only click on the canvas but to also allow clicking on the structure panel item",
+      "state": "Done"
+    },
+    "ETC-616": {
+      "id": "ETC-616",
+      "title": "Handle copy pasting into style editor",
+      "description": "Context:\n\nAC:\n\n* The user can replace the whole style editor content when the pasted selector matches the selector that's already there\n* If the selector does not match, or more than one css rule is pasted, the paste is aborted\n* The user can still paste within the curly braces without changes or special handling",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:24.559Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 26,
+    "ticket_count": 12
+  }
+}

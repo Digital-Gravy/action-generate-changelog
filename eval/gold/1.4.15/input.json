@@ -1,0 +1,102 @@
+{
+  "previous_version": "1.4.14",
+  "current_version": "1.4.15",
+  "commits": [
+    {
+      "hash": "10b9e84751b082f5beba7538fa5188eca262bab5",
+      "author": "Jérémy Franck",
+      "date": "2026-04-24T10:50:13+02:00",
+      "subject": "[hide] Reduce method complexity for Codescene",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "41269c70a03f54098a5fde754cfc9cb16cadc664",
+      "author": "Jérémy Franck",
+      "date": "2026-04-24T10:42:11+02:00",
+      "subject": "[hide] Remove repetition in test, simplify branching for SVG resolution",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "bd0d20ed73ac68f34b2266eb2d521fe6a127871f",
+      "author": "Jérémy Franck",
+      "date": "2026-04-17T20:52:19+02:00",
+      "subject": "ETC-696: Trim numeric src, lock in fallback paths, fix stale render race",
+      "body": "- Both renderers now trim src before the numeric check, so values like \" 32 \" from dynamic data resolve correctly\n- PHP fallback is now explicit (clear src to '') rather than relying on SvgLoader's incidental handling of non-URL\n  strings\n- HtmlBlock $effect returns a stale flag cleanup to prevent an in-flight getActualSvg() from overwriting a newer result\n- Tests added for: non-SVG attachment, missing ID, whitespace-padded ID",
+      "ticketIds": [
+        "ETC-696"
+      ]
+    },
+    {
+      "hash": "52ed105e9a4964cafb62422060b7ef87f94dd160",
+      "author": "Jérémy Franck",
+      "date": "2026-04-17T12:21:50+02:00",
+      "subject": "feat(etch/svg): Accept media library attachment ID for dynamic SVG",
+      "body": "When src is a numeric string, resolve it to the attachment's URL if the\nmime is image/svg+xml. Applied in both renderers — PHP SvgBlock for the\npublished page, Svelte SvgResolver for the builder preview. Non-SVG or\nmissing IDs fall back to the default SVG.",
+      "ticketIds": []
+    },
+    {
+      "hash": "e8b0f13968015c7841811f522fe39b5d9a75665f",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-24T09:34:38+02:00",
+      "subject": "chore: turn on PROPS_PANEL_REDESIGN and ENABLE_COMPONENT_NAMESPACE",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0c525ae3f470164fccd655d5d27a2b15bd3e6072",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-24T09:32:21+02:00",
+      "subject": "fix(ETC-695): Ensure condition prop within condition prop resolves as expected",
+      "body": "",
+      "ticketIds": [
+        "ETC-695"
+      ]
+    },
+    {
+      "hash": "f5143095e553367b971a28d96396d96458f29f36",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-24T09:03:50+02:00",
+      "subject": "fix(ETC-694): Revert unwanted special behavoir regrding media id resolving",
+      "body": "",
+      "ticketIds": [
+        "ETC-694"
+      ]
+    },
+    {
+      "hash": "b87addbf2ebfb57e950afd0e4bbccfd64c83e345",
+      "author": "Matteo Greco",
+      "date": "2026-04-23T20:21:32+02:00",
+      "subject": "chore: ignore etch-static/data [hide] [skip ci]",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-696": {
+      "id": "ETC-696",
+      "title": "Add ID support for dynamic SVG",
+      "description": "## Acceptance Criteria\n\n- [X] When an SVG `src` resolves to a WordPress media attachment ID for an SVG file, the SVG renders correctly in the Builder preview.\n- [X] When an SVG `src` resolves to a WordPress media attachment ID for an SVG file, the SVG renders correctly on the frontend.\n- [X] When the attachment ID does not exist or points to a non-SVG file, the default fallback SVG renders instead.\n\n## Technical decisions:\n\n* Numeric `src` values are treated as WordPress media attachment IDs.\n* Non-SVG and missing attachments intentionally fall back to the default SVG.",
+      "state": "Done"
+    },
+    "ETC-695": {
+      "id": "ETC-695",
+      "title": "Allow conditions within conditions",
+      "description": "[https://magnified-web.neetorecord.com/admin/recordings/b997a63b-f0da-4774-945c-a65b7a2ac3d1](<https://magnified-web.neetorecord.com/admin/recordings/b997a63b-f0da-4774-945c-a65b7a2ac3d1>)\n\nAC: \nUser can use a condition prop within a condition prop and it's value renders as expected.",
+      "state": "Done"
+    },
+    "ETC-694": {
+      "id": "ETC-694",
+      "title": "Media Prop resolves to URL on canvas instead of keeping the ID",
+      "description": "[https://community.etchwp.com/c/announcements/1-4-14#comment_wrapper_101797161](<https://community.etchwp.com/c/announcements/1-4-14#comment_wrapper_101797161>)\n\n### 🐞 Summary\n\nA `wpMediaId` component prop is resolved to the attachment URL on the builder canvas, but stays as an ID on the frontend. Passing the ID into `{props.media}` shows the wrong value in the preview.\n\n### 🔁 Reproduction\n\n1. Open a page with a component that has a `Media prop` specialized as `wpMediaId`.\n2. Render `Media prop: {props.media}` as text.\n3. Observe:\n   * **Canvas:** `Media prop: [URL to the media here]`\n   * **Frontend:** `Media prop: [ID of the media here]`\n\n### 🔍 Likely culprit\n\nCommit `d1e3c9390` — *fix(*[ETC-635](https://linear.app/digital-gravy/issue/ETC-635/redesign-media-prop-input)*): resolve wpMediaId props to URL when rendering on canvas* — added a `resolveWpMediaIdProperty` branch in `src/frontend/_utilities/ComponentPropertyResolver.ts` that unconditionally converts ID → URL for every `wpMediaId` prop on the canvas. The PHP resolver does not do this, hence the canvas/frontend divergence.",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:29.888Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 8,
+    "ticket_count": 3
+  }
+}

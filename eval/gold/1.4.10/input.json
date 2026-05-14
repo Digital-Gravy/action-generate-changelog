@@ -1,0 +1,260 @@
+{
+  "previous_version": "1.4.9",
+  "current_version": "1.4.10",
+  "commits": [
+    {
+      "hash": "9b1c644b728698322c67e7a5dc278fb3264f75fb",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-09T15:46:40+02:00",
+      "subject": "feat(ai context): add to ai context button on selected block overlay",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d8a4ad1c21b1094fa7371138458777f50aaae4c9",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-09T14:52:36+02:00",
+      "subject": "chore: deduplicate types for Blocks Context",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "2ebf7b12595c495f1888c74a1d4ddc43c303a012",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-09T14:35:15+02:00",
+      "subject": "test(ai context): some base tests that we return the right data in buildBlocksAiContext",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "5897135d82fe2f721c73970bf133f0754d420ba0",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-09T14:34:54+02:00",
+      "subject": "feat(ETC-610): prop populator for class prop",
+      "body": "",
+      "ticketIds": [
+        "ETC-610"
+      ]
+    },
+    {
+      "hash": "5d98f00affa16420c7fec1d49b92e0f90cbc2e13",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T14:33:12+02:00",
+      "subject": "fix(ETC-612): clear pending images when opening new conversation",
+      "body": "",
+      "ticketIds": [
+        "ETC-612"
+      ]
+    },
+    {
+      "hash": "15184fcc161e97c7ef7365bc2d8f73c32914941d",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T14:23:38+02:00",
+      "subject": "feat(ETC-596): show \"Remove from AI context\" in structure context menu",
+      "body": "When a block is already in pendingBlocks, the context menu shows\n\"Remove from AI context\" instead of \"Add to AI context\".\n\nTests are heavily mocked due to getRightClickMenu's many singleton\ndependencies. Consider extracting the AI context menu logic into a\nsmaller, independently testable function to reduce mock surface.",
+      "ticketIds": [
+        "ETC-596"
+      ]
+    },
+    {
+      "hash": "f33a024ec72d429e9d1e5a412bc2dea585ffa35c",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T14:17:09+02:00",
+      "subject": "feat(ETC-596): add dismiss button to block context pills",
+      "body": "Tests assert removeBlockContext is called with the correct index\nrather than verifying the DOM update, because the mocked store\nisn't reactive ($state). A broader refactor of the test file's\nmock pattern (e.g. .test.svelte.ts with $state) would enable\ntrue behavioral assertions.",
+      "ticketIds": [
+        "ETC-596"
+      ]
+    },
+    {
+      "hash": "e02c6b8ea4f88f96a1d7b627bad117fe62d3c507",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T14:02:42+02:00",
+      "subject": "feat(ETC-596): clear pendingBlocks when conversation is cleared",
+      "body": "",
+      "ticketIds": [
+        "ETC-596"
+      ]
+    },
+    {
+      "hash": "82b162df72ae59e7e612c241faab2e982bb508f4",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-09T14:18:34+02:00",
+      "subject": "fix: clear pending context on new conversation",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6fd2e299c46ad74196fbd8b0cfcfa44d1732e848",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T13:44:12+02:00",
+      "subject": "style(ETC-595): add base styling for block context pills",
+      "body": "",
+      "ticketIds": [
+        "ETC-595"
+      ]
+    },
+    {
+      "hash": "a458801afe44b26177e03dd616f21fff9b4030f7",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T13:41:57+02:00",
+      "subject": "test(ETC-595): add name field to BlockContext objects in store tests",
+      "body": "",
+      "ticketIds": [
+        "ETC-595"
+      ]
+    },
+    {
+      "hash": "0e0f020824fbf252cfb5da9d4eef63403828421a",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T13:36:40+02:00",
+      "subject": "feat(ETC-595): truncate pill label with ellipsis beyond 15 characters",
+      "body": "",
+      "ticketIds": [
+        "ETC-595"
+      ]
+    },
+    {
+      "hash": "15c32fa64f01b8a46fa47043d8b4a5b7a85e6e47",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T13:34:17+02:00",
+      "subject": "test(ETC-595): verify a pill renders for each block in context",
+      "body": "",
+      "ticketIds": [
+        "ETC-595"
+      ]
+    },
+    {
+      "hash": "eaaae2654bf3ad00952ae6dc90b847f1da12c320",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T13:30:30+02:00",
+      "subject": "feat(ETC-595): display block context pill with name in AI chat",
+      "body": "Add `name` to BlockContext type, populate from block.label, and render\na pill in the chat input area when a block is in context.",
+      "ticketIds": [
+        "ETC-595"
+      ]
+    },
+    {
+      "hash": "62d94128904a83ffd9e34b1d5fc382c461c8f082",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T13:26:44+02:00",
+      "subject": "test(ETC-595): add zero-case test for block context pills",
+      "body": "Verify no pills container renders when pendingBlocks is empty.",
+      "ticketIds": [
+        "ETC-595"
+      ]
+    },
+    {
+      "hash": "6b7cd2b136bc04be2ab71d36b674c2f1aa48a6fc",
+      "author": "Matteo Greco",
+      "date": "2026-04-09T10:59:33+02:00",
+      "subject": "chore(dx): symlink wp-env log files into .local/logs/",
+      "body": "Adds bin/link-local.sh which resolves the wp-env install path and\ncreates symlinks for debug.log, etch/, and automatic-css/ directories.\nRuns automatically as part of `bun run dev`, and on-demand via\n`bun run link-local` (e.g. after wp-env destroy).",
+      "ticketIds": []
+    },
+    {
+      "hash": "b1bc08aa3021b477843043a0cbfeae73edbdd932",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-09T10:55:43+02:00",
+      "subject": "fix(ETC-611): Ensure passthrough blocks are respected when scrolling into view and make scroll API more robust",
+      "body": "",
+      "ticketIds": [
+        "ETC-611"
+      ]
+    },
+    {
+      "hash": "7c984cc6324fd896e2cb76957cf2e187025f2f90",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-08T18:16:59+02:00",
+      "subject": "feat(ai context): right click contextual menu option to add blocks to ai context",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1a7f62438499fc3134eea4aa59739e6fea80e24e",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-08T18:14:27+02:00",
+      "subject": "feat(ai context): improve add blocks to ai context, filter by id if already added, fix tests with block ids",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "51d6875c5b2a4540aac292c89062a6fbaeaef747",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-08T18:12:57+02:00",
+      "subject": "feat(ai context): build html and css for element context in AI",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "911249338876898e14df8b684e49d1a0f4f65ae9",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-08T18:01:44+02:00",
+      "subject": "refactor(builder): add getHtmlFiltered with recursive child HTML filtering",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d47f86619625f0a8f453bb576131ea26b6fc7f28",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-08T16:59:26+02:00",
+      "subject": "fix: Ensure scrollbar gutter stable is not affecting canvas iframe",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c670de9d34bf6d2c8ce226d32e1998d49b349e09",
+      "author": "Andrea Maccone",
+      "date": "2026-04-08T15:48:01+02:00",
+      "subject": "feat(etc-592): start with redesign of class prop",
+      "body": "",
+      "ticketIds": [
+        "ETC-592"
+      ]
+    }
+  ],
+  "tickets": {
+    "ETC-610": {
+      "id": "ETC-610",
+      "title": "Add target functionality to Class Prop",
+      "description": "When the user adds a class prop inside the component editor, he should be able to see a target icon (same like with for example Text Prop).\n\nClicking on the target icon and selecting the element from canvas should inject the following code into the element's attributes in HTML.\n\n```\nclass=\"{props.classProp}\"\n```",
+      "state": "Done"
+    },
+    "ETC-612": {
+      "id": "ETC-612",
+      "title": "Clear attached images when starting a new conversation",
+      "description": "## Bug\n\nWhen a user pastes or drops an image into the AI chat input and then clears the conversation, the pending image thumbnails persist in the input area. `clearMessages()` resets messages, block context, and the image cache, but does not reset `pendingImages`.\n\n## Acceptance Criteria\n\n- [X] **When the conversation is cleared**, pending images are also cleared.\n\n## Context\n\nDiscovered during ETC-596. Same class of issue that was fixed for `pendingBlocks` in that ticket.",
+      "state": "Done"
+    },
+    "ETC-596": {
+      "id": "ETC-596",
+      "title": "Remove Block from AI Context",
+      "description": "## Acceptance Criteria\n\n**Given that** a block is in AI context:\n\n- [X] **When I dismiss a pill in the chat input area**, the block is removed from AI context.\n- [X] **When I select \"Remove from AI context\"**, the block is removed from AI context.\n- [X] **When the AI chat conversation is cleared**, the next message array is cleared (including context).\n- [X] **When the message is sent to the AI,** the next message array is cleared (including context).\n\n## Technical Context\n\nNo AiContextStore — we're manipulating the array of the next messages.",
+      "state": "Done"
+    },
+    "ETC-595": {
+      "id": "ETC-595",
+      "title": "Display Context Pills in AI Chat",
+      "description": "Feedback — shows the user which blocks are in context. Read-only\n\n## Acceptance Criteria\n\n**Given that** the AI chat panel is open:\n\n- [X] **When no blocks have been added**, no pills are displayed in the chat input area.\n- [X] **When a block has been added to AI context**, a pill with the block's name appears in the chat input area.\n- [X] **When multiple blocks have been added to AI context**, a pill for each block is displayed.\n- [X] **When a block's name exceeds \\~15 characters**, the pill label is truncated with an ellipsis.\n\n## Technical Context\n\n* Adds `name` to `BlockContext` type to the array of messages in the AI Panel\n* Pills render in `AiChatContent.svelte`\n* Name reactivity is free because the store holds block references, and `block.label` is `$state`\n* No dismiss button in this ticket — pills are read-only",
+      "state": "Done"
+    },
+    "ETC-611": {
+      "id": "ETC-611",
+      "title": "Passthrough Blocks not scrolling into view.",
+      "description": "In some scenarious scrolling into view does not work as intended and can be frustrating for users.\nShould be an easy fix.",
+      "state": "Done"
+    },
+    "ETC-592": {
+      "id": "ETC-592",
+      "title": "Add Class Property Instance Input",
+      "description": "The design shall follow the new design in Figma\n\nThe user sees class badges for applied styles\n\nDefault classes from the component definition are shown when no instance value is set\n\nWhen the user sets instance classes, they replace the defaults entirely (no merge.. at least for now)\n\nThe user can add a class by typing in an input field (*It depends on the new design*)\n\nThe user can remove a class by clicking the remove button on a badge (*It depends on the new design*)\n\nAdding or removing classes propagates the change to the canvas",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:22.287Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 23,
+    "ticket_count": 6
+  }
+}

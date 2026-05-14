@@ -1,0 +1,418 @@
+{
+  "previous_version": "1.4.13",
+  "current_version": "1.4.14",
+  "commits": [
+    {
+      "hash": "19c66eaafdef1b5f9a86ff42985089198462e893",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-23T16:00:28+02:00",
+      "subject": "improve(ai tools): remove second endpoint dependency (continue), rework tests to match new schema",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "de5d01e2e3244e01c0b61252bb35bb36c54a43c1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-23T15:20:27+02:00",
+      "subject": "refactor(middleware): adjust middleware to delegate only to the assistant endpoint, improve testing",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "598ca05ac2d5ea70ec2a30a956f3fb488e43fcff",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-23T15:02:22+02:00",
+      "subject": "refactor(AiRoutes): remove continue endpoint handling, introduces unified stream logic for continue/initial decision, rework tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "bef5a42445d3e5caa5d595e502a950521f629748",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-23T15:34:57+02:00",
+      "subject": "fix: Esnure slot placeholder renames are persistet into undo/redo",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f40a2006d8a5d04d8d151bf57aa1ee8f3e9f0953",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-23T13:43:36+02:00",
+      "subject": "feat(ETC-693): Ability to detach components",
+      "body": "",
+      "ticketIds": [
+        "ETC-693"
+      ]
+    },
+    {
+      "hash": "f2e5d166a165496a839c0358a6ed747dc901c54c",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-23T12:07:57+02:00",
+      "subject": "improve(ai tools): remove throws from createEtchLoop, introduce failure paths and sucess path",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6c00df8a78eb335780ee2e8843d4ddddcff55604",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-23T12:06:50+02:00",
+      "subject": "improve(ai tools): AiChat store does not throw, delegates toast creation for tools",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d1342d14e437b1bc98eda2095b20c37f89d2acc9",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-23T11:58:00+02:00",
+      "subject": "imrpove:(ai tools): imrpove aiClientTool, failure paths, success paths, toast paths, types and test",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "05a8c6fc921875b65dddd5565f93542de82285b3",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-23T11:47:13+02:00",
+      "subject": "improve(ai tools): listPostTypes cleaning",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "359ca36e5e74155000791d967611e342151cd8b3",
+      "author": "Andrea Maccone",
+      "date": "2026-04-23T11:04:03+02:00",
+      "subject": "feat(ETC-651): Add dynamic data namespace to Components",
+      "body": "",
+      "ticketIds": [
+        "ETC-651"
+      ]
+    },
+    {
+      "hash": "a003a1d7cd6743c8c46ecf5f2c4d6c0abb730281",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T20:15:20+02:00",
+      "subject": "test: deduplicate client tools tests and helpers",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "863854b3654d047f05c01739f61eb23460714100",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T20:13:45+02:00",
+      "subject": "test: Ai client tools tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "3c5551292e6a9c403052214052544d605949e0e3",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T20:13:14+02:00",
+      "subject": "improve: extract fixtures and helpers from AiChat.test.ts (codescene excess of functions)",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "4a2bea87ff2c256980bcf4988860ef8aa02ff2e1",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-22T14:23:56-03:00",
+      "subject": "feat(ai-chat): add create_etc_loop in the tool list",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "2a680b52ab57a87e17f845dadafeb402093dbc8c",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-22T13:06:05-03:00",
+      "subject": "feat(ai-tool): implement create-etch-loop tool",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e2117975bc0a33816745eb68daae4b1a9ecc5a48",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T17:02:45+02:00",
+      "subject": "fix: failing tests due to unhandled post types refresh rejection",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "2e7cb4ecf98c6d6ee9bc81aced5f723eea0acbd7",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T16:43:30+02:00",
+      "subject": "improve: defensive results on list post types, return something even if empty, fetch from store first, fallback to api",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "ea89aa814ddab600f46b2c0c924c03b9728e613b",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T16:42:06+02:00",
+      "subject": "improve: ClientToolHandler and runClientTool system",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "acdac6d1fde1e418efa9d750e75673b47236cc24",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T16:41:07+02:00",
+      "subject": "improve: async await refresh post types on Posts Store",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c9a4b9f4f52fed413bca1051fbd7a2d0254b7ea9",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-22T15:28:04+02:00",
+      "subject": "refactor: remove client tool from AiChat, better types, more clarity",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1557c882389ca1280f0ca8f1f57c76e89aae3aac",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-22T13:02:28+02:00",
+      "subject": "feat(ETC-640): Ability to add description to props",
+      "body": "",
+      "ticketIds": [
+        "ETC-640"
+      ]
+    },
+    {
+      "hash": "b96f9e7d5b8cc8c171c73ac50112014bb7674a49",
+      "author": "Andrea Maccone",
+      "date": "2026-04-22T12:45:29+02:00",
+      "subject": "hide(ui): colors of the elements in the action bar",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "503187813c0589bb1768b28b78164f10216a8407",
+      "author": "Andrea Maccone",
+      "date": "2026-04-21T21:40:40+02:00",
+      "subject": "fix(etc-687): specificity for group prop padding",
+      "body": "",
+      "ticketIds": [
+        "ETC-687"
+      ]
+    },
+    {
+      "hash": "4899d3b62af63a4037ead27f19300f91ba8a4680",
+      "author": "Andrea Maccone",
+      "date": "2026-04-21T21:37:43+02:00",
+      "subject": "hide(ETC-688): more ui adjustments in component editor",
+      "body": "",
+      "ticketIds": [
+        "ETC-688"
+      ]
+    },
+    {
+      "hash": "a4d9eef2d522067145f9062e9ad5f580e3830d00",
+      "author": "Andrea Maccone",
+      "date": "2026-04-21T21:27:42+02:00",
+      "subject": "hide(ETC-688): some ui adjustments",
+      "body": "",
+      "ticketIds": [
+        "ETC-688"
+      ]
+    },
+    {
+      "hash": "21cfe20f8f2c927bebf09fecadf7946643a8ee65",
+      "author": "Andrea Maccone",
+      "date": "2026-04-21T19:52:23+02:00",
+      "subject": "hide(ETC-687): Group Prop Adjustments",
+      "body": "",
+      "ticketIds": [
+        "ETC-687"
+      ]
+    },
+    {
+      "hash": "9d0fc0eccde5b8f547ee8f2f9dcad8e128945910",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-21T14:39:02-03:00",
+      "subject": "refactor(ai): refactor AI Service and providers to fix codescene issues and add some tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "fdc2c1f96fa7ee242a9bfe5245461ca5b7c2f1cb",
+      "author": "Andrea Maccone",
+      "date": "2026-04-21T19:09:31+02:00",
+      "subject": "hide(ETC-690): test fix",
+      "body": "",
+      "ticketIds": [
+        "ETC-690"
+      ]
+    },
+    {
+      "hash": "bce23de1381f3575f87da57c704cc18eaa4091e8",
+      "author": "Andrea Maccone",
+      "date": "2026-04-21T18:55:53+02:00",
+      "subject": "hide(ETC-690): ui changes for right-click menu",
+      "body": "",
+      "ticketIds": [
+        "ETC-690"
+      ]
+    },
+    {
+      "hash": "142d7b9ff844bc991799f386502936572e850a02",
+      "author": "Andrea Maccone",
+      "date": "2026-04-21T17:43:56+02:00",
+      "subject": "fix(ETC-689): \"Create Component\" icon needs more visibility",
+      "body": "",
+      "ticketIds": [
+        "ETC-689"
+      ]
+    },
+    {
+      "hash": "9b05f79d5b3b269255d80f424d098ccdf50cf130",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-21T16:01:08+02:00",
+      "subject": "wip: plug tool calls into aiChat and server side events parser, plug api into EtchApiClient",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "594e97c87d07984ee9ab0373a3e3559ee2f9f26c",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-21T15:59:33+02:00",
+      "subject": "wip: client side tool call schemas",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6af1f6e9429f083354e9d51e2e041298da3292d6",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-21T15:58:34+02:00",
+      "subject": "wip: callback argument passing into required files",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "a695cb825f96572807fa19f1065dc41c974b0a87",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-21T15:57:48+02:00",
+      "subject": "wip: continue chat endpoint on routes, continue streaming method on service, middleware provider implement continue processing",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6e5b50f86ad1257537a5f67cec3037bca5800085",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-21T13:41:09+02:00",
+      "subject": "feat(ETC-680: Make repeater items reorderable",
+      "body": "",
+      "ticketIds": [
+        "ETC-680"
+      ]
+    },
+    {
+      "hash": "fff9eae7e52822b9f7965745622c7627b01eafc1",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-21T10:41:34+02:00",
+      "subject": "feat(ETC-680): Design header for group prop",
+      "body": "",
+      "ticketIds": [
+        "ETC-680"
+      ]
+    },
+    {
+      "hash": "7fa4e98ac7fd0c260df6e6dde560ad76548b1bf3",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-21T10:33:40+02:00",
+      "subject": "styling in preparation for group property",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1accd463f0a23e710ce660674e84b27e8a47ac3f",
+      "author": "Andrea Maccone",
+      "date": "2026-04-20T23:15:44+02:00",
+      "subject": "feat(ETC-635): align media prop input in component instance with new layout",
+      "body": "",
+      "ticketIds": [
+        "ETC-635"
+      ]
+    },
+    {
+      "hash": "d1e3c93907a954b9a0bff01ba93f9cd0e8ed8475",
+      "author": "Andrea Maccone",
+      "date": "2026-04-20T23:14:25+02:00",
+      "subject": "fix(ETC-635): resolve wpMediaId props to URL when rendering on canvas",
+      "body": "",
+      "ticketIds": [
+        "ETC-635"
+      ]
+    },
+    {
+      "hash": "21b863b47711d3e56fcd76eb7c2de018d8357c68",
+      "author": "Andrea Maccone",
+      "date": "2026-04-20T19:43:55+02:00",
+      "subject": "feat(ETC-635): redesign media prop input with stacked layout",
+      "body": "",
+      "ticketIds": [
+        "ETC-635"
+      ]
+    }
+  ],
+  "tickets": {
+    "ETC-693": {
+      "id": "ETC-693",
+      "title": "Detach Functionality for Components",
+      "description": "There has been the request for the possibility to detach components. Meaning to kind of use the components as a pattern. (The AC should clear things up)\n\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/b90914a4-1b33-4c3a-952d-1c4e26fa4397/46a129d6-3e3b-4868-b0e1-573f0ad47758)\n\n\n\nAC:\n\n* On the component instance the user can see a \"Detach Component\" Button\n* Clicking the button clones the blocks from within the component and replaces the component instance with the cloned blocks (= detaches it from the shared component definition)",
+      "state": "Done"
+    },
+    "ETC-651": {
+      "id": "ETC-651",
+      "title": "Add Components Dynamic Data in Components",
+      "description": "Context: It would be nice to have access to infos about the component while in the component.\nWe could enqueue this under the `component` key.\n\nProposed syntax:\n\n```\n{\n  \"id\": 12,\n  \"name\": \"My Awesome Component\",\n  \"key\": \"MyAwesomeComponent\",\n  \"properties\": [\n    {\n      \"type\": \"text\",\n      \"default\": \"Hello i am a text\",\n      \"key\": \"ctaText\"\n    }\n  ]\n}\n```\n\nAC:\n\n* The user can use `component.[smth]` to access metadata of the component\n* He can put it in curly braces (as any other dynamic data) to utilise it in the html editor\n* The component namespace is only accessible in the component itself\n* Any data will be output in the canvas/frontend/gutenberg",
+      "state": "Done"
+    },
+    "ETC-640": {
+      "id": "ETC-640",
+      "title": "Ability to add description to component props",
+      "description": "### 🔖 Summary\n\nUsers would find it helpful to provide description to each component prop. This would be especially helpful for 3rd party Component creators.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/1f66cca6-8162-4125-816c-56c427c75c08/68b681da-d078-4a88-ac8e-ae1546773c76)\n\n### 📗 Acceptance Criteria\n\n* Users can add a description to each component prop when they are inside the component editor\n* Users can see the `info icon` that shows once the description is filled in\n* User has a way of editing or deleting the description",
+      "state": "Done"
+    },
+    "ETC-687": {
+      "id": "ETC-687",
+      "title": "Group Prop Adjustments",
+      "description": "- [X] Remove Group Prop Icon\n- [X] Increase the padding-left to 8px\n- [X] Group Prop Wrapper - increase the padding to 4px\n- [X] Group Prop Wrapper - increase the gap to 4px\n\n![CleanShot 2026-04-21 at 16.56.03.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/484ad753-0cd6-43b6-93aa-25f91a37a18b/dc9363a5-40ed-45f4-941d-9400acfb96b1)",
+      "state": "Done"
+    },
+    "ETC-688": {
+      "id": "ETC-688",
+      "title": "Condition Prop Adjustments",
+      "description": "- [X] Remove condition prop icon\n- [X] Increase the left-padding to 8px\n- [X] Prepend the Condition value with un-selectable `{if}` statement\n- [X] Show the condition expression below the condition prop label (remove popover window input)\n- [X] Increase the condition wrapper padding to 4px (same like with group prop wrapper)\n- [X] Increase the condition wrapper gap to 4px\n\n![CleanShot 2026-04-21 at 17.19.35.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/66389b1e-7284-493a-8fc1-8e3c1cee5708/f54cd984-777a-4b79-a6fd-1a18b7fea3c2)",
+      "state": "Done"
+    },
+    "ETC-690": {
+      "id": "ETC-690",
+      "title": "Right-click menu Adjustments",
+      "description": "- [X] re-introduce the colorized options for a certain actions in a right-click menu\n- [X] add “wrap in” options in right click menu (div / loop / condition and then the rest)",
+      "state": "Done"
+    },
+    "ETC-689": {
+      "id": "ETC-689",
+      "title": "\"Create Component\" icon needs more visibility",
+      "description": "On the element's settings panel:\n\n* change the \"create component\" icon from stroke one to a solid one\n* change the \"create component\" icon color (in the element's settings panel) to purple\n\n![CleanShot 2026-04-21 at 16.44.57.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/1aefe1db-8213-4b68-a7b3-6ca82729eb9a/62d0932d-f0ab-411e-8658-9001815f010f)",
+      "state": "Done"
+    },
+    "ETC-680": {
+      "id": "ETC-680",
+      "title": "Redesign Group Prop Input",
+      "description": "### 🔖 Summary\n\nImplement new small UI changes for component's `Group Prop` input.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/a58c3161-6896-43ef-bff9-50135f84101f/a22bd778-e3f3-4355-b33f-3efe79786fe8)\n\n### 📗 Acceptance Criteria\n\n* User can see a default empty state after adding a group prop\n* User can remove the group prop\n* User can add new items inside the group prop\n* User can make a group prop repeatable as soon as there is at least 1 property added\n* User can collapse/expand a group prop\n* The user can see `Group Prop Icon` when previewing component instance\n* There is a clear indication of what should happen with the `Group prop label` grows too long\n* Adding new items in the group prop on component instance adhere to the Figma design\n* User can reorder the items in the repeater instance",
+      "state": "Done"
+    },
+    "ETC-635": {
+      "id": "ETC-635",
+      "title": "Redesign Media Prop Input",
+      "description": "### 🔖 Summary\n\nImplement vertically stacked layout and other small UI changes for component's `Media Prop` input.\n\n### \n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/fca53922-dd62-4d88-8055-4888b69d7063/fefa676a-8eb6-4f82-a622-b2962ad3d742)\n\n### 📗 Acceptance Criteria\n\n* The user can see vertically stacked layout for the `Media prop` input in both the component editor mode and when previewing the component instance.\n* The user can see `Media Prop Icon` when previewing component instance\n* There is a clear indication of what should happen with the `Media prop label` grows too long\n* There is a clear indication of what should happen with the `Media prop value` grows too long\n* The user should see a thumbnail placeholder instead of the \"Edit icon\" inside the component editor",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:27.499Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 40,
+    "ticket_count": 9
+  }
+}

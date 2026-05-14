@@ -1,0 +1,349 @@
+{
+  "previous_version": "1.3.1",
+  "current_version": "1.4.0",
+  "commits": [
+    {
+      "hash": "56841575c675f1f4d33cdaf0bf7c5c93f385d240",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T16:26:28+01:00",
+      "subject": "test(ai-chat): add reasoning callback gating tests to AiService",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "ffa24cce82f858b5a214d81375cd60c3d337b47c",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T15:59:20+01:00",
+      "subject": "refactor(ai-chat): extract ServerSideEventEmitter to make stream_handler testable",
+      "body": "Separate SSE I/O (headers, echo, flush) from stream orchestration logic.\nstream_handler becomes a thin shell that delegates to handle_stream,\nwhich is tested via FakeServerSideEventEmitter.",
+      "ticketIds": []
+    },
+    {
+      "hash": "caa1bfab4afe2d4526d9d1c2eed728f05c38ae1b",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T15:43:05+01:00",
+      "subject": "test(ai-chat): add unit tests for AiRoutes generate_ai_response endpoint",
+      "body": "Cover request parsing (missing/invalid messages key), happy path\nresponse shaping, and error forwarding through the route layer.",
+      "ticketIds": []
+    },
+    {
+      "hash": "f179ecc6baa6ccd279dbb0c20d03d370db7d5c65",
+      "author": "Christoph Sanz",
+      "date": "2026-03-06T15:49:38+01:00",
+      "subject": "fix: improve sanitize_css to prevent html injection (#259)",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1f363497a76df7f44fff6919ab64c1b308479b3d",
+      "author": "Christoph Sanz",
+      "date": "2026-03-06T15:48:16+01:00",
+      "subject": "chore: remove custom media definition feature flags (#258)",
+      "body": "removes all custom media definition related feature flags so the feature\nis on all the time",
+      "ticketIds": []
+    },
+    {
+      "hash": "a61d607b0843c66b30d0ed19df0fc8eed8ef189b",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T15:37:52+01:00",
+      "subject": "test(ai-chat): decouple AiService test from real OpenAiProvider",
+      "body": "Use FakeAiProvider instead of OpenAiProvider for the empty-array\nvalidation test so it doesn't break if OpenAiProvider's constructor\nchanges.",
+      "ticketIds": []
+    },
+    {
+      "hash": "b4e6affaa318ba1c95db0c2e5820288fed2919c4",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T15:36:54+01:00",
+      "subject": "refactor(ai-chat): extract HTTP transport and response parsing from OpenAiProvider",
+      "body": "Make OpenAiProvider testable through its public API by introducing an\nHttpTransport interface with a FakeHttpTransport test double, and\nextracting OpenAiResponseParser and OpenAiPayloadBuilder into dedicated\nclasses. 13 tests cover provide_ai_response and stream_ai_response\nend-to-end without real HTTP calls.",
+      "ticketIds": []
+    },
+    {
+      "hash": "c308bd75ef1cfb4efc9d2045febf541b21ceb5d0",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T15:02:06+01:00",
+      "subject": "refactor(ai-chat): extract OpenAiStreamEventProcessor from OpenAiProvider",
+      "body": "Move event routing logic into a dedicated class with a public API,\nreplacing Reflection-based tests with direct unit tests.",
+      "ticketIds": []
+    },
+    {
+      "hash": "b90732540f904e909bdcdc8308c7d863f9c29397",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T14:54:14+01:00",
+      "subject": "test(ai-chat): add acceptance-criteria tests for AiService using FakeAiProvider",
+      "body": "Cover streamed deltas, conversation history forwarding, whitespace\nvalidation, provider error surfacing, and validation short-circuiting.",
+      "ticketIds": []
+    },
+    {
+      "hash": "4af0fadc0160f397e25574b0ebd91b73108755fc",
+      "author": "Matteo Greco",
+      "date": "2026-03-06T14:43:27+01:00",
+      "subject": "refactor(ai-chat): separate HTTP concerns from business logic",
+      "body": "Move message validation, feature flag gating, and reasoning callback\ntranslation from AiRoutes into AiService. AiRoutes now only handles\nrequest deserialization, SSE headers/transport, and 1:1 callback-to-event\nmapping.",
+      "ticketIds": []
+    },
+    {
+      "hash": "e474143e7bed59a5871da83d05d4da7964920b28",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-06T13:42:09+01:00",
+      "subject": "fix: Ensure blocks don't loose their parent reference on undo/redo",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "45bbf74ff461e707beefc48893674b45c0feb55f",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-06T12:51:58+01:00",
+      "subject": "chore: Add EXPERIMENTAL_AI feature flag as an escape hatch",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "73dd60b51f3c18482fa6522e475f97b7e91513c8",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-06T10:31:23+01:00",
+      "subject": "fix: Fix pasting of group prop and class prop",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "54f7febf2afca9350aa8787230d278f57a59d28b",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-06T09:53:33+01:00",
+      "subject": "fix: Fix copying of class props and group props",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0a647867db626436412f8ed4c8e6ac2fe435d7d1",
+      "author": "Nuno Ferreira",
+      "date": "2026-03-05T20:00:46+01:00",
+      "subject": "feat(ai-chat): stream AI responses via Server-Sent Events (#256)",
+      "body": "# Summary\n- Replaces the single JSON response AI chat endpoint with real-time SSE\nstreaming (`/ai-chat/stream`), delivering deltas as they arrive from\nOpenAI\n- Adds a typed `ServerSideEventsParser` (frontend) and\n`ServerSideEventsFramesParser` (PHP) to parse and validate SSE frames\nwith Zod schemas\n- Extracts `MessageUpdater` to handle appending content, reasoning\nblocks, and error messages to the assistant message\n- Adds chunk-level and total-stream timeout protection with abort\nsupport\n- Gates reasoning feature behind `ENABLE_AI_REASONING` flag (`off` by\ndefault)\n\n# Test plan\n- [x] `ServerSideEventsParser` unit tests cover parsing, buffering,\nevent validation, and invalid input\n- [x] `ServerSideEventsFramesParser` PHP tests cover frame extraction,\nmultiline data, CRLF handling\n- [x] `AiChatStore` tests cover streaming deltas, reasoning events,\nerror events, abort, and chunk timeout\n\n---------\n\nCo-authored-by: Matteo Greco <matteo@matteogreco.net>\nCo-authored-by: Matteo Greco <matteo-greco@users.noreply.github.com>",
+      "ticketIds": []
+    },
+    {
+      "hash": "0d5c806c1615e1f5521f9a584c4b99d63a9ea6c6",
+      "author": "Andrea Maccone",
+      "date": "2026-03-05T16:15:48+01:00",
+      "subject": "Update Elements.svelte",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "27f1c1bb7a3bf6064f94061d477cdec0c9d67849",
+      "author": "Andrea Maccone",
+      "date": "2026-03-05T16:12:51+01:00",
+      "subject": "fix: remove slot, element and html block options from component property menu + new icon for Group prop",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d14037b9571d18a879f70da07f0dd00e819affb7",
+      "author": "Andrea Maccone",
+      "date": "2026-03-05T15:50:08+01:00",
+      "subject": "feat: alt+click deep fold/unfold on single structure panel items (#257)",
+      "body": "- Alt+click on structure panel accordion trigger to deep fold/unfold a\nblock and all its children\n- Alt+click on the global fold/unfold toggle to include children\nrecursively\n\n---------\n\nCo-authored-by: Reinhard Sanz <reinhard@sanz.at>",
+      "ticketIds": []
+    },
+    {
+      "hash": "3e24d770b21fb09a15baff41580b344856d91414",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-05T14:30:48+01:00",
+      "subject": "hide some styling",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6523f1bae4b0dea121aee80c2b27bba5853d0516",
+      "author": "Christoph Sanz",
+      "date": "2026-03-05T14:20:47+01:00",
+      "subject": "Chris/etc 410 include custom media definitions in copy paste (#250)",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "fe9f3647fc1e095c8233ed00c56535970c609d58",
+      "author": "Andrea Maccone",
+      "date": "2026-03-05T14:02:10+01:00",
+      "subject": "feat: add collapsible toggle to group properties",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "b7d1210e59b4312f433b3c086279d36aa9c3e2e9",
+      "author": "Kevin Geary",
+      "date": "2026-03-05T07:55:35-05:00",
+      "subject": "feat: Wrap words in span and add wrap in commands to cmd+k",
+      "body": "… on headings.\n\n---------\n\nCo-authored-by: Reinhard Sanz <reinhard@sanz.at>",
+      "ticketIds": []
+    },
+    {
+      "hash": "5f7da476486e28bbaa9b38b21e8c15e93489bdac",
+      "author": "Christoph Sanz",
+      "date": "2026-03-05T12:04:30+01:00",
+      "subject": "fix: custom media stylesheet not created until reload and to-rem not substituted in custom media def (#244)",
+      "body": "Seems like this is an issue when the setting is set to on, without then\nreloading the page. Because the `@custom-media` Stylesheet is created in\nphp and is dependend on that setting, it will only be created on reload.\nIf its not there it loads the default stylesheet which is the first one.\n\nI fixed it by creating the `@custom-media` stylesheet\nregardless of having the setting on.\n\nIt also fixes the to-rem conversion in `@custom-media` definitions.",
+      "ticketIds": []
+    },
+    {
+      "hash": "9a96131741e55237823088c753a5c77454e35510",
+      "author": "christophsanz",
+      "date": "2026-03-03T15:36:07+01:00",
+      "subject": "fix: stop applying BemClasses to children of hidden or readonly blocks",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "2b4cf7eb7c4ae15594b11b329a1ae446b2263176",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-05T09:55:53+01:00",
+      "subject": "fix: Fix class prop handling in group props",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "612ecadbc64149304677be4d74ec166f6415cceb",
+      "author": "Andrea Maccone",
+      "date": "2026-03-05T08:56:09+01:00",
+      "subject": "fix: resolve class prop names instead of IDs in group prop",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f575ed0332cd760fa7fc10cc2b81281e4b36a0f2",
+      "author": "Kevin Geary",
+      "date": "2026-03-04T17:27:00-05:00",
+      "subject": "Improve: When selecting a suggested selector, apply it automatically instead of requiring a secondary action.",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0cad01825b00ca54277aa5009f759eb0c04f74bc",
+      "author": "Kevin Geary",
+      "date": "2026-03-04T17:24:08-05:00",
+      "subject": "Improve selector search so \".\" and \"#\", for example, are not needed as part of the search.",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8eecf6832e9a4b362c96ab663b5e507111467c64",
+      "author": "Kevin Geary",
+      "date": "2026-03-04T17:21:14-05:00",
+      "subject": "oops: remove list item from elements bar",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c5f65f01f4e3f28b7eeca6e0391437c192205540",
+      "author": "Kevin Geary",
+      "date": "2026-03-04T17:19:50-05:00",
+      "subject": "CMDI - Add list item element",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "3d935bf5691f7e9bb29059bf40c1ea12fd0112af",
+      "author": "Kevin Geary",
+      "date": "2026-03-04T17:18:05-05:00",
+      "subject": "CMDI - Make all heading levels available.",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "db66c7b68e8ba4a43755ab3bd971f5de2d8ce67f",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-04T20:12:01+01:00",
+      "subject": "feat: AiRoutes stream endpoint and handler",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "67dbdf296d9171b70f944cb71355b878ffc56f78",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-04T20:11:08+01:00",
+      "subject": "feat: OpenAiProvider SSE response method",
+      "body": "test: OpenAiProvider test SSE process_streaming_event method",
+      "ticketIds": []
+    },
+    {
+      "hash": "3a5d829aa35c6c9b4cfde430d3b7dc0778f7f72f",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-04T20:07:44+01:00",
+      "subject": "feat: SSE AiProviderInterface stream function",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f68f9464785868b33bd1eac92e9bb1e3fbcd52a0",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-04T17:12:02+01:00",
+      "subject": "feat: Better group prop (#254)",
+      "body": "Co-authored-by: Andrea Maccone <andrea@digitalgravy.co>",
+      "ticketIds": []
+    },
+    {
+      "hash": "dbf81d75772bf2cf403a78809202c2fbdefe3645",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-04T15:34:37+01:00",
+      "subject": "chore: Remove undo redo toggle from settings",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "3c9b2e44d2b939ebbd20753674d9db29aafe07cf",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-04T11:15:50+01:00",
+      "subject": "feat(POC): Group prop (#253)",
+      "body": "Very very first part of group prop. By no means releasable!\n\nIt can be enabled with the \"ENABLE_GROUP_PROP\" feature flag.\n\nFor it to actually be releasable a few things need to be implemented. \nMainly proper resolving, collision handling and much more.\n\nReleasing this as is would just result in user complaints about missing\nfeatures, that we are aware of though and actively working.\nE.g. Why can't i add a boolean in the group? -> Answer: Obviously we are\ngonna add support for that.\n\nThe user can \"add\" a text prop but it's not usable right now.\n\n---------\n\nCo-authored-by: Andrea Maccone <andrea@digitalgravy.co>",
+      "ticketIds": []
+    },
+    {
+      "hash": "268fe9827384d46acf2c4132b2c1d795bfd57d0f",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-03T20:10:25+01:00",
+      "subject": "feat: add SSE frame parser with tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "b498da55e16d52414f9f799e2d84b13770f2c30c",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-02T14:59:02+01:00",
+      "subject": "chore: remove enable_complex_selector_loading_fix",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e0bae053c3cb7f51552669a3ab9e8927cc3b66e3",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-02T14:49:37+01:00",
+      "subject": "improvement: Render up to render limit and abort rendering afterwards",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0e7f4f4a87213f34948c829e67e6f86703a3720a",
+      "author": "christophsanz",
+      "date": "2026-02-27T15:55:00+01:00",
+      "subject": "feat: custom media definition button duplication on stylemanager open",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "02a0aeb31d6a3e6f86036964cb73485251a6d4eb",
+      "author": "Reinhard Sanz",
+      "date": "2026-02-27T15:45:11+01:00",
+      "subject": "fix: Ensure partial classes get cleaned up",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {},
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:21.172Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 42,
+    "ticket_count": 0
+  }
+}

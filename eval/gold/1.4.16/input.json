@@ -1,0 +1,430 @@
+{
+  "previous_version": "1.4.15",
+  "current_version": "1.4.16",
+  "commits": [
+    {
+      "hash": "975d07da9776bbd14b181e352a47d562d62f5a8e",
+      "author": "Andrea Maccone",
+      "date": "2026-04-30T17:32:08+02:00",
+      "subject": "improve(ETC-744): Bring back old toggle in Boolean Prop/Instance",
+      "body": "",
+      "ticketIds": [
+        "ETC-744"
+      ]
+    },
+    {
+      "hash": "960759b0b0e9959194b45f9a51a7e0b097d3aa51",
+      "author": "Andrea Maccone",
+      "date": "2026-04-30T16:50:35+02:00",
+      "subject": "feat(ETC-737): Migrate EtchConditionBlock gutenberg↔etch conversion to PHP",
+      "body": "Co-authored-by: Copilot <copilot@github.com>",
+      "ticketIds": [
+        "ETC-737"
+      ]
+    },
+    {
+      "hash": "a714f4441444af482f869e4e54bd8a427dbd34d1",
+      "author": "Andrea Maccone",
+      "date": "2026-04-30T16:25:29+02:00",
+      "subject": "feat(utilities): add ConditionResolver to parse logical condition strings",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "9834df91e85c9fb4789fc982aebca44b2c2b987b",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-30T10:57:54-03:00",
+      "subject": "fix(ETC-723): remove the post_content for create_posts tool to avoid content without properly validation until we found a better way",
+      "body": "",
+      "ticketIds": [
+        "ETC-723"
+      ]
+    },
+    {
+      "hash": "43a8ef2dd753fd9c67c74ea2d7fe5c845c4c0393",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-30T10:44:23-03:00",
+      "subject": "fix(ETC-723): fix the create_posts tootl to allow only one post_type per request and return a valid response to AI so it can self-correct",
+      "body": "",
+      "ticketIds": [
+        "ETC-723"
+      ]
+    },
+    {
+      "hash": "d86c0557104f42c8155166befe6f0ab9aa2be11c",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-30T14:49:47+02:00",
+      "subject": "improve(ETC-726): rename all capabilities to tools for clarity, remove tests that continue should not have tools on payload",
+      "body": "",
+      "ticketIds": [
+        "ETC-726"
+      ]
+    },
+    {
+      "hash": "323eb30f22c4669fdbe73606a49b534b0b75bffd",
+      "author": "Andrea Maccone",
+      "date": "2026-04-30T14:03:32+02:00",
+      "subject": "fix(conversion): only write metadata in base_to_gutenberg when name is present",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "39e5f856e8fdf4805188776f13b63413dac5fb43",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-30T10:07:13+02:00",
+      "subject": "feat(ETC-730): Scaffolding for Etch-GB conversion in PHP",
+      "body": "",
+      "ticketIds": [
+        "ETC-730"
+      ]
+    },
+    {
+      "hash": "d766e9b303e4747ab05ea731a2db5142e0324d9a",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-29T15:46:55-03:00",
+      "subject": "fix(ETC-721): add feature flag ENABLE_CLEAR_BUFFER_IN_STREAM_REQUEST to force clear the buffer to prevent empty response in some servers",
+      "body": "",
+      "ticketIds": [
+        "ETC-721"
+      ]
+    },
+    {
+      "hash": "0ed1f78f9bd05b3e2f215a73337e87e4f7d27769",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-29T19:11:17+02:00",
+      "subject": "feat(ETC-726): AiRoutes dispatches capabilities to middleware",
+      "body": "",
+      "ticketIds": [
+        "ETC-726"
+      ]
+    },
+    {
+      "hash": "e0348b332ba909d986c00fb6f2c1122bfc38eb16",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-29T19:10:25+02:00",
+      "subject": "feat(ETC-726): middlewareprovider process capabilities key, behind feature flag",
+      "body": "",
+      "ticketIds": [
+        "ETC-726"
+      ]
+    },
+    {
+      "hash": "0f53592fdac0dac1ea7d1fabaef2d2e5dcf532e8",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-29T19:06:35+02:00",
+      "subject": "refactor(ETC-726): pass capabilities parameter in dependencies or stack chain",
+      "body": "",
+      "ticketIds": [
+        "ETC-726"
+      ]
+    },
+    {
+      "hash": "fd744c84f4371fe93885f31d20458805d0adef21",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-29T16:37:35+02:00",
+      "subject": "hide(ETC-712): Better integrate focus block into json format",
+      "body": "",
+      "ticketIds": [
+        "ETC-712"
+      ]
+    },
+    {
+      "hash": "b848660b1604786ff225b3a962f2cca3581fe9c3",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-29T16:12:14+02:00",
+      "subject": "hide(ETC-712): Make EtchFocusBlock runtime only",
+      "body": "",
+      "ticketIds": [
+        "ETC-712"
+      ]
+    },
+    {
+      "hash": "384add9f4db7b5ee807b314a0d8f41532d0f4d91",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-29T13:49:54+02:00",
+      "subject": "feat(ETC-726): prepare setup to work with tools negotiation",
+      "body": "",
+      "ticketIds": [
+        "ETC-726"
+      ]
+    },
+    {
+      "hash": "63f778758af33c3f595a554fcf515742a4aab75d",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-29T10:46:42+02:00",
+      "subject": "hide(ETC-727): basic tests for block registry",
+      "body": "",
+      "ticketIds": [
+        "ETC-727"
+      ]
+    },
+    {
+      "hash": "6a3df41b7e20057c115a19ba538e98abf90a494d",
+      "author": "Andrea Maccone",
+      "date": "2026-04-29T10:20:02+02:00",
+      "subject": "hide(ETC-712): Migrate EtchFocusBlock to Etch JSON",
+      "body": "Co-authored-by: Copilot <copilot@github.com>",
+      "ticketIds": [
+        "ETC-712"
+      ]
+    },
+    {
+      "hash": "ff6cebff933f25c5bb7deedbbb5da7b14b9f94f5",
+      "author": "Andrea Maccone",
+      "date": "2026-04-28T18:28:10+02:00",
+      "subject": "fix eslint error",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "bf3344002cdfbe34b2d17b7411c8245a20205bb4",
+      "author": "Andrea Maccone",
+      "date": "2026-04-28T14:59:49+02:00",
+      "subject": "feat(etc-705): Migrate EtchTextBlock to Etch JSON",
+      "body": "Co-authored-by: Copilot <copilot@github.com>",
+      "ticketIds": [
+        "ETC-705"
+      ]
+    },
+    {
+      "hash": "bd027f805139013cbe9d8b126ba1268337924a22",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-28T14:56:20+02:00",
+      "subject": "ETC-703 add toJSON to element block",
+      "body": "",
+      "ticketIds": [
+        "ETC-703"
+      ]
+    },
+    {
+      "hash": "c7d814959dbd52888b519a2197684ef073d7e0a5",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-28T12:20:49-03:00",
+      "subject": "feat(ai): extend the create_posts to all post_types available",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "21c89198aeb3ace90de42918959f7d120983cf16",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-28T13:52:40+02:00",
+      "subject": "feat(ai tools): non auto dismissable toast when LLM reaches limit of tool calls in a chain, tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "057dcc81690addf39167957c2e7df148457c1aa1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-28T13:43:29+02:00",
+      "subject": "feat(create cpt tool): notifies LLM that a given cpt could not be created bcs already exists, tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "4677c94ee7a068e0a768d5c0724c7595077e1bf8",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-28T13:00:07+02:00",
+      "subject": "improve(create cpt tool): build mode, refresh store, return success with ui data, tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "b1904a580a7097b5cf0a9101436cb134eab344c1",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-28T09:52:22+02:00",
+      "subject": "hide(ETC-702): provide toBaseJson on EtchBaseBlock",
+      "body": "",
+      "ticketIds": [
+        "ETC-702"
+      ]
+    },
+    {
+      "hash": "918063ea7677a840c43a60a41af748eb307ee0eb",
+      "author": "Andrea Maccone",
+      "date": "2026-04-28T07:09:24+02:00",
+      "subject": "hide(ETC-697): flatten PropertyEditors/New/ directory structure",
+      "body": "",
+      "ticketIds": [
+        "ETC-697"
+      ]
+    },
+    {
+      "hash": "2cf386c8999d3085b73e31c603332142f34e5990",
+      "author": "Andrea Maccone",
+      "date": "2026-04-28T07:08:08+02:00",
+      "subject": "hide(ETC-697): flag-cleanup and dead-file-deletion",
+      "body": "",
+      "ticketIds": [
+        "ETC-697"
+      ]
+    },
+    {
+      "hash": "e7c27f69c27f85f8374c5015d896c956f6dbad7a",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-27T13:40:41+02:00",
+      "subject": "improve: reexport tools from a barrel, fix tool failure codes",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "56ffaee1095d5f523d68a0c0cc7588d27db8e472",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-27T13:39:24+02:00",
+      "subject": "fix: client tool test",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6e2e3110d953d731511c27872476da96b7a3dc3a",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-27T13:37:36+02:00",
+      "subject": "feat: create post type tool",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "2f1ff547b621932f7229f9868045a7b37216be7b",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-27T12:14:40+02:00",
+      "subject": "chore: downgrade svelte (to 5.55.2) due to issues introduced in 5.55.3",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c4557d9f2ec7dcab420eea4b186be9fdd991615d",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-24T16:10:34-03:00",
+      "subject": "wip: create the create_posts tool",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "3493ce4f2a04ced77dfb53132cc00455ce9b25a9",
+      "author": "Matteo Greco",
+      "date": "2026-04-24T18:56:06+02:00",
+      "subject": "fix(select-prop): raise options textarea max height to 10 lines",
+      "body": "Kevin hit the 3-line cap while editing a Select prop on live stream.\nTrying 10 lines instead.",
+      "ticketIds": []
+    },
+    {
+      "hash": "4dab16447816a6a11a4150ea224c9ceb238c32cc",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-24T15:11:44+02:00",
+      "subject": "fix(ETC-699): Ensure classes and attributes are properly rendered on dynamic image placeholder",
+      "body": "",
+      "ticketIds": [
+        "ETC-699"
+      ]
+    },
+    {
+      "hash": "0dcf8f2def4b4862ff7757209d5b9022201d8f9b",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-24T13:31:58+02:00",
+      "subject": "fix(ETC-698): Ensure combobox keeps reactivity after user write",
+      "body": "",
+      "ticketIds": [
+        "ETC-698"
+      ]
+    },
+    {
+      "hash": "f8260dd8e9b13282e8ea5d9805007786153c46bc",
+      "author": "Matteo Greco",
+      "date": "2026-04-24T12:52:49+02:00",
+      "subject": "chore: remove project-local skills superseded by ai-skills repo [hide] [skip ci]",
+      "body": "These skills started out project-specific but have been rewritten as a more\ngeneric set, now maintained at https://github.com/matteo-greco/ai-skills.",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-744": {
+      "id": "ETC-744",
+      "title": "Bring back old toggle in Boolean Prop/Instance",
+      "description": "Users did not like the true/false/data button we added. So we want the old toggle back.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/70111c36-cb3c-41f8-b2d3-6c9cfff0b2c7/9f329e29-cf7b-40ae-a11d-1ee0ce9726aa)\n\n\nAC: \n\n* The user sees a toggle for the boolean prop in editor and in instance (in place of the current button)\n* He can use that toggle to switch between true/false (the input follows with \"{true}\" and \"{false}\")\n* He can write dynamic data into the input, which will disable the toggle\n  * (everything except \"{true}\" and \"{false}\" should be treated as dynamic data and disable the toggle)\n* Removing the text from the input should reenable the toggle and revert back to true/false state. (Default: false)",
+      "state": "Done"
+    },
+    "ETC-737": {
+      "id": "ETC-737",
+      "title": "Migrate EtchConditionBlock gutenberg↔etch conversion to PHP",
+      "description": "Adds PHP gutenberg↔etch conversion for `etch/condition`, with fixtures and roundtrip coverage.\n\nDepends on: [ETC-729](https://linear.app/digital-gravy/issue/ETC-729/establish-gutenbergetch-json-fixture-corpus-and-generator) (fixture corpus), [ETC-730](https://linear.app/digital-gravy/issue/ETC-730/build-php-gutenbergetch-conversion-infrastructure) (PHP infrastructure).\n\nAC:\n\n* Fixtures committed for `etch/condition`: zero-case (minimal payload), typical case, and block-specific edge cases\n* PHP gutenberg → etch matches the etch side of every `etch/condition` fixture\n* PHP etch → gutenberg matches the gutenberg side of every `etch/condition` fixture\n* Roundtrip `gutenberg → etch → gutenberg` is stable for every `etch/condition` fixture\n* Roundtrip `etch → gutenberg → etch` is stable for every `etch/condition` fixture\n* Converter registered in the PHP registry for `etch/condition`",
+      "state": "Done"
+    },
+    "ETC-723": {
+      "id": "ETC-723",
+      "title": "Allow `create_posts` to create posts of any post type",
+      "description": "Currently, the `create_posts` tool hardcodes `post_type` to `\"post\"` (on the plugin side — `createPosts:19`), preventing the AI from creating entries for custom post types. \n\nWe want to: \n\n1. loosen the schema to accept any post type slug, so that the AI can create posts for any post type.\n2. make this tool more explicit, by mandating a post type to be explicitly passed (no fallback), and requiring the AI to call `list_post_types` before it writes to ensure it uses a valid one.\n\n**Acceptance criteria:**\n\n- [ ] When the AI is in Ask mode, it is not aware of the tool and cannot call it (no regression). \n- [ ] When `create_posts` is called without a `post_type`, it returns an `INVALID_ARGS` error with a specific, explicit error message to the AI model (so it can self-correct).\n- [ ] When `create_posts` is called with an invalid `post_type` (i.e. non-existent or reserved), it returns an `INVALID_ARGS` error with a specific, explicit error message to the AI model (so it can self-correct).\n- [ ] When `create_posts` is called with a valid `post_type` value (e.g. `page`, `project`), the post is created with that type.\n- [ ] After posts are created, the post list for the correct post type is refreshed in the store.\n\n**Implementation notes:**\n\n1. **Schema** (`createPosts.ts:19`) — change `post_type: z.literal('post').optional()` to `post_type: z.string()` (required, any string)\n2. **Tool description** — add the MANDATORY `list_post_types` prerequisite language, following the same pattern as `create_etch_loop`:\n\n   ```\n   **MANDATORY**: a fresh read of existing post types (`list_post_types`) **must** be performed before calling this tool. NEVER omit `post_type`.\n   ```\n3. **Post list refresh** (`createPosts.ts:81–84`) — update to refresh the post type matching the created post's type (no hardcoding)",
+      "state": "Done"
+    },
+    "ETC-726": {
+      "id": "ETC-726",
+      "title": "Negotiate supported client tools between plugin and middleware",
+      "description": "Currently, the middleware advertises a fixed list of client tools to OpenAI regardless of which tools the plugin version in the user's browser actually supports. \n\nWhen OpenAI calls an unsupported tool, it silently fails and the AI features in Etch appear **broken**.\n\nThis change adds capability negotiation: the plugin sends its supported tool names with every initial request, and the middleware only exposes the intersection to OpenAI. Old plugin versions that don't send the field fall back to a known-safe default set.\n\n**Acceptance Criteria**\n\n- [X] If I'm using an old version of the plugin (1.4.15 — meaning, `supported_client_tools` is not declared), the AI provider receives a hardcoded “classic tools” set: `rag_retrieve`, `docsWebSearch`, `list_post_types`, `create_etch_loop`.\n- [X] When I send a message to AI, only client tools the plugin declares support for (in `supported_client_tools`) are offered to the AI provider\n  - [X] Tools only present on the plugin side are dropped in the negotiation\n  - [X] Tools only present on the server side are dropped in the negotiation\n- [X] When the plugin declares an empty set of supported tools (`supported_client_tools = []`), the middleware doesn't accept it and returns an error to the plugin.\n  (error code: `EMPTY_SUPPORTED_TOOLS`)\n- [X] If the plugin sends a malformed `supported_client_tools`, the middleware doesn't accept it and returns an error to the plugin.\n  (error code: `MALFORMED_SUPPORTED_TOOLS`)\n- [X] If the plugin sends only unsupported tools (`available_tools = []` after intersection):\n  * The middleware blocks the request and returns an error to the plugin \n    (error code `NO_TOOLS_INTERSECTION`)\n- [X] If the provider sends a call for a non-declared tool:\n  - [X] The middleware blocks the request and returns an error back to the provider, indicating the tool is not supported by this client.\n  - [X] The plugin blocks the tool call on the way back, and creates an error \n    (error code `UNDECLARED_TOOL_CALLED`)\n  - [X] We display an error toast to the user:\n    “There was an issue with this request (UNDECLARED_TOOL_CALLED). Please contact support.”\n  - [X] The plugin logs the failure to the Etch activity log\n- [ ] ~~Other requests in the same “user turn” (~~`~~continue~~`~~ requests) are unaffected~~\n\n**Implementation notes**\n\n* When a new tool handler is introduced on the plugin side, it is automatically included in the negotiation — no other manual change required.\n\n5 touch points across both repos according to Claude (this could be outdated, keeping it in case it's still partly useful):\n\n1. `aiClientTools.ts` (etch) — export the handler key list (already `Object.keys(handlers)`, just needs exporting)\n2. `AiChat.svelte.ts` (etch) — add `supported_client_tools` to the initial request payload; omit on `continue`\n3. `AiRoutes.php` (etch) — verify `supported_client_tools` is not stripped by body sanitization\n4. `schema.ts` (etch-middleware) — add `supported_client_tools?: string[]` as optional to `InitialRequestSchema`\n5. `service.ts` (etch-middleware) — filter client tools against `supported_client_tools` when present; absent → default set; empty → no client tools; server tools always pass through",
+      "state": "Done"
+    },
+    "ETC-730": {
+      "id": "ETC-730",
+      "title": "Build PHP gutenberg↔etch conversion infrastructure",
+      "description": "PHP-side scaffolding mirroring `blockRegistry.ts` (`src/frontend/Builder/src/composables/blocks/BaseClasses/blockRegistry.ts`). No per-block converters yet — those land in the per-block tickets.\n\nDepends on: [ETC-729](https://linear.app/digital-gravy/issue/ETC-729/establish-gutenbergetch-json-fixture-corpus-and-generator) (fixture corpus).\n\nAC:\n\n* `BlockConverterRegistry` (PHP) exposes `register($type, $converter)` and dispatchers `gutenberg_to_etch($gutenberg_block)` / `etch_to_gutenberg($etch_json)`\n* Abstract base converter class defines the per-block contract (e.g. `to_etch($gutenberg_block)`, `to_gutenberg($etch_json)`)\n* Dispatchers recurse into children automatically — block converters do not have to walk children themselves\n* Dispatchers throw a clear error on unknown block type (mirrors JS `Unknown block type: …`)\n* Test helper consumes fixtures from the corpus established in [ETC-729](https://linear.app/digital-gravy/issue/ETC-729/establish-gutenbergetch-json-fixture-corpus-and-generator)\n* Registry is empty until per-block tickets register their converters\n* `bun run test:php` (phpunit + phpstan + phpcs) passes\n\nOut of scope: any per-block converter implementation.",
+      "state": "Done"
+    },
+    "ETC-721": {
+      "id": "ETC-721",
+      "title": "“No response received from AI” on server but works locally",
+      "description": "The AI feature consistently returns an error on the staging site, even with a valid API key is used. \n\nThe same site works correctly when cloned locally, which suggests the problem is related to the server environment or the access chain to the site.\n\n@jeremy reproduced the issue directly on 2 sites affected by this problem, including with a known working API key. Both times, cloning the site locally solved the issue instantly.\n\n### Steps to reproduce\n\n1. Open the staging site admin using the provided login link.\n2. Enter a valid API key\n3. try to send any message to AI\n\n---\n\n### Environment\n\nHosting: [Infomaniak](<https://infomaniak.com/>) (Switzerland) — managed VPS\n\nServer Type: Managed VPS\n\nCloudflare: No\n\nFirewall: No known firewall configured by the reporter; there may be a default Infomaniak firewall\n\nPlugin Version: 1.4.15\n\n---\n\n### Magic Login\n\n[Temporary admin login](<https://staging.digitalera.ch/wp-admin/?wtlwp_token=6f3563fcd80cb361260f1660b3cc3b52adaeb1c94f98482ff1b5ad4d2bc91309c6902e3c4d9ddbcb5fe8e23de9bbc6421bd0634f7847da97f888553a887b3640>)\n\n---\n\n### Attachments\n\n[Community post](<https://community.etchwp.com/c/announcements/1-4-8#comment_wrapper_99876808>)\n\n[Support ticket](<https://app.thrivedesk.com/conversations/a1a4cb01-c9d5-47af-b325-83a0447e10a5/11065>)\n\n---\n\n### Reporter\n\nName: Adnan Hrnic\n\nEmail: [contact@digitalera.ch](<mailto:contact@digitalera.ch>)",
+      "state": "Done"
+    },
+    "ETC-712": {
+      "id": "ETC-712",
+      "title": "Migrate EtchFocusBlock to Etch JSON",
+      "description": "It should inherit the shared data from toBaseJSON from the EtchBaseBlock\n\nAC:\n\n* The JSON includes only the shared data from toBaseJSON (runtime callbacks are not serialized)\n* A Zod schema defines the EtchFocusBlock JSON shape (used for typing; validated on fromJSON, not on every toJSON)\n* A FocusBlock can be constructed via fromJSON from a valid `etch/focus` JSON payload, returning an `EtchFocusBlock` instance",
+      "state": "Done"
+    },
+    "ETC-727": {
+      "id": "ETC-727",
+      "title": "Block registry + dispatch tests",
+      "description": "Foundation work for the new JSON serialization: the central `blockRegistry` module, recursive children deserialization, and the dispatcher's own behaviour tests. Per-block round-trip coverage is delivered by each block's migration ticket ([ETC-703](https://linear.app/digital-gravy/issue/ETC-703/migrate-etchhtmlblock-to-etch-json)–716), not here.\n\n## What this ticket delivers\n\n* `blockRegistry` module exposing `registerBlockType(type, klass)` and `fromJSON(json: unknown): EtchBaseBlock`.\n* Self-registration pattern: subclasses call `registerBlockType('etch/x', X)` at the bottom of their own file. The registry never value-imports subclasses, which avoids the circular-import problem (registry → subclass → base → registry) the old eager dispatch table caused.\n* `composables/blocks/index.ts` barrel — the official first-party block roster, side-effect-imported from `main.ts` so all blocks are registered before `fromJSON` is called.\n* `EtchBaseBlock.fromBaseJSON` updated to deserialize children recursively via the registry (previously omitted children).\n* Children-handling in the base schema: `looseObject` for child entries (top-level base block stays strict). Preserves subclass-only fields like `tag`/`attributes` so the registry can revalidate each child against its concrete schema.\n\n## Tests\n\nRegistry's own contract is covered in `blockRegistry.test.ts`:\n\n* Cross-type dispatch (`etch/element` containing `etch/text` round-trips and each child comes back as the right subclass with data intact).\n* Unknown block type throws with a clear error.\n* Missing type discriminator throws.\n\nPer-block round-trip tests stay in each block's own test file and land with each block's migration. See [comment](<#>) for the testing approach decision.\n\n## Deviations from original AC\n\n* **No** `satisfies Record<EtchBlockType, EtchBlockClass>` for compile-time exhaustiveness. Self-registration is incompatible with central exhaustiveness — replaced by a runtime \"Unknown block type\" throw. Trade made consciously to break the import cycle.\n* **No** `EtchBlockClass` interface export. Replaced by structural typing inside `registerBlockType`'s generic constraint (`klass: { fromJSON(json: TJSON): EtchBaseBlock }`).\n* **Round-trip tests for all 14 blocks** moved out of this ticket. Each migration ticket ([ETC-703](https://linear.app/digital-gravy/issue/ETC-703/migrate-etchhtmlblock-to-etch-json)–716) owns its own round-trip test. This ticket only covers the dispatcher's contract.",
+      "state": "Done"
+    },
+    "ETC-705": {
+      "id": "ETC-705",
+      "title": "Migrate EtchTextBlock to Etch JSON",
+      "description": "It should inherit the shared data from toBaseJSON from the EtchBaseBlock\n\nAC:\n\n* The JSON must include\n  * text content\n* A Zod schema defines the EtchTextBlock JSON shape (used for typing; validated on fromJSON, not on every toJSON)\n* A TextBlock can be constructed via fromJSON from a valid `etch/text` JSON payload, returning an `EtchTextBlock` instance with the correct text value",
+      "state": "Done"
+    },
+    "ETC-703": {
+      "id": "ETC-703",
+      "title": "Migrate EtchHtmlBlock to Etch JSON",
+      "description": "It should inherit the shared data from toBaseJSON from the EtchBaseBlock\n\nAC:\n\n* The JSON must include\n  * tag\n  * attributes\n  * styles\n* A Zod schema defines the EtchHtmlBlock JSON shape (used for typing; validated on fromJSON, not on every toJSON)\n* An HtmlBlock can be constructed via fromJSON from a valid `etch/element` JSON payload, returning an `EtchHtmlBlock` instance with the correct tag, attributes, and styles",
+      "state": "Done"
+    },
+    "ETC-702": {
+      "id": "ETC-702",
+      "title": "Migrate EtchBaseBlock to new JSON Structure",
+      "description": "The base block provides the foundation for all block toJSON/fromJSON in the Etch JSON format.\n\nAC:\n\n* `EtchBaseBlock` exposes a protected `toBaseJSON()` method that returns the shared data between all blocks as JSON\n  * The output must contain only JSON primitives (no class instances, no functions, no Svelte state proxies — must round-trip through `JSON.stringify`/`JSON.parse`)\n  * The shared shape includes:\n    * children (recursively calling `toJSON` on each child)\n    * block context\n    * javascript attached to block\n    * block options\n    * `type` discriminator (added per-call via the typed `toBaseJSON<T extends EtchBlockType>(type: T)` signature so subclasses pass their literal in one place)\n* A base Zod schema `EtchBaseBlockJSONSchema` defines the shared shape including the `type` discriminator (used for typing + runtime validation at the fromJSON boundary, not on every toJSON)\n* `EtchBaseBlock` declares `abstract toJSON(): EtchBaseBlockJSON` so every subclass must return a typed JSON\n* `EtchBaseBlock` exposes a protected static `fromBaseJSON(json)` helper that returns the shared scalar fields (`context`, `script`, `options`) for subclass `fromJSON` implementations to spread. Children are intentionally omitted — the registry ticket wires them up\n* toJSON/fromJSON is behind a feature flag\n\nFollow-up (separate ticket): the umbrella `fromJSON` factory + registry + round-trip tests for all block types are captured in [ETC-727](https://linear.app/digital-gravy/issue/ETC-727/implement-block-registry-for-fromjson-dispatch).",
+      "state": "Done"
+    },
+    "ETC-697": {
+      "id": "ETC-697",
+      "title": "Cleanup old Component Editor Redesign related flags",
+      "description": "* Clean these flags out\n  * \"COMPONENT_EDITOR_REDESIGN\": \"on\",\n  * \"ENABLE_CONDITION_PROP\": \"on\",\n  * \"COMPONENT_INSTANCE_INPUTS_REDESIGN\": \"on\",\n  * \"PROPS_PANEL_REDESIGN\": \"on\",\n  * \"ENABLE_COMPONENT_NAMESPACE\": \"on\"\n* Also remove the experimental toggles for the redesign in the settings.\n* Remove all the dead files not needed anymore.\n* Restructure file structure to be flat (remove \"new\" directory)",
+      "state": "Done"
+    },
+    "ETC-699": {
+      "id": "ETC-699",
+      "title": "<etch:img> attached class doesnt render on the frontend",
+      "description": "## If i attach a class to [etch:img](<etch:img>) the attached class doesnt render on the frontend, so cannot style images. I tested it on three different installations. Do you have any idea what the problem might be?\n\n### Steps to reproduce\n\nYou can try it out:\n\n{\"type\":\"block\",\"gutenbergBlock\":{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Testimonial Card\"},\"tag\":\"article\",\"attributes\":{\"class\":\"testimonial-card\"},\"styles\":\\[\"02qp0ri\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Logo Wrapper\"},\"tag\":\"figure\",\"attributes\":{\"class\":\"testimonial-card__logo-wrapper\"},\"styles\":\\[\"fse57sz\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/dynamic-image\",\"attrs\":{\"metadata\":{\"name\":\"Logo\"},\"tag\":\"img\",\"attributes\":{\"class\":\"testimonial-card__logo\"},\"styles\":\\[\"g4dkjub\"\\]},\"innerBlocks\":\\[\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",\"\\\\n\"\\]},{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Caption\"},\"tag\":\"figcaption\",\"attributes\":{\"class\":\"testimonial-card__caption\"},\"styles\":\\[\"10ddzcn\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/text\",\"attrs\":{\"metadata\":{\"name\":\"Text\"},\"content\":\"Product feature development for collaboration tools Technical support for scale and adoption\"},\"innerBlocks\":\\[\\],\"innerHTML\":\"\",\"innerContent\":\\[\\]}\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\"\\]}\\],\"innerHTML\":\"\\\\n\\\\n\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\\\\n\",null,\"\\\\n\"\\]},{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Quote Wrapper\"},\"tag\":\"figure\",\"attributes\":{\"class\":\"testimonial-card__quote-wrapper\"},\"styles\":\\[\"6qhv0hn\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Blockquote\"},\"tag\":\"blockquote\",\"attributes\":{\"class\":\"testimonial-card__blockquote testimonial-card__quote\",\"cite\":\"[https://northwind.example.com/case-studies/orbit-labs\"},\"styles\":\\[\"ufed4eu\",\"darizrm\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Text\"},\"tag\":\"p\",\"attributes\":{\"class\":\"testimonial-card__text\"},\"styles\":\\[\"0fwy9vz\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/text\",\"attrs\":{\"metadata\":{\"name\":\"Text\"},\"content\":\"Emergence](<https://northwind.example.com/case-studies/orbit-labs%22%7D,%22styles%22:%5B%22ufed4eu%22,%22darizrm%22%5D%7D,%22innerBlocks%22:%5B%7B%22blockName%22:%22etch/element%22,%22attrs%22:%7B%22metadata%22:%7B%22name%22:%22Text%22%7D,%22tag%22:%22p%22,%22attributes%22:%7B%22class%22:%22testimonial-card__text%22%7D,%22styles%22:%5B%220fwy9vz%22%5D%7D,%22innerBlocks%22:%5B%7B%22blockName%22:%22etch/text%22,%22attrs%22:%7B%22metadata%22:%7B%22name%22:%22Text%22%7D,%22content%22:%22Emergence>) are exceptional. For any new projects and products they are my go-to dev house. They work fast and to super high quality They have the rare ability to understand the needs of early stage product discovery as well as the ability to build robust, high quality applications that will scale.\"},\"innerBlocks\":\\[\\],\"innerHTML\":\"\",\"innerContent\":\\[\\]}\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\"\\]}\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\"\\]},{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Figcaption\"},\"tag\":\"figcaption\",\"attributes\":{\"class\":\"testimonial-card__figcaption\"},\"styles\":\\[\"j5ljq9c\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/dynamic-image\",\"attrs\":{\"metadata\":{\"name\":\"Avatar\"},\"tag\":\"img\",\"attributes\":{\"class\":\"testimonial-card__avatar\"},\"styles\":\\[\"now9qm0\"\\]},\"innerBlocks\":\\[\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",\"\\\\n\"\\]},{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Cite\"},\"tag\":\"cite\",\"attributes\":{\"class\":\"testimonial-card__cite\"},\"styles\":\\[\"x06lhy6\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Name\"},\"tag\":\"span\",\"attributes\":{\"class\":\"testimonial-card__name\"},\"styles\":\\[\"kn2buxt\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/text\",\"attrs\":{\"metadata\":{\"name\":\"Text\"},\"content\":\"Maya Rodriguez\"},\"innerBlocks\":\\[\\],\"innerHTML\":\"\",\"innerContent\":\\[\\]}\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\"\\]},{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Position\"},\"tag\":\"span\",\"attributes\":{\"class\":\"testimonial-card__position\"},\"styles\":\\[\"kkx74gx\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/text\",\"attrs\":{\"metadata\":{\"name\":\"Text\"},\"content\":\"VP of Engineering, Orbit Labs\"},\"innerBlocks\":\\[\\],\"innerHTML\":\"\",\"innerContent\":\\[\\]}\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\"\\]}\\],\"innerHTML\":\"\\\\n\\\\n\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\\\\n\",null,\"\\\\n\"\\]}\\],\"innerHTML\":\"\\\\n\\\\n\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\\\\n\",null,\"\\\\n\"\\]}\\],\"innerHTML\":\"\\\\n\\\\n\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\\\\n\",null,\"\\\\n\"\\]},{\"blockName\":\"etch/element\",\"attrs\":{\"metadata\":{\"name\":\"Button\"},\"tag\":\"a\",\"attributes\":{\"href\":\"#\",\"class\":\"testimonial-card__button btn--arrow\"},\"styles\":\\[\"hu2zhf2\",\"7fbbjgp\"\\]},\"innerBlocks\":\\[{\"blockName\":\"etch/text\",\"attrs\":{\"metadata\":{\"name\":\"Text\"},\"content\":\"Go to Case Study\"},\"innerBlocks\":\\[\\],\"innerHTML\":\"\",\"innerContent\":\\[\\]}\\],\"innerHTML\":\"\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\"\\]}\\],\"innerHTML\":\"\\\\n\\\\n\\\\n\\\\n\\\\n\\\\n\",\"innerContent\":\\[\"\\\\n\",null,\"\\\\n\\\\n\",null,\"\\\\n\\\\n\",null,\"\\\\n\"\\]},\"timestamp\":\"2026-04-24T12:25:31.540Z\",\"styles\":{\"02qp0ri\":{\"type\":\"class\",\"selector\":\".testimonial-card\",\"collection\":\"default\",\"css\":\"display: flex;\\\\n  flex-direction: column;\\\\n  gap: var(--content-gap);\",\"readonly\":false},\"fse57sz\":{\"type\":\"class\",\"selector\":\".testimonial-card__logo-wrapper\",\"collection\":\"default\",\"css\":\"display: flex;\\\\n  flex-direction: column;\\\\n  gap: 0.25em;\",\"readonly\":false},\"g4dkjub\":{\"type\":\"class\",\"selector\":\".testimonial-card__logo\",\"collection\":\"default\",\"css\":\"max-inline-size: to-rem(120px);\",\"readonly\":false},\"10ddzcn\":{\"type\":\"class\",\"selector\":\".testimonial-card__caption\",\"collection\":\"default\",\"css\":\"font-size: var(--text-xs);\\\\n  color: var(--neutral-semi-dark);\",\"readonly\":false},\"6qhv0hn\":{\"type\":\"class\",\"selector\":\".testimonial-card__quote-wrapper\",\"collection\":\"default\",\"css\":\"display: flex;\\\\n  flex-direction: column;\\\\n  gap: var(--card-gap);\",\"readonly\":false},\"ufed4eu\":{\"type\":\"class\",\"selector\":\".testimonial-card__blockquote\",\"collection\":\"default\",\"css\":\"padding-inline-start: var(--space-m);\\\\n  position: relative;\\\\n\\\\n  &::before {\\\\n    content: \"\";\\\\n    background-image: url(\"data:image/svg+xml,%3Csvg xmlns='[http://www.w3.org/2000/svg](<http://www.w3.org/2000/svg>)' width='16' height='13' viewBox='0 0 16 13' fill='none'%3E%3Cg clip-path='url(%23clip0_14549_7545)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.9298 2.03037C13.5439 3.15836 12.351 4.48372 12.351 6.00651C13.3679 6.11931 14.2088 6.5188 14.8738 7.20499C15.5387 7.89118 15.8712 8.68546 15.8712 9.58785C15.8712 10.5466 15.5485 11.355 14.9031 12.013C14.2577 12.671 13.4461 13 12.4683 13C11.3731 13 10.4246 12.5723 9.62279 11.7169C8.82096 10.8615 8.42005 9.82285 8.42005 8.60087C8.42005 4.93491 10.5517 2.06798 14.8151 0L15.9298 2.03037ZM7.50978 2.03037C5.10429 3.15836 3.90156 4.48372 3.90156 6.00651C4.93808 6.11931 5.78878 6.5188 6.45372 7.20499C7.11865 7.89118 7.45111 8.68546 7.45111 9.58785C7.45111 10.5466 7.12354 11.355 6.46838 12.013C5.81323 12.671 4.99675 13 4.0189 13C2.92372 13 1.98012 12.5723 1.18807 11.7169C0.39602 10.8615 0 9.82285 0 8.60087C0 4.93491 2.12188 2.06798 6.36571 0L7.50978 2.03037Z' fill='var(--primary-light, %237BB5FF)'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_14549_7545'%3E%3Crect width='16' height='13' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E\");\\\\n    block-size: to-rem(13px);\\\\n    inline-size: to-rem(16px);\\\\n    position: absolute;\\\\n    left: 0;\\\\n  }\",\"readonly\":false},\"darizrm\":{\"type\":\"class\",\"selector\":\".testimonial-card__quote\",\"collection\":\"default\",\"css\":\"\",\"readonly\":false},\"0fwy9vz\":{\"type\":\"class\",\"selector\":\".testimonial-card__text\",\"collection\":\"default\",\"css\":\"font-size: var(--text-m);\\\\n  font-weight: 400;\",\"readonly\":false},\"j5ljq9c\":{\"type\":\"class\",\"selector\":\".testimonial-card__figcaption\",\"collection\":\"default\",\"css\":\"display: flex;\\\\n  flex-direction: row;\\\\n  justify-content: start;\\\\n  align-items: center;\\\\n  gap: var(--card-gap);\",\"readonly\":false},\"now9qm0\":{\"type\":\"class\",\"selector\":\".testimonial-card__avatar\",\"collection\":\"default\",\"css\":\"inline-size: to-rem(56px);\\\\n  aspect-ratio: 1;\\\\n  border-radius: var(--radius-circe);\",\"readonly\":false},\"x06lhy6\":{\"type\":\"class\",\"selector\":\".testimonial-card__cite\",\"collection\":\"default\",\"css\":\"font-style: normal;\\\\n\\\\tdisplay: flex;\\\\n\\\\tflex-direction: column;\",\"readonly\":false},\"kn2buxt\":{\"type\":\"class\",\"selector\":\".testimonial-card__name\",\"collection\":\"default\",\"css\":\"font-weight: 600;\",\"readonly\":false},\"kkx74gx\":{\"type\":\"class\",\"selector\":\".testimonial-card__position\",\"collection\":\"default\",\"css\":\"color: var(--neutral-semi-dark);\",\"readonly\":false},\"hu2zhf2\":{\"type\":\"class\",\"selector\":\".testimonial-card__button\",\"collection\":\"default\",\"css\":\"--btn-justify-content: flex-end;\\\\n  justify-self: end;\",\"readonly\":false},\"7fbbjgp\":{\"type\":\"class\",\"selector\":\".btn--arrow\",\"collection\":\"default\",\"css\":\"--btn-text-color: var(--primary);\\\\n  --btn-text-color-hover: var(--primary);\\\\n  --btn-border-width: 0;\\\\n  --btn-arrow-size: 1.5rem;\\\\n  --btn-arrow-offset: 1.75rem;\\\\n  --btn-justify-content: left;\\\\n  --btn-padding-inline: 0;\\\\n  gap: calc(var(--card-gap) / 2);\\\\n  overflow: hidden;\\\\n\\\\n  &::after {\\\\n    content: '';\\\\n    inline-size: var(--btn-arrow-size);\\\\n    block-size: var(--btn-arrow-size);\\\\n    flex: 0 0 var(--btn-arrow-size);\\\\n    background-color: currentColor;\\\\n    mask-image: url(\"data:image/svg+xml,%3Csvg xmlns='[http://www.w3.org/2000/svg](<http://www.w3.org/2000/svg>)' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M16.8909 12.8014H4.70136C4.45669 12.8014 4.25361 12.7206 4.09211 12.5589C3.93044 12.3972 3.84961 12.1942 3.84961 11.9497C3.84961 11.7052 3.93044 11.5021 4.09211 11.3404C4.25361 11.1787 4.45669 11.0979 4.70136 11.0979H16.8909L13.3584 7.5594C13.1884 7.3934 13.1075 7.19549 13.1159 6.96565C13.1242 6.73582 13.2134 6.5359 13.3834 6.3659C13.5494 6.20007 13.7463 6.11815 13.9741 6.12015C14.2019 6.12199 14.4009 6.2059 14.5709 6.3719L19.5519 11.3469C19.6432 11.4382 19.7095 11.5336 19.7509 11.6329C19.792 11.7321 19.8126 11.8377 19.8126 11.9497C19.8126 12.0617 19.792 12.1672 19.7509 12.2664C19.7095 12.3657 19.6432 12.4611 19.5519 12.5524L14.5959 17.5024C14.4259 17.6684 14.2269 17.7523 13.9991 17.7542C13.7713 17.7562 13.5744 17.6722 13.4084 17.5024C13.2384 17.3364 13.1534 17.1343 13.1534 16.8962C13.1534 16.658 13.2384 16.4539 13.4084 16.2839L16.8909 12.8014Z' fill='currentColor'/%3E%3C/svg%3E\"), url(\"data:image/svg+xml,%3Csvg xmlns='[http://www.w3.org/2000/svg](<http://www.w3.org/2000/svg>)' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M16.8909 12.8014H4.70136C4.45669 12.8014 4.25361 12.7206 4.09211 12.5589C3.93044 12.3972 3.84961 12.1942 3.84961 11.9497C3.84961 11.7052 3.93044 11.5021 4.09211 11.3404C4.25361 11.1787 4.45669 11.0979 4.70136 11.0979H16.8909L13.3584 7.5594C13.1884 7.3934 13.1075 7.19549 13.1159 6.96565C13.1242 6.73582 13.2134 6.5359 13.3834 6.3659C13.5494 6.20007 13.7463 6.11815 13.9741 6.12015C14.2019 6.12199 14.4009 6.2059 14.5709 6.3719L19.5519 11.3469C19.6432 11.4382 19.7095 11.5336 19.7509 11.6329C19.792 11.7321 19.8126 11.8377 19.8126 11.9497C19.8126 12.0617 19.792 12.1672 19.7509 12.2664C19.7095 12.3657 19.6432 12.4611 19.5519 12.5524L14.5959 17.5024C14.4259 17.6684 14.2269 17.7523 13.9991 17.7542C13.7713 17.7562 13.5744 17.6722 13.4084 17.5024C13.2384 17.3364 13.1534 17.1343 13.1534 16.8962C13.1534 16.658 13.2384 16.4539 13.4084 16.2839L16.8909 12.8014Z' fill='currentColor'/%3E%3C/svg%3E\");\\\\n    mask-repeat: no-repeat, no-repeat;\\\\n    mask-size:\\\\n      var(--btn-arrow-size) var(--btn-arrow-size),\\\\n      var(--btn-arrow-size) var(--btn-arrow-size);\\\\n    mask-position:\\\\n      0 50%,\\\\n      calc(var(--btn-arrow-offset) \\* -1) 50%;\\\\n    transition: mask-position 0.3s ease;\\\\n  }\\\\n\\\\n  &:hover,\\\\n  &:focus-visible {\\\\n    color: var(--btn-text-color-hover);\\\\n  }\\\\n\\\\n  &:hover::after,\\\\n  &:focus-visible::after {\\\\n    mask-position:\\\\n      var(--btn-arrow-offset) 50%,\\\\n      0 50%;\\\\n  }\",\"readonly\":false}},\"version\":2.1}\n\n---\n\n### Environment\n\nPlugin Version: 1.4.15\n\nTheme Version: 0.0.7\n\nWordPress Version: 6.9.4\n\nMachine: PC\n\nBrowser: Chromium\n\n---\n\n### Magic Login\n\n---\n\n### Attachments\n\n---\n\n### Reporter\n\nName: Balazs Stotz\n\nEmail: [stotzbalazs@gmail.com](<mailto:stotzbalazs@gmail.com>)",
+      "state": "Done"
+    },
+    "ETC-698": {
+      "id": "ETC-698",
+      "title": "Combobox not updating properly when value changes from the outside.",
+      "description": "[https://community.etchwp.com/c/announcements/1-4-15#comment_wrapper_101861725](<https://community.etchwp.com/c/announcements/1-4-15#comment_wrapper_101861725>)",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:30.721Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 36,
+    "ticket_count": 14
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "previous_version": "1.4.6",
+  "current_version": "1.4.7",
+  "commits": [
+    {
+      "hash": "c5137bba27a96d08fe4e185333e79d5f344c936d",
+      "author": "Matteo Greco",
+      "date": "2026-03-26T17:18:32+01:00",
+      "subject": "refactor(ai-chat): extract methods and reduce complexity in AiChatStore",
+      "body": "- Inline #normalizeApiMessages into #toApiMessages (remove indirection)\n- Extract #buildApiPayload from sendMessage\n- Extract #handleStreamError from inline catch block\n- Inline temporary variables into .push() calls\n- Rename #isStreamTimeoutError to #isTimeoutError",
+      "ticketIds": []
+    },
+    {
+      "hash": "3967f929d452a22ddd27363114926ea1a7e658c9",
+      "author": "Matteo Greco",
+      "date": "2026-03-26T17:17:12+01:00",
+      "subject": "fix(ai-chat): prevent localStorage quota overflow when sending images",
+      "body": "Pasting a base64 image (~2–5 MB) into the chat and sending caused\nPersistedState to exceed the ~5 MB localStorage quota. The push was\nsilently reverted, resulting in an empty messages array sent to the\nbackend (\"At least one message is required.\").\n\nFix: strip base64 image data via a custom PersistedState serializer,\npre-build the API payload before touching persisted state, and cache\nfull image content in a SvelteMap so thumbnails remain visible during\nthe session.",
+      "ticketIds": []
+    },
+    {
+      "hash": "2e8df3b9dd86e030d68ff15987f8f789a3d49298",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-26T16:45:49+01:00",
+      "subject": "test(ai-chat): update chat mode via mode switch",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "b171a6b4d041c5302eeff0dd40522acd63c97e9d",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-26T16:24:07+01:00",
+      "subject": "test(ai-chat): improve tests around the file drop/paste with multiple files, invalid files and mixed valid/invalid files",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "40ca3275d56da87bb1891430ec9eb5a5fe069668",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-26T15:53:09+01:00",
+      "subject": "improve(ai-chat): show an error toast if user try to upload a non image file to ai chat window, and test toast conditions",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c04ffcd2e5a50d2000da5c0a3da665d24a9703ec",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-26T14:53:14+01:00",
+      "subject": "fix: Ai Input placeholder text, create a constant to be used between UI and tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "daee83be4ac64f5c95ad652fbf73f4a59bd09b84",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-26T14:42:57+01:00",
+      "subject": "improve(ai-chat): swap ESwitch to EModeSwitch, fix input reactivity warning",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e9fedc9f158bbf65b5d4bcc27c34863caaa4c9f4",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-26T13:26:47+01:00",
+      "subject": "fix(ai-chat): pass ai mode from svelte to ai routes and service",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8139f0cb0151d7e0a4ab59e6447a903358505cfe",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-26T09:20:06+01:00",
+      "subject": "fix(ETC-556): Properly respect void elements on the frontend",
+      "body": "",
+      "ticketIds": [
+        "ETC-556"
+      ]
+    },
+    {
+      "hash": "dc36bf921de46acca9a29f5ba6a9c0707d54ae9a",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T22:15:50+01:00",
+      "subject": "feat(ai-chat): add capability to drag and drop an image, test paste/drag an image into input",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "04b1d2c3ccb2bb4e45d198f02bd690baa0b7f705",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T20:50:00+01:00",
+      "subject": "feat(ai-chat): add some label to switch mode",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f908bbae764ef44851442088fe305ae6fd781e05",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T20:32:26+01:00",
+      "subject": "fix: ai tests, add mode to tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "9b28c96b3ca957c7da7aa433e47d8da3b4efe279",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T20:31:50+01:00",
+      "subject": "improve(ai-chat): set ask mode when starting a new conversation, + test",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "eb6731649472cf87f8c6e18b1b4ebbb6cff3f7f6",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T20:29:57+01:00",
+      "subject": "improve(ai-chat): remove the prefilled prompt and image",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "ce444d797dbaacaeef012758de5f73925d35cdb9",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T19:13:26+01:00",
+      "subject": "feat(ai-chat): switch ain ai chat window",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "faeff40dc0fec073cb4aef34ea005f25064a30ff",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T19:01:40+01:00",
+      "subject": "feat(ai-chat): prepare store for ai mode",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "9af79e725a88b3ed6c5a90d6a69ea5b1103e76f6",
+      "author": "Kevin Geary",
+      "date": "2026-03-25T13:15:12-04:00",
+      "subject": "minor styling updates to components",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "4fd39c45c6394e047f067c931b6d024c2a0f66f2",
+      "author": "Kevin Geary",
+      "date": "2026-03-25T12:25:07-04:00",
+      "subject": "feat(canvas): add zoom and scalable canvas width (#262)",
+      "body": "Add Option+Scroll zoom (0.25x–1x), editable width/scale inputs in a\ncanvas size badge, and auto-scaling when the requested width exceeds the\nviewport. Counter-scale overlays so element badges remain readable.\nContainer query generation should be unaffected while media query\ngeneration responds accordingly with canvas scaling.\n\n---------\n\nCo-authored-by: christophsanz <sanz.christoph@gmail.com>\nCo-authored-by: Reinhard Sanz <reinhard@sanz.at>",
+      "ticketIds": []
+    },
+    {
+      "hash": "4c1daa62ba8e275e1afad6b6a625e73c2b7fefd0",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-25T16:59:13+01:00",
+      "subject": "feat: GB support for repeater prop (ETC-555) (#275)",
+      "body": "",
+      "ticketIds": [
+        "ETC-555"
+      ]
+    },
+    {
+      "hash": "b26f79591fc315a919eaa6ec8947e086d9529b5d",
+      "author": "pedro-bartulihe",
+      "date": "2026-03-25T12:14:38-03:00",
+      "subject": "feat(ai): paste image in AI panel (#274)",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-556": {
+      "id": "ETC-556",
+      "title": "Void element duplicated on the frontend",
+      "description": "Turns out before [ETC-550](https://linear.app/digital-gravy/issue/ETC-550/alpine-js-specifc-attribtues-stripped-on-frontend) the faulty DomParser (the PHP native one) we previously used fixed some of the invalid HTML, like turning <br><br/> into a single <br>. \n\nWe did not have tests in place for void element handling so this caused a regression that slipped through the cracks. Solution: Add proper void element handling and tests for it.",
+      "state": "Done"
+    },
+    "ETC-555": {
+      "id": "ETC-555",
+      "title": "Add Repeater Prop input in GB",
+      "description": "* The user can see the repeater group prop when using the component\n* The user can press an \"Add\" button to add a nested object to the repeater\n* The user can delete nested object groups\n* The user can add as many nested object as he wants\n* The nested object inputs follow the definition of the props (nested text prop renders as text prop)\n* The user can populate that data\n* The prop references in the component show the data that was input on instance level\n* The user can collapse the repeater and the nested groups",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:34.967Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 20,
+    "ticket_count": 2
+  }
+}

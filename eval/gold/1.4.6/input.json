@@ -1,0 +1,254 @@
+{
+  "previous_version": "1.4.5",
+  "current_version": "1.4.6",
+  "commits": [
+    {
+      "hash": "2d2cb5ffb5d5a15f47e694d2ed13eb7d5e3a2de8",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-25T14:30:06+01:00",
+      "subject": "ETC-550 alpine js specifc attribtues stripped on frontend (#273)",
+      "body": "",
+      "ticketIds": [
+        "ETC-550"
+      ]
+    },
+    {
+      "hash": "7f2d0b4e0858b4888f5a5cc1e026a78e174d8889",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-25T14:26:24+01:00",
+      "subject": "feat: add new schemas for AI Chat Mode, create persistence for ai chat mode",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "53331da0764e7741f5041eb7cf6254e5e818007c",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-25T09:13:50+01:00",
+      "subject": "feat: Basic repeater prop  (#272)",
+      "body": "Co-authored-by: Andrea Maccone <andrea@digitalgravy.co>",
+      "ticketIds": []
+    },
+    {
+      "hash": "80f5b82ae1c5110eef579c54ca94fce6ee96e56a",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-24T20:50:32+01:00",
+      "subject": "fix: codescene global conditions, KISS fix",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "7ff694616b046463327799dc845160e4be3b9d3e",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-24T20:42:29+01:00",
+      "subject": "fix: codescene string whatever problem, replace with AiMode Enum",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "03219ee65bcffa3ef76e084483ed9e9a3c78506f",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-24T19:54:40+01:00",
+      "subject": "fix: remove build feature flag, do not set mode, otherwise changing between modes will cause the shape to be different",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d20ccd071173a83a2ddf26c7b7105bc8b8edb60f",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-24T19:20:04+01:00",
+      "subject": "refactor: update shape of data sent to openai to support multi part",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "4e6e0170fa2157884f5387325c938011f3a90ae5",
+      "author": "Jérémy Franck",
+      "date": "2026-03-24T19:10:27+01:00",
+      "subject": "feat(AI): Add system prompt and model for Build mode",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "bbd40853445c53ce741c50a3545457c6b2d3b09d",
+      "author": "pedro-bartulihe",
+      "date": "2026-03-24T11:56:52-03:00",
+      "subject": "feat(acf): Add new RESPECT_ACF_RETURN_FORMAT feature flag to a new behaviour that respect the ACF return format (#271)",
+      "body": "Zack Pyle suggest this new behaviour that we want to test first and then\ntry to unify and remove all these feature flags to prevent future issues\nand breaking changes.",
+      "ticketIds": []
+    },
+    {
+      "hash": "2e1ff906532f67b6f74bc618e460e8c184889e35",
+      "author": "Andrea Maccone",
+      "date": "2026-03-24T10:21:48+01:00",
+      "subject": "feat: add RepeaterGroupProperty type definition",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "9b0b56bd4a6df0f16fb307899bd3ee6913956a3c",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-23T15:45:32+01:00",
+      "subject": "fix: Fix issue with copy not collecting if multiple of same components are present",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f818cca7ff8625ed7bd436687119996f71875899",
+      "author": "Kevin Geary",
+      "date": "2026-03-23T09:27:12-04:00",
+      "subject": "fix the comment for media definitions.",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "13362c5cb054cb15956fd938d41851852102274b",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-23T11:37:06+01:00",
+      "subject": "improve(ETC-538): reload upstream javascript in svelte canvas on child mounts/destroys",
+      "body": "",
+      "ticketIds": [
+        "ETC-538"
+      ]
+    },
+    {
+      "hash": "5194a95c451425c9d681fdf66a7a0cbe17badb5a",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-23T10:49:30+01:00",
+      "subject": "fix(ETC-541): Ensure components using media urls in groups correctly parse in html",
+      "body": "",
+      "ticketIds": [
+        "ETC-541"
+      ]
+    },
+    {
+      "hash": "1e4724b9fd654f849a179023a1afa9c1d31c694a",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-23T09:48:27+01:00",
+      "subject": "feat(ETC-540): Ability to control paste behaviour in settings (overwrite or keep)",
+      "body": "",
+      "ticketIds": [
+        "ETC-540"
+      ]
+    },
+    {
+      "hash": "dc44ab698618ef587cac33f124b8806cb0b2586a",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-20T14:54:10+01:00",
+      "subject": "improve: Ensure existing components are not overwritten on paste collision",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "5e436fc011a7a13a07c08b1ec43a73c3bcc05bc4",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-20T14:31:28+01:00",
+      "subject": "fix(ETC-539): Fix issue with class prop instance values sometimes not properly pasting",
+      "body": "",
+      "ticketIds": [
+        "ETC-539"
+      ]
+    },
+    {
+      "hash": "1f70008815009cf44875afed2e1cf3f2f892bcd4",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-20T10:56:02+01:00",
+      "subject": "fix(ETC-534): recently added styles check race condition clearing styles (#268)",
+      "body": "Context:\nhttps://community.etchwp.com/c/general-discussion/class-parsing-gone-haywire\n\nI am fairly certain that this will fix the issue. Instead of batching by\nmicrotask we now batch by macrotask. This should ensure the styles\naren't accidentally cleared, and should \"survive\" svelte effect flushes.\n\nAs i was never able to replicate myself i sent a dev version to zack\npyle to confirm the fix. Once he gets back to me and confirms the fix\nworks I'll merge this.",
+      "ticketIds": [
+        "ETC-534"
+      ]
+    },
+    {
+      "hash": "c4e6cf58166d920e14697fa608525bf2f5bae550",
+      "author": "Matteo Greco",
+      "date": "2026-03-19T17:55:52+01:00",
+      "subject": "ci: delete old workflow [hide] [skip ci]",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8faa9e22cd8506e12c6ae13ed64d2367962851f6",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-19T14:54:31+01:00",
+      "subject": "improve(ETC-532): very basic css linter for detecting unbalanced braces",
+      "body": "",
+      "ticketIds": [
+        "ETC-532"
+      ]
+    },
+    {
+      "hash": "c98b7807145700e901833034d1cafade17d6fdf7",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-19T14:23:18+01:00",
+      "subject": "improve: recude number of expects in some tests while maintaining the same test behavior",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "20c67c3909f95a90750bdbb67742c111b3174a03",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-19T14:01:31+01:00",
+      "subject": "improvement: ETC-515 greatly reduce load in initial builder open (#267)",
+      "body": "Instead of having a broken n+1 problem with templates we now only load\ntemplates on demand (when actually switching to the templates).\n\nI initially tested just including the complete template data in the\ntemplate list but this causes a bunch of OOM issues since our dynamic\ndata resolving is pretty memory intensive.\n\nPrevious appraoch:\n\n1. Fetch templates list\n2. Immediatly fetch complete template data of ALL templates in the list\n3. On top of that every template load additionally loaded a bunch of\npreview posts for said template, including dynamic data\nTurns out due to that, the load on PHP was actually MUCH greater than\ninitially anticipated.\n\nNew approach\n1. Fetch template list\n2. Only fetch specific template when \"Edit Template\" is clicked\n3. Since the preview data is also only loaded on template load, this is\ndeferred too",
+      "ticketIds": [
+        "ETC-515"
+      ]
+    }
+  ],
+  "tickets": {
+    "ETC-550": {
+      "id": "ETC-550",
+      "title": "Alpine JS specifc attribtues stripped on frontend",
+      "description": "Currently we have a bug that alpine js specifc attributes are stripped from rendering on the frontend. Even when things are rendering via shortcodes and are never *touched* by etch.\nReason for this being that `remove_wp_site_blocks_wrapper` is faulty. We utilize the PHP native DOMDocument which seems to strip out @click and similar attributes (even though they are theoretically valid in the HTML spec)\n\nReason for this ticket: [https://community.etchwp.com/c/general-discussion/pie-calendar-plugin-not-working-in-etch#comment_wrapper_99028888](<https://community.etchwp.com/c/general-discussion/pie-calendar-plugin-not-working-in-etch#comment_wrapper_99028888>)\n\nAC:\nUser can use @click and other apline js attributes and they render fine in the frontend and builder\nShortcodes rendering alpine js (or similar) attributes will render fine in the frontend and builder",
+      "state": "Done"
+    },
+    "ETC-538": {
+      "id": "ETC-538",
+      "title": "Reload Javascript upstream on child mounts",
+      "description": "Currently when a child element mount the javascript upstream does not reload, which can cause annoying issue when parent JS tries to select a child element. This is fixed by reloading the page.\n\nTo not have to reload the builder every time, a reloading of upstream JS on child mounts, would fix the issue.\n\nAC:\n\n* Adding a child causes parent JS to reload\n* JS selecting a child will automatically be able to select the new child without havign to reload a page.",
+      "state": "Done"
+    },
+    "ETC-541": {
+      "id": "ETC-541",
+      "title": "Component groups cause error when adding classes to parent elements",
+      "description": "## [https://community.etchwp.com/c/general-discussion/components-disappearing-when-editing-class](<https://community.etchwp.com/c/general-discussion/components-disappearing-when-editing-class>)\n\n### Steps to reproduce\n\n1. Create component\n2. Add groups\n3. Add pops to groups\n4. Try adding a new class to a parent container\n\n---\n\n### Environment\n\nPlugin Version: 1.4.5\n\nTheme Version: 0.0.7\n\nWordPress Version: 6.9.4\n\nMachine: Mac\n\nBrowser: Chromium\n\n---\n\n### Magic Login\n\n---\n\n### Attachments\n\n[https://community.etchwp.com/c/general-discussion/components-disappearing-when-editing-class](<https://community.etchwp.com/c/general-discussion/components-disappearing-when-editing-class>)\n\n---\n\n### Reporter\n\nName: Denis Schischka\n\nEmail: [denis.schischka@icloud.com](<mailto:denis.schischka@icloud.com>)",
+      "state": "Done"
+    },
+    "ETC-540": {
+      "id": "ETC-540",
+      "title": "Setting to allow behaviour change for pasting.",
+      "description": "Currently when pasting styles and components will not be overwritten if there is a selector or component key conflict. To allow a path for this a simple way to do this would be to add a setting \"Overwrite styles and components on paste collision\".\n\nAC:\n\n* When toggled on if there is a style collision the style is overwritten with the data from the paste\n* When toggled on if there is a component key collision the component is overwritten with the data from the paste\n* When toggled off the existing style is preserved\n* When toggled off the existing component is preserved",
+      "state": "Done"
+    },
+    "ETC-539": {
+      "id": "ETC-539",
+      "title": "Component Instance props not properly copy pasted",
+      "description": "",
+      "state": "Done"
+    },
+    "ETC-534": {
+      "id": "ETC-534",
+      "title": "Partial class fix breaks pasting in HTML Editor",
+      "description": "[https://community.etchwp.com/c/general-discussion/class-parsing-gone-haywire](<https://community.etchwp.com/c/general-discussion/class-parsing-gone-haywire>)",
+      "state": "Done"
+    },
+    "ETC-532": {
+      "id": "ETC-532",
+      "title": "Add small small error hint on unbalanced brackets",
+      "description": "One of the most reoccuring issues (it feels like at least once a week), is people saving css with unbalanced curly brackets. It's actually very easy to add a codemirror extension that adds a small error.\nThis will highlight the issue and make it easier for users to notice and fix.\n\nThis ticket is an important personal concern for me since i'm tired of writing the same exact commetn once a week.\n\nAC:\nWhen writing CSS and adding and extra curly brace, or a missing curly brace. The user gets a short warning notifiying him of the issue.\n",
+      "state": "Done"
+    },
+    "ETC-515": {
+      "id": "ETC-515",
+      "title": "Editor load fires 30+ individual REST API requests, causing 15-20s load on InstaWP",
+      "description": "## Summary\n\nWhen the Etch editor loads (`?etch=magic&post_id=...`), it fires \\~30+ individual `GET /wp-json/etch-api/post/{id}` requests — one per post/template. On InstaWP, these requests queue up and the builder takes 15–20 seconds to become usable. The same sites load their frontend in under 100ms.\n\nA test website on this infrastructure is available for reproduction:\n\n* [https://eatch-test-prod.instawp.site](<https://eatch-test-prod.instawp.site>)\n* Username: `reyilatezi7185`\n* Password: `cbDZnvFlRXOQe9H7qEoA`\n\n## Acceptance Criteria\n\n- [ ] When the user opens up the etch builder it should only fetch the actually needed template/post data.\n- [ ] The user can still switch back and forth between posts as usual\n- [ ] All available templates and posts will still be listed in the Templates panel and the content hub",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:34.697Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 22,
+    "ticket_count": 8
+  }
+}

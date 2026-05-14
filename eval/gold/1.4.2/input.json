@@ -1,0 +1,142 @@
+{
+  "previous_version": "1.4.1",
+  "current_version": "1.4.2",
+  "commits": [
+    {
+      "hash": "15e57e6c11947c2be5279e4f6edd3f69eb833d4d",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-11T16:37:31+01:00",
+      "subject": "feat: Experimental redesigned component editor properties",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "17fdb4bb6a3ed5d6bd3d5b5a7f78ec6afc981888",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T20:56:42+01:00",
+      "subject": "feat: Add create-linear-ticket skill for structured ticket creation",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c12bfc20b49422c3f5f494089d9e7f32c1dd23b0",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T20:41:38+01:00",
+      "subject": "feat(ai-chat): Add reasoning_enabled flag and request outcome to wide events",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "aa7073535c5013586176d862551a233ad110f872",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T20:26:55+01:00",
+      "subject": "feat(ai-chat): Wire RAG tool call to middleware /retrieve endpoint (ETC-479)",
+      "body": "",
+      "ticketIds": [
+        "ETC-479"
+      ]
+    },
+    {
+      "hash": "e95863a156ee2951284c43eb322cc11e950ceaf9",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T19:49:16+01:00",
+      "subject": "refactor(ai-chat): Remove unused non-streaming AI response path (ETC-481)",
+      "body": "Remove provide_ai_response and its entire chain: REST route, AiService\nmethod, OpenAiResponseParser, interface method, fake provider method,\nfrontend API client method, and all associated tests. Only the streaming\npath (stream_ai_response) remains.",
+      "ticketIds": [
+        "ETC-481"
+      ]
+    },
+    {
+      "hash": "32ccef49b1e0e56fb3fc5a27b8849109e8cd2593",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T19:39:06+01:00",
+      "subject": "feat(ai-chat): Register RAG tool call with mocked results (ETC-478)",
+      "body": "When ENABLE_AI_RAG is on, the AI chat registers a rag_retrieve function\ntool that replaces web_search. The model can call it to retrieve docs,\nwhich currently returns hardcoded mocked results. A follow-up request\nsends the results back to OpenAI so the AI can reference them in its\nresponse. WideEventLogger observability tracks RAG/web_search state and\nqueries.",
+      "ticketIds": [
+        "ETC-478"
+      ]
+    },
+    {
+      "hash": "653bd5dfaa77079aec711eed8474915acd359627",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T17:55:13+01:00",
+      "subject": "feat(ai-rag): Call middleware /health from plugin (ETC-476)",
+      "body": "Add ENABLE_AI_RAG feature flag, REST proxy route for middleware\nhealth check, and frontend wiring that console.logs the result\non store init.",
+      "ticketIds": [
+        "ETC-476"
+      ]
+    },
+    {
+      "hash": "676c02abe4679b2327b5b5db358731c74e7a104d",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T11:41:05+01:00",
+      "subject": "chore(skills): \"Improve\" -> \"Improvement\" in release-announcement [hide] [skip ci]",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "87c3d10619202e1271c6da198eb3a9bbaca94937",
+      "author": "Andrea Maccone",
+      "date": "2026-03-10T11:36:49+01:00",
+      "subject": "feat: text prop redesign",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1892fd195731d3712a62b54bfd110a836893f4c8",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T11:32:06+01:00",
+      "subject": "chore: Remove WIP CI changes accidentally included in f5e78ae [hide] [skip ci]",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "96e664c9a224296a56c7b2d939b9511294d24097",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T11:24:35+01:00",
+      "subject": "chore(skills): Rename review skill to code-review [hide] [skip ci]",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f5e78aeba263f7807dc9a6e59198484a24292bbd",
+      "author": "Matteo Greco",
+      "date": "2026-03-10T11:22:44+01:00",
+      "subject": "feat(skills): Add release-announcement skill [hide] [skip ci]",
+      "body": "Fetches a GitHub release by version tag, consolidates and rewrites\nchangelog items for readability, categorizes them as New/Improve/Fix,\nand generates a short user-facing announcement summary.",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-479": {
+      "id": "ETC-479",
+      "title": "Plugin: wire tool call callback to middleware /retrieve",
+      "description": "## Acceptance Criteria\n\n* RagToolHandler contacts the middleware's `POST /retrieve` endpoint instead of using its own hardcoded mock data\n* Returns `WP_Error` on network failure, auth failure (401/403), rate limit (429), timeout, malformed response\n* Chat works identically to today when middleware is unreachable or times out\n* No user-visible error when RAG returns empty results — AI answers without extra context\n* Tested: successful call, network failure, timeout, malformed response",
+      "state": "Done"
+    },
+    "ETC-481": {
+      "id": "ETC-481",
+      "title": "Plugin: Remove unused non-streaming AI response path",
+      "description": "## Context\n\nThe non-streaming `provide_ai_response` method in `OpenAiProvider` is no longer called by the frontend — all AI chat uses `stream_ai_response`. The old path still has a route, callback, response parser, and tests.\n\n## Scope\n\n* Remove `provide_ai_response` from `OpenAiProvider` (and from `AiProviderInterface` if defined there)\n* Remove the corresponding REST API route and callback\n* Remove `OpenAiResponseParser` if it's only used by the non-streaming path\n* Remove associated tests\n* Verify no other code references the removed method/route\n\n## Acceptance Criteria\n\n* Non-streaming AI route no longer exists\n* Streaming AI chat continues to work as before\n* No dead code remains",
+      "state": "Done"
+    },
+    "ETC-478": {
+      "id": "ETC-478",
+      "title": "Plugin: register RAG tool call with mocked results",
+      "description": "## Acceptance Criteria\n\n* When `ENABLE_AI_RAG` is on, a RAG retrieval tool call is registered in the AI chat payload\n* The tool call callback returns hardcoded/mocked results (does not call the middleware yet)\n* AI receives the mocked results and can reference them in its response\n* When `ENABLE_AI_RAG` is off, chat works identically to today — from [ETC-458](https://linear.app/digital-gravy/issue/ETC-458/fall-back-to-web-search-when-rag-is-unavailable-or-returns-no-results)\n* Tested: tool call is present when flag is on, absent when off; callback returns expected shape",
+      "state": "Done"
+    },
+    "ETC-476": {
+      "id": "ETC-476",
+      "title": "Plugin: call middleware /health",
+      "description": "## Acceptance Criteria\n\n* Hide RAG feature behind `ENABLE_AI_RAG` feature flag (off by default)\n* Plugin calls `GET /health` on the middleware when the feature flag is on\n* Response is logged to the browser console\n* No user-visible UI change — this is a proof-of-wiring step",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:32.975Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 12,
+    "ticket_count": 4
+  }
+}

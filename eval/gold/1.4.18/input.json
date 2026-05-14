@@ -1,0 +1,220 @@
+{
+  "previous_version": "1.4.17",
+  "current_version": "1.4.18",
+  "commits": [
+    {
+      "hash": "6063b49ad891ec6b0d3ca28f11e3e5440370114a",
+      "author": "Matteo Greco",
+      "date": "2026-05-12T12:10:31+02:00",
+      "subject": "test: guard against invalid flag values in production flags.json",
+      "body": "JsonFile::get_flags() silently drops flags whose value is not 'on'/'off',\nwhich then makes flagIsOn() throw at runtime and breaks the UI that reads\nthe flag (recent ENABLE_AI_TOOL_CALLS_DISPLAY = \"yes\" incident). Catch\nthose at PR time with a guard assertion over every entry in flags.json.",
+      "ticketIds": []
+    },
+    {
+      "hash": "3a8f09344babb5d1695339657dc828bfcce039da",
+      "author": "Matteo Greco",
+      "date": "2026-05-12T11:58:18+02:00",
+      "subject": "chore: whoops, set the flag to `yes` instead of `on`",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "eae753e14acc20483b4ff1acbc04d51c6f526ba1",
+      "author": "Matteo Greco",
+      "date": "2026-05-12T11:53:42+02:00",
+      "subject": "chore: turn `ENABLE_AI_TOOL_CALLS_DISPLAY` flag `on`",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0d9c66d0d26ed8264de01fe13a0bae1923dd6d68",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-11T18:32:03+02:00",
+      "subject": "fix: fix tests to match the fixed cpt creation with rest_base regarding contenthub post types not being displayed correctly",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8c2431a195812146240ead5d296ccf7afdb4b157",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-11T17:50:12+02:00",
+      "subject": "fix(ai): createPostType tool did not set the rest_base as the cpt ID",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "549368c0390aef0aae406594dd0e7e3399d1a5cd",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-11T10:23:05+02:00",
+      "subject": "fix(ETC-771): Ensure image preview updates properly in MediaPicker",
+      "body": "",
+      "ticketIds": [
+        "ETC-771"
+      ]
+    },
+    {
+      "hash": "a1fadf145979b439c993f22d53ef5d22198af24f",
+      "author": "Jérémy Franck",
+      "date": "2026-05-11T08:13:50+02:00",
+      "subject": "fix(AI Chat): recover streaming finalized content from done events",
+      "body": "Handle middleware/OpenAI stream cases where the only usable content arrives in final `done` events instead of earlier\ndelta events.\n\n- forward finalized text when middleware skips text deltas\n- salvage finalized reasoning before the completion marker\n- avoid duplicate output when the same segment already streamed via delta\n- add regression coverage for fallback and duplicate-suppression cases",
+      "ticketIds": []
+    },
+    {
+      "hash": "91d246bc110a900520794813d05f8f21b3b44b74",
+      "author": "Jérémy Franck",
+      "date": "2026-05-10T10:53:46+02:00",
+      "subject": "refactor(AI Chat): unify auxiliary items for chronological rendering",
+      "body": "Replace assistant message `reasoning` and `toolCalls` buckets with a single ordered `auxiliaryItems` union so AI chat\nmetadata renders in chronological stream order instead of grouped by type.\n\n- store assistant reasoning/tool-call metadata in ordered `auxiliaryItems`\n- keep tool calls batched per `client_tool_calls` SSE event\n- preserve reasoning sentinel behavior for streamed reasoning boundaries\n- normalize legacy localStorage chat messages during deserialization\n- remove grouped rendering logic in `AiChatContent` and render one ordered loop\n- update store and UI tests to cover ordering, continuation streams, and migration\n- extract `#lastItemIsOpenReasoningSlot()` to simplify `finishReasoning()` and resolve the CodeScene complex conditional\n  warning",
+      "ticketIds": []
+    },
+    {
+      "hash": "46216532a9af3831d1a1ea4e70197c1b1f310b50",
+      "author": "Jérémy Franck",
+      "date": "2026-05-07T20:28:06+02:00",
+      "subject": "ETC-762: improve contract & coverage for 'find_media_library_items'",
+      "body": "- Satisfy Codescene\n- cover edge cases\n- differentiate between \"nothing found\" and \"offset too big\"\n- make tool implementation more defensive",
+      "ticketIds": [
+        "ETC-762"
+      ]
+    },
+    {
+      "hash": "8e04487ee5915665a8dd58b9c28f2ded7061c877",
+      "author": "Jérémy Franck",
+      "date": "2026-05-07T11:25:18+02:00",
+      "subject": "feat(AI chat): improve media library lookup tool contract + rename to `find_media_library_items`",
+      "body": "- rename `list_media_library_items` -> `find_media_library_items`\n- fetch only the media fields the tool needs to reduce response size\n- return pagination metadata needed for large libraries\n- make follow-up fetches reliable with `offset` + `next_offset`\n- add tests for tool contract, registration, and media query params",
+      "ticketIds": []
+    },
+    {
+      "hash": "f8b7666d49cdcc0e61f065d948554e21da40c83c",
+      "author": "Jérémy Franck",
+      "date": "2026-05-06T12:22:25+02:00",
+      "subject": "feat: basic way to grab the images from REST API",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c93ac0e616822ef2402240c7a3f6c0476356ee2c",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-07T16:53:04+02:00",
+      "subject": "improve(ai): tests, also add single point of truth testing for capabilities",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "ec072cd9c5c3a0685efc9b235c47ab346f58335e",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-07T15:35:27+02:00",
+      "subject": "feat(ai post content): AI can now create post content in gutenberg",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "ae011a20c1adaf4c0682dea361c170fc5089305b",
+      "author": "Andrea Maccone",
+      "date": "2026-05-06T17:10:26+02:00",
+      "subject": "fix(ETC-665): Component in slot does not display content preview",
+      "body": "",
+      "ticketIds": [
+        "ETC-665"
+      ]
+    },
+    {
+      "hash": "f00dd14ac338b32409a2e2da2fbb181a6bb1adc8",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-06T17:04:41+02:00",
+      "subject": "feat(ETC-756): add featured image support for create_posts tool",
+      "body": "",
+      "ticketIds": [
+        "ETC-756"
+      ]
+    },
+    {
+      "hash": "042775802c04891b6a119551d9e2c27695f7d655",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-06T17:03:25+02:00",
+      "subject": "feat(ETC-756): add create_posts_featured_image capability",
+      "body": "",
+      "ticketIds": [
+        "ETC-756"
+      ]
+    },
+    {
+      "hash": "8daa0d2afbb19334074dabae7051c4a692efc8a1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-06T17:02:41+02:00",
+      "subject": "feat(ETC-756): add supported_client_capabilities to extend tools capabilities",
+      "body": "",
+      "ticketIds": [
+        "ETC-756"
+      ]
+    },
+    {
+      "hash": "c1e4fe6e4fbdd0d67d438dc4201a0a9ab3b5490c",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-06T11:39:11+02:00",
+      "subject": "fix(ETC-755): Better align php dynamic data resolving with TS side",
+      "body": "",
+      "ticketIds": [
+        "ETC-755"
+      ]
+    },
+    {
+      "hash": "178eaab39f7d4b21743d0b87e6e1edbb628e870a",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-06T10:54:10+02:00",
+      "subject": "fix(ETC-755): respect null as an value to compare to in php modifiers",
+      "body": "",
+      "ticketIds": [
+        "ETC-755"
+      ]
+    },
+    {
+      "hash": "c900e0dd5f4a0b7fc3f9ca916031286b3378b015",
+      "author": "Jérémy Franck",
+      "date": "2026-05-06T00:07:43+02:00",
+      "subject": "feat(AI Chat): add `list_etch_loop_definitions` tool",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-771": {
+      "id": "ETC-771",
+      "title": "Image Preview not properly switching",
+      "description": "[https://community.etchwp.com/c/general-discussion/bug-dynamic-image-attribute-panel-not-clearing-preview-image-on-element-switch](<https://community.etchwp.com/c/general-discussion/bug-dynamic-image-attribute-panel-not-clearing-preview-image-on-element-switch>)",
+      "state": "Done"
+    },
+    "ETC-762": {
+      "id": "ETC-762",
+      "title": "AI is able to find media from the media library",
+      "description": "Create a basic tool that lets AI find media from the media library and return the info needed to be used in Etch.\n\nThe tool should return:\n\n* `id`\n* `title`\n* `source_url`\n* `mime_type`\n\n## Acceptance criteria\n\n- [X] When the media library is empty, or a valid search returns no matches, the tool returns an empty `items` array with `offset=0`, `returned_count=0`, `next_offset=0`, `total=0`, `total_pages=0`\n- [X] I can ask AI to find items from library, and it will be able to see them and get required fields for actual usage (include `id`, `url`, `title`, `mime_type`, and `media_type`, plus pagination metadata: `offset`, `limit`, `returned_count`, `next_offset`, `total`, `total_pages`). This works for one item, as well as multiple items.\n- [X] If I ask AI to query less than 1 item, or more than 100, it receives an error code (`INVALID_ARGS`) and a useful error message\n- [X] AI cannot query with a negative `offset`. If it did, it would receive an error code (`INVALID_ARGS`) and a useful error message\n- [X] When AI queries with an offset beyond the available media items (e.g. `offset=61` on a Media Library that only contains 60 items), the tool returns an empty `items` arrray and sets `total=null` and `total_pages=null` to signal an out-of-range pagination request\n- [X] When AI receives an item with a null or missing title, it renders as `\"\"` rather than failing\n- [X] AI cannot query with an empty (or whitespace-characetrs only) search string. If it did, it would receive an `INVALID_ARGS` error.\n- [X] AI can only query media type of `image` (for now). It it tried another media type, it would receive a `INVALID_ARGS` error.\n- [X] AI can combine `search` + `media_type` + `offset` and receive a correctly shaped paginated response\n\n## Technical details\n\n* `limit` has a minimum of 1 (otherwise it won't return anything) and a maximum of 100 (limitation from the WP REST API)\n* `offset=-1` has a minimum of 0 (it doesn't make sense to offset a negative number)\n* We will use `_fields=id,title,source_url,mime_type,media_type` in the WP REST API query to reduce response size\n* Pagination totals are read WP REST API Response headers",
+      "state": "Done"
+    },
+    "ETC-665": {
+      "id": "ETC-665",
+      "title": "Component in slot does not display content preview",
+      "description": "If you have a component nested in the slot of another component, the content preview seems to break.\n\n## This is with the preview feature toggled on - it just shows the prop data keys, not the actual values (default or otherwise).\n\n### Steps to reproduce\n\n1. Add an instance of a component with a slot\n2. Add another component instance in the slot from step 1\n3. Edit the component instance from step 2\n4. Notice the canvas content preview does not show content, it shows the raw keys e.g. {props.someText}\n\n---\n\n### Environment\n\nPlugin Version: 1.4.11\n\nTheme Version: 0.0.7\n\nWordPress Version: 6.9.3\n\nMachine: Mac\n\nBrowser: Chromium\n\n---\n\n### Magic Login\n\n---\n\n### Attachments\n\n[https://community.etchwp.com/c/general-discussion/bug-component-in-slot-does-not-display-content-preview](<https://community.etchwp.com/c/general-discussion/bug-component-in-slot-does-not-display-content-preview>)\n\n---\n\n### Reporter\n\nName: Dan Woolloff (Strange Tech)\n\nEmail: dev@strange.tech",
+      "state": "Done"
+    },
+    "ETC-756": {
+      "id": "ETC-756",
+      "title": "Add `supported_client_capabilities` negotiation for AI tool schemas",
+      "description": "**Summary**\nIntroduce a `supported_client_capabilities` array from plugin → middleware so the middleware can advertise tool definitions that match the client’s released capabilities (e.g., expanded `create_posts` schema), keeping trunk-based middleware deploys safe for older plugin versions.\n\nKeys in `supported_client_capabilities` are to be used as feature flags to construct the tools schemas for LLMs\n\n---\n\n\n**Given that** AI tools negotiation is enabled and the client can declare capabilities\n\n- [X] **When** the plugin sends a chat request without `supported_client_capabilities`, **then** middleware behavior remains backwards compatible with today’s tool definitions.\n- [X] **When** the plugin sends `supported_client_capabilities` as a list of strings, **then** the middleware accepts the request and uses the capabilities to shape tool definitions it advertises to the LLM.\n- [X] **When** the plugin sends `supported_client_capabilities` as an empty array, **then** the middleware treats it as “no capabilities” and uses the baseline tool definitions.\n- [X] **When** the plugin sends `supported_client_capabilities` with invalid entries (non-strings), **then** the middleware returns a coded negotiation error.\n- [X] **When** the plugin declares a capability that affects a tool schema (e.g., `create_posts` fields), **then** the LLM sees the tool definition that matches the declared capability.\n- [X] **When** the plugin does not declare a capability for a tool schema change, **then** the LLM sees the older/safer tool definition for that tool.\n- [X] **When** the plugin includes `supported_client_capabilities`, **then** it is forwarded through REST → provider → middleware payloads in both initial and continue requests.\n\n---\n\n## **Technical context**\n\n* Frontend `AiChat.svelte.ts` already adds `supported_client_tools` to initial/continue payloads when `ENABLE_AI_TOOLS_NEGOTIATION` is on. The new field should mirror this pattern.\n* REST route `AiRoutes.php` and provider `MiddlewareProvider.php` already sanitize and forward `supported_client_tools`; same plumbing is needed for `supported_client_capabilities`.\n* Middleware `schema.ts`, `service.ts`, `toolsNegotiation.ts`, and `toolsRegistry.ts` already implement tool negotiation. Capabilities should influence tool schema selection there.\n* Existing tests for tools negotiation exist across frontend, plugin, and middleware; the new field should follow the same testing patterns.",
+      "state": "Done"
+    },
+    "ETC-755": {
+      "id": "ETC-755",
+      "title": "Data comparison modifiers not working as expected",
+      "description": "[https://community.etchwp.com/c/general-discussion/data-comparison-modifiers-not-working-as-expected](<https://community.etchwp.com/c/general-discussion/data-comparison-modifiers-not-working-as-expected>)\n\nEtch Version: 1.14.17",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:31.947Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 20,
+    "ticket_count": 5
+  }
+}

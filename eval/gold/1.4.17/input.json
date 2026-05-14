@@ -1,0 +1,210 @@
+{
+  "previous_version": "1.4.16",
+  "current_version": "1.4.17",
+  "commits": [
+    {
+      "hash": "93c838da3643779f91abf4fd28a724dd53e3c583",
+      "author": "Jérémy Franck",
+      "date": "2026-05-05T18:11:52+02:00",
+      "subject": "feat(AI Tools): Turn AI tools negotiation on",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e2191feea95f74dc39ddceed1e2b8863e9bbffa0",
+      "author": "Jérémy Franck",
+      "date": "2026-05-05T18:07:37+02:00",
+      "subject": "improve(Ai Chat): styles for the code actions buttons",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "855a4f80b79cf47bce36b66c5c74d47f05821953",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-05T11:59:45+02:00",
+      "subject": "fix(tools): fix list post type tools returns post types by rest_base slug instead of slug name",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e553d6cd95afeea447c4ca9a589216ad990f5ca4",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-04T17:16:59+02:00",
+      "subject": "feat(ETC-726): display toast when LLM tries to call an undeclared tool",
+      "body": "",
+      "ticketIds": [
+        "ETC-726"
+      ]
+    },
+    {
+      "hash": "cd2ab6f952ccc08011853e96ea7c35df752df9c3",
+      "author": "Andrea Maccone",
+      "date": "2026-05-04T15:43:45+02:00",
+      "subject": "hide(ui): fix missing ellipsis for long class badge text",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "b592ed4e017b56d0071ad4286a1fde0cfcca9dc1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-05-04T14:49:57+02:00",
+      "subject": "feat(ETC-726): return llm tool call output if cant run tool, continue loop",
+      "body": "",
+      "ticketIds": [
+        "ETC-726"
+      ]
+    },
+    {
+      "hash": "956708a806cffa356d458b1014673f4573e7cfdf",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-04T14:43:10+02:00",
+      "subject": "fix(ETC-747): Ensure @property tracking rules are not output in nested rules",
+      "body": "",
+      "ticketIds": [
+        "ETC-747"
+      ]
+    },
+    {
+      "hash": "1fb21dad26927a8ab031b83583b0a4623c792bb9",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-04T13:19:14+02:00",
+      "subject": "fix(ETC-745): Update bits-ui to latest and fix dialog issue introduced by the update",
+      "body": "",
+      "ticketIds": [
+        "ETC-745"
+      ]
+    },
+    {
+      "hash": "cae41b95fa88b185fcecd86394eda526dae6277d",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-04T11:39:12+02:00",
+      "subject": "fix(ETC-751): Make sure strip colors actually works for plain svgs",
+      "body": "",
+      "ticketIds": [
+        "ETC-751"
+      ]
+    },
+    {
+      "hash": "255a9c475b2e201f434e2c1891249190844ee6b3",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-04T11:17:19+02:00",
+      "subject": "fix(ETC-750): Fix media picker not working for dynamic svgs",
+      "body": "",
+      "ticketIds": [
+        "ETC-750"
+      ]
+    },
+    {
+      "hash": "694aac22067e3025c4c45e867f788ea7d394a5b1",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-04T09:50:59+02:00",
+      "subject": "fix(ETC-745): Update bit-ui (fixes select issue)",
+      "body": "",
+      "ticketIds": [
+        "ETC-745"
+      ]
+    },
+    {
+      "hash": "2a3707637e171fda33854292e83a77820f00536a",
+      "author": "Reinhard Sanz",
+      "date": "2026-05-04T09:33:56+02:00",
+      "subject": "fix(ETC-746): Properly clean up condition prop flag in GutenBerg",
+      "body": "",
+      "ticketIds": [
+        "ETC-746"
+      ]
+    },
+    {
+      "hash": "7738bade72e94cb990840ae9e4f02f095e9fdd7c",
+      "author": "Jérémy Franck",
+      "date": "2026-05-02T19:37:53+02:00",
+      "subject": "feat(AI Chat): add tool call visibility setting",
+      "body": "- add the setting to the shared schema and PHP settings service\n- show a dedicated toggle (when AI is enabled and the feature flag allows it)\n- render tool calls only when both the flag and user setting are on\n- add focused frontend and PHP test coverage",
+      "ticketIds": []
+    },
+    {
+      "hash": "6c7ecb8ebac14391cab154e2bf517d3075ee1361",
+      "author": "Jérémy Franck",
+      "date": "2026-05-01T18:21:38+02:00",
+      "subject": "feat(AI Chat): display AI tool calls in AI chat",
+      "body": "Surface the AI's tool calls in the chat panel as collapsible\ncards with tool name and raw output (matching the handling of reasoning blocks).\nGated behind ENABLE_AI_TOOL_CALLS_DISPLAY (off).\n\nAlso refactors AiChatContent tests to extract shared setup helpers to please CodeScene.",
+      "ticketIds": []
+    },
+    {
+      "hash": "7bf7e96ccd4661457f49bd6b9c810d846f17282f",
+      "author": "Matteo Greco",
+      "date": "2026-05-03T21:28:19+02:00",
+      "subject": "Revert \"chore: add chief-of-staff folder to workspace + name existing folders\"",
+      "body": "This reverts commit 390c19da24c9eee472cc5a122bc24a6a38c5b95c.",
+      "ticketIds": []
+    },
+    {
+      "hash": "390c19da24c9eee472cc5a122bc24a6a38c5b95c",
+      "author": "Matteo Greco",
+      "date": "2026-05-03T21:25:32+02:00",
+      "subject": "chore: add chief-of-staff folder to workspace + name existing folders",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c787d6e074ba78c964d052b31e055e0210705a20",
+      "author": "Pedro Bartulihe",
+      "date": "2026-05-01T09:13:19-03:00",
+      "subject": "feat(ETC-724): allow any valid post_type in create_etch_loop tool",
+      "body": "",
+      "ticketIds": [
+        "ETC-724"
+      ]
+    }
+  ],
+  "tickets": {
+    "ETC-726": {
+      "id": "ETC-726",
+      "title": "Negotiate supported client tools between plugin and middleware",
+      "description": "Currently, the middleware advertises a fixed list of client tools to OpenAI regardless of which tools the plugin version in the user's browser actually supports. \n\nWhen OpenAI calls an unsupported tool, it silently fails and the AI features in Etch appear **broken**.\n\nThis change adds capability negotiation: the plugin sends its supported tool names with every initial request, and the middleware only exposes the intersection to OpenAI. Old plugin versions that don't send the field fall back to a known-safe default set.\n\n**Acceptance Criteria**\n\n- [X] If I'm using an old version of the plugin (1.4.15 — meaning, `supported_client_tools` is not declared), the AI provider receives a hardcoded “classic tools” set: `rag_retrieve`, `docsWebSearch`, `list_post_types`, `create_etch_loop`.\n- [X] When I send a message to AI, only client tools the plugin declares support for (in `supported_client_tools`) are offered to the AI provider\n  - [X] Tools only present on the plugin side are dropped in the negotiation\n  - [X] Tools only present on the server side are dropped in the negotiation\n- [X] When the plugin declares an empty set of supported tools (`supported_client_tools = []`), the middleware doesn't accept it and returns an error to the plugin.\n  (error code: `EMPTY_SUPPORTED_TOOLS`)\n- [X] If the plugin sends a malformed `supported_client_tools`, the middleware doesn't accept it and returns an error to the plugin.\n  (error code: `MALFORMED_SUPPORTED_TOOLS`)\n- [X] If the plugin sends only unsupported tools (`available_tools = []` after intersection):\n  * The middleware blocks the request and returns an error to the plugin \n    (error code `NO_TOOLS_INTERSECTION`)\n- [X] If the provider sends a call for a non-declared tool:\n  - [X] The middleware blocks the request and returns an error back to the provider, indicating the tool is not supported by this client.\n  - [X] The plugin blocks the tool call on the way back, and creates an error \n    (error code `UNDECLARED_TOOL_CALLED`)\n  - [X] We display an error toast to the user:\n    “There was an issue with this request (UNDECLARED_TOOL_CALLED). Please contact support.”\n  - [X] The plugin logs the failure to the Etch activity log\n- [ ] ~~Other requests in the same “user turn” (~~`~~continue~~`~~ requests) are unaffected~~\n\n**Implementation notes**\n\n* When a new tool handler is introduced on the plugin side, it is automatically included in the negotiation — no other manual change required.\n\n5 touch points across both repos according to Claude (this could be outdated, keeping it in case it's still partly useful):\n\n1. `aiClientTools.ts` (etch) — export the handler key list (already `Object.keys(handlers)`, just needs exporting)\n2. `AiChat.svelte.ts` (etch) — add `supported_client_tools` to the initial request payload; omit on `continue`\n3. `AiRoutes.php` (etch) — verify `supported_client_tools` is not stripped by body sanitization\n4. `schema.ts` (etch-middleware) — add `supported_client_tools?: string[]` as optional to `InitialRequestSchema`\n5. `service.ts` (etch-middleware) — filter client tools against `supported_client_tools` when present; absent → default set; empty → no client tools; server tools always pass through",
+      "state": "Done"
+    },
+    "ETC-747": {
+      "id": "ETC-747",
+      "title": "Thousands of Page Errors and maybe relatet 404",
+      "description": "The backstory of this is a problem I had with a new hosting provider.\n\nAfter working on an etch site, I was blocked by the firewall. They told me it was because the 404 page was hit too often.\n\nI then suspected it was because of something going on in the system and I checked the console. There I see thousands of quickly accumulating \"page errors\". It says : \"an @property rule was ignored\". When I managed to click on the link in the error (always different line references), it told me \"Content unavailable. Resource was not cached\".\n\n[https://share.netzmaedchen.de/4guqWKjB](<https://share.netzmaedchen.de/4guqWKjB>)\n\nI don't know if those are the cause of the blocking, but still, it might be worth a look to get rid of the errors piling up. I have this on ALL my etch installs, also deactivated all other plugins. Still happening.\n\n## Thanks for looking into this. \nRegards\nAnja\n\n### Steps to reproduce\n\nOpen Etch, go into Console and check (see screenshot)\n\n---\n\n### Environment\n\nPlugin Version:  1.4.16\n\nTheme Version: 0.0.7\n\nWordPress Version: 6.9.4\n\nMachine: Mac\n\nBrowser: Chromium\n\n---\n\n### Magic Login\n\n[https://etchplaya.instawp.co/wp-admin/?wtlwp_token=57655094233ed0cfc94dbde870016af30bbd7f9cbabcc7e49b65b91aa5cbf3621a18c070e289d56a17060acca44658bab5ef2cb7527e61851ebce89c66e81f7b](<https://etchplaya.instawp.co/wp-admin/?wtlwp_token=57655094233ed0cfc94dbde870016af30bbd7f9cbabcc7e49b65b91aa5cbf3621a18c070e289d56a17060acca44658bab5ef2cb7527e61851ebce89c66e81f7b>)\n\n---\n\n### Attachments\n\n---\n\n### Reporter\n\nName: Anja Kretzer\n\nEmail: [info@netzmaedchen.de](<mailto:info@netzmaedchen.de>)",
+      "state": "Done"
+    },
+    "ETC-745": {
+      "id": "ETC-745",
+      "title": "Properties panel \"select\" type gets buried",
+      "description": "Sometimes when engaging with the property to select a different option, the drop-down items get buried outside of the viewable area.\n\nThe video describes it best:\n\n## [https://jam.dev/c/e40010b9-b99b-40b1-baa5-44a6a2fcb44b](<https://jam.dev/c/e40010b9-b99b-40b1-baa5-44a6a2fcb44b>)\n\n### Steps to reproduce\n\nClick on a component that has a select type property, that is also positioned near the bottom of the viewable screen.\n\nThen engage with some other properties, come back to it, and you'll see that it gets buried.\n\n---\n\n### Environment\n\nPlugin Version: 1.4.16\n\nTheme Version: 0.0.7\n\nWordPress Version: 6.9.4\n\nMachine: PC\n\nBrowser: Chromium\n\n---\n\n### Magic Login\n\n---\n\n### Attachments\n\n[https://jam.dev/c/e40010b9-b99b-40b1-baa5-44a6a2fcb44b](<https://jam.dev/c/e40010b9-b99b-40b1-baa5-44a6a2fcb44b>)\n\n---\n\n### Reporter\n\nName: Mike Brinson\n\nEmail: [michael@brinformation.com](<mailto:michael@brinformation.com>)",
+      "state": "Done"
+    },
+    "ETC-751": {
+      "id": "ETC-751",
+      "title": "Strip colors is a no-op for plain SVGs",
+      "description": "Oddly enough this has been the case for 6 months and no one ever noticed",
+      "state": "Done"
+    },
+    "ETC-750": {
+      "id": "ETC-750",
+      "title": "SVG picker not working for etch:svg",
+      "description": "",
+      "state": "Done"
+    },
+    "ETC-746": {
+      "id": "ETC-746",
+      "title": "ENABLE_CONDITION_PROP Error",
+      "description": "## When building a component in Etch, adding a condition prop now throws an error in Gutenberg, removing the ability to manage the component. It started in 1.4.16.\n\n### Steps to reproduce\n\nCreate a component with a condition prop. Edit in Gutenberg and click on the component, and the block will present an error \"This block has encountered an error and cannot be previewed.\" Viewing the console, there is an error\n\nreact-dom.min.js?ver=18.3.1.1:121 FeatureFlagError: Feature flag \"ENABLE_CONDITION_PROP\" is not defined\n    at Fc (index.js?ver=3381f81…56e735a2ac:1:261872)\n    at Ud.property (index.js?ver=3381f81…56e735a2ac:1:295046)\n    at index.js?ver=3381f81…56e735a2ac:1:300164\n    at Vd (index.js?ver=3381f81…56e735a2ac:1:300188)\n    at mf (react-dom.min.js?ver=18.3.1.1:105:412)\n    at Qk (react-dom.min.js?ver=18.3.1.1:250:214)\n    at Ri (react-dom.min.js?ver=18.3.1.1:195:185)\n    at Ok (react-dom.min.js?ver=18.3.1.1:195:116)\n    at Nd (react-dom.min.js?ver=18.3.1.1:194:492)\n    at Qf (react-dom.min.js?ver=18.3.1.1:187:439)\n\n---\n\n### Environment\n\nPlugin Version: 1.4.16\n\nTheme Version: .007\n\nWordPress Version: WP 7RC2\n\nMachine: Mac\n\nBrowser: Chromium\n\n---\n\n### Magic Login\n\n---\n\n### Attachments\n\n---\n\n### Reporter\n\nName: Stephen M Walker\n\nEmail: [iam@stphnwlkr.co](<mailto:iam@stphnwlkr.co>)",
+      "state": "Done"
+    },
+    "ETC-724": {
+      "id": "ETC-724",
+      "title": "Allow `create_etch_loop` to create loops for any post type",
+      "description": "Currently, the `create_etch_loop` tool hardcodes `post_type` to `\"post\"` (`createEtchLoop.ts:13`), preventing the AI from creating loop definitions that query custom post types. \n\nThis change loosens the schema to accept any post type slug, aligned with the same explicitness model applied to `create_posts` in [ETC-723](https://linear.app/digital-gravy/issue/ETC-723/allow-create-posts-to-create-posts-of-any-post-type).\n\n**Acceptance Criteria**\n\n- [ ] When the AI is in Ask mode, it is not aware of the tool and cannot call it (no regression).\n- [ ] When `create_etch_loop` is called without a `post_type`, it returns an `INVALID_ARGS` error with a specific, explicit error message to the AI model (so it can self-correct).\n- [ ] When `create_etch_loop` is called with a `post_type` value of any string (e.g. `page`, `project`), the loop definition is created with that post type.\n\n**Implementation notes**\n\n1. **Schema** (`createEtchLoop.ts:13`) — change `post_type: z.literal('post')` to `post_type: z.string()`\n2. **Tests** (`createEtchLoop.test.ts:52`) — `'does not create loop for wp-query with unsupported post type'` needs to be inverted: `post_type: 'service'` should now succeed, not fail; repurpose as a success case\n3. The MANDATORY `list_post_types` prerequisite is already in the tool description — no change needed there",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:31.435Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 17,
+    "ticket_count": 7
+  }
+}

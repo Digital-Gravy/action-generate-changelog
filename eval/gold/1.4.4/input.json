@@ -1,0 +1,150 @@
+{
+  "previous_version": "1.4.3",
+  "current_version": "1.4.4",
+  "commits": [
+    {
+      "hash": "1f682584bad54517bc83bcf1eeb8809f773a2b16",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-18T10:11:01+01:00",
+      "subject": "chore(ETC-520): Remove unused legacy react logic",
+      "body": "",
+      "ticketIds": [
+        "ETC-520"
+      ]
+    },
+    {
+      "hash": "c1e7b851cd3ac01aeaac53b795eb544918b0ddd5",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-18T10:00:43+01:00",
+      "subject": "chore(ETC-519): Remove custom block conversion logic (#264)",
+      "body": "",
+      "ticketIds": [
+        "ETC-519"
+      ]
+    },
+    {
+      "hash": "4e718b9a621a78e8d0a088e713064c9fd5a46b27",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-17T18:45:01+01:00",
+      "subject": "feat: handle insert html event for the button and toast service for failures",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8fcfa68eaddceb0de1299999d86a6d1ab75cd24e",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-17T18:42:57+01:00",
+      "subject": "feat: insert into builder blocks parsed from ai code",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "a85105b3435859d036d5d5e30283bc29ad72a50d",
+      "author": "Matteo Greco",
+      "date": "2026-03-17T17:55:49+01:00",
+      "subject": "chore: add etch-middleware to VSCode's workspace [hide] [skip ci]",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e043cabec550448c44118ac6e46b1dcb1efd7d49",
+      "author": "Matteo Greco",
+      "date": "2026-03-17T17:54:39+01:00",
+      "subject": "refactor(ETC-458): improve separation of concerns in RAG fallback logic",
+      "body": "- Change execute_rag_call to return array|WP_Error instead of mixed\n  {results, available} array, using the standard is_wp_error() pattern\n- Add build_follow_up() to OpenAiPayloadBuilder to centralize follow-up\n  payload construction (was hand-assembled inline in OpenAiProvider)\n- Extract execute_rag_calls() loop from handle_function_calls, making it\n  a thin orchestrator\n\nResolves CodeScene \"Global Conditionals\" warning by distributing\ncyclomatic complexity across smaller, focused methods.",
+      "ticketIds": [
+        "ETC-458"
+      ]
+    },
+    {
+      "hash": "39b59e1474fc52964aa45f44f49e9089e101096b",
+      "author": "pedro-bartulihe",
+      "date": "2026-03-17T13:16:11-03:00",
+      "subject": "feat: add web search as fallback when RAG is unavailable (#263)",
+      "body": "Co-authored-by: Pedro Bartulihe <pedro.bartulihe@gmail.com>\nCo-authored-by: Matteo Greco <matteo@matteogreco.net>",
+      "ticketIds": []
+    },
+    {
+      "hash": "96257b712215f8ead6122e7288b98d228ce5af77",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-17T15:32:09+01:00",
+      "subject": "fix: Also allow every media type to be picked in media prop in GB",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6839c28f5100f3f1c0946974de77a4440e64c761",
+      "author": "Christoph Sanz",
+      "date": "2026-03-17T14:36:22+01:00",
+      "subject": "fix: always render alt attribute on dynamic images (#261)",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "a5aa11884e058941422e00c2f8fff1c26babc57a",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-17T12:12:51+01:00",
+      "subject": "feat(ETC-507): Add property data attributes to GB and missing places in Etch",
+      "body": "",
+      "ticketIds": [
+        "ETC-507"
+      ]
+    },
+    {
+      "hash": "09039ffb1a97a07df7da809ddeee414505cd3872",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-17T12:49:10+01:00",
+      "subject": "feat: Insert button on Ai Chat when codeblock is html",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "cb035f2317de75b7d8d34aece3cef8e8be002613",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-17T11:37:23+01:00",
+      "subject": "fix: Fix settings reverting if clicked outside the dialog",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "10c11c556b77a5a2be86abae4c59a27de40ec0de",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-17T09:56:06+01:00",
+      "subject": "improve: Remove var wrapping from plain inputs since it's not needed anymore",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-520": {
+      "id": "ETC-520",
+      "title": "Remove legacy GB handling",
+      "description": "",
+      "state": "Done"
+    },
+    "ETC-519": {
+      "id": "ETC-519",
+      "title": "Remove custom block conversion logic",
+      "description": "- [ ] Remove legacy custom block migration logic  (pre-beta artifact)\n- [ ] Remove legacy custom block conversion from and to gutenberg",
+      "state": "Done"
+    },
+    "ETC-458": {
+      "id": "ETC-458",
+      "title": "Plugin: fall back to web search when RAG fails",
+      "description": "## Acceptance Criteria\n\n- [X] Web search is not available to the AI when RAG returns results\n- [X] Web search is available to the AI when `ENABLE_AI_RAG` is off\n- [ ] Web search is not available when RAG returns valid response but no results\n- [ ] Web search is available to the AI when RAG is unavailable",
+      "state": "Done"
+    },
+    "ETC-507": {
+      "id": "ETC-507",
+      "title": "Add property data wrappers to gutenberg and etch.",
+      "description": "Add propert data attributes to let 3rd party devs identify certain property inputs.\n\nContext:\n[https://community.etchwp.com/c/developers-discussions/component-prop-meta-data-in-gutenberg-inspector-panel#comment_wrapper_98379826](<https://community.etchwp.com/c/developers-discussions/component-prop-meta-data-in-gutenberg-inspector-panel#comment_wrapper_98379826>)",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:33.574Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 13,
+    "ticket_count": 4
+  }
+}

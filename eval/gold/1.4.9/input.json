@@ -1,0 +1,176 @@
+{
+  "previous_version": "1.4.8",
+  "current_version": "1.4.9",
+  "commits": [
+    {
+      "hash": "f1f389c2560c3b18dd3596cd68005344aa71a8b1",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-07T12:10:23-03:00",
+      "subject": "fix(ai): show the user message in the chat instead of the block context",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6263e04ff417f29dedd1ee56359950789552a007",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-07T11:46:02-03:00",
+      "subject": "feat(ai): add support to pass block as context in the payload",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "db0109b42999d9b72287c08597d3de8c9ea2a72a",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-07T11:42:41+02:00",
+      "subject": "feat(ETC-602): Replace modifiers (#279)",
+      "body": "Very helpful frequently requested replace modifiers.",
+      "ticketIds": [
+        "ETC-602"
+      ]
+    },
+    {
+      "hash": "08290caeede1476f18fcf511f2c3fa8dc08b027b",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-07T10:07:18+02:00",
+      "subject": "hide(ETC-603): some tests for getScrollableElement in EtchComponentBlock",
+      "body": "",
+      "ticketIds": [
+        "ETC-603"
+      ]
+    },
+    {
+      "hash": "ae85e652a2cd5ea2033f54a377664b6d774a49d4",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-07T09:51:05+02:00",
+      "subject": "fix(ETC-603): Ensure typing into HTML does not trigger scroll to incorrect component",
+      "body": "",
+      "ticketIds": [
+        "ETC-603"
+      ]
+    },
+    {
+      "hash": "00f45ec3bcae37c29b6fd8f1ee0283858bccb4da",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-06T15:13:29-03:00",
+      "subject": "fix(jetengine): allow the use of custom storage for cpt",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "3c91397b73951074e3b8f1ba05c56db91bb5cae4",
+      "author": "Kevin Geary",
+      "date": "2026-04-04T13:15:55-04:00",
+      "subject": "slight adjustment to reset for body height",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "af03d9fcfcaddb28ca30aed9470e34808fb24c30",
+      "author": "Matteo Greco",
+      "date": "2026-04-03T23:52:53+02:00",
+      "subject": "test(ai-chat): copy button label resets after 1.2 seconds",
+      "body": "Closes the test gap from replacing AiChatContent — this behavior\nwas previously tested at the integration level but the test was\nremoved during the component swap. Now tested at the\nAiChatCodeSegment level where the logic lives.",
+      "ticketIds": []
+    },
+    {
+      "hash": "ceee6a8a97fef50df237183a6ab484aff8f65291",
+      "author": "Matteo Greco",
+      "date": "2026-04-03T23:47:51+02:00",
+      "subject": "chore(ai-chat): remove dead renderAiChatMarkdown and getCodeFromClosestCodeBlock",
+      "body": "Both were only used by the old AiChatContent.svelte. Their behaviors\nare covered by aiChatSegments.test.ts, aiChatSanitize.test.ts, and\nAiChatCodeSegment.test.ts in the new architecture.",
+      "ticketIds": []
+    },
+    {
+      "hash": "6f06f87d57d6512fde2825c8eebc4c9f6cca9733",
+      "author": "Matteo Greco",
+      "date": "2026-04-03T23:45:26+02:00",
+      "subject": "refactor(ai-chat): replace AiChatContent with refactored version",
+      "body": "Remove old AiChatContent.svelte and rename AiChatContentNew.svelte\nin its place. Remove AI_CHAT_CONTENT_REFACTOR feature flag and\nconditional in ScreenElements. Remove 3 tests now covered at the\nAiChatCodeSegment level.\n\nCloses ETC-590",
+      "ticketIds": [
+        "ETC-590"
+      ]
+    },
+    {
+      "hash": "193e2c87a92e33f6f4b2d593faa1fa5eb35f3fba",
+      "author": "Kevin Geary",
+      "date": "2026-04-03T15:34:41-04:00",
+      "subject": "add scrollbar gutter stable to reset",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "de8fa32eba419bdfdcc128b64e64c12387c1d3e2",
+      "author": "Andrea Maccone",
+      "date": "2026-04-03T11:57:16+02:00",
+      "subject": "feat(ETC-580): bool prop input redesign",
+      "body": "",
+      "ticketIds": [
+        "ETC-580"
+      ]
+    },
+    {
+      "hash": "124d4b218d50035c93657d9628596f02e2152fe9",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-03T11:37:45+02:00",
+      "subject": "feat(ETC-581): basic select input redesign",
+      "body": "",
+      "ticketIds": [
+        "ETC-581"
+      ]
+    },
+    {
+      "hash": "417054b9bba4e1eb6e77a07ab1516985720cdc95",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-02T16:41:31+02:00",
+      "subject": "feat(ETC-586): Start with repeater instance input rededsign (still WIP)",
+      "body": "",
+      "ticketIds": [
+        "ETC-586"
+      ]
+    }
+  ],
+  "tickets": {
+    "ETC-602": {
+      "id": "ETC-602",
+      "title": ".replace() modifier",
+      "description": "Very simple, very powerful modifiert that would help alot. (Has been requested by a handful of users and just makes sense)\n\n* User can use the .replace() modifier on dynamic data of type string\n* User can define a substring that shall be replaced with another substring e.g. .replace(\"foo\", \"bar\")\n* The replaced string gets rendered correctly in the builder, frontend and gutenberg\n\nConsideration: \".replace\" and \".replaceAll\" ?",
+      "state": "Done"
+    },
+    "ETC-603": {
+      "id": "ETC-603",
+      "title": "Scroll Into View Behaviour of Components",
+      "description": "We currently have some buggy behaviour for scrolling components into view. Especailly causing issues when using the HTML panel. \n\n",
+      "state": "Done"
+    },
+    "ETC-590": {
+      "id": "ETC-590",
+      "title": "Replace AiChatContent.svelte with ...New.svelte",
+      "description": "the current stack around\nAiChatContent.svelte and aiChatMarkdown.ts was refactored\n\n\nnew files:\n\n* aiChatSanitize.ts: ( just the xss stuff )\n* aiChatSegments.ts: ( +/- the functionality from aiChatMarkdown ) it parses the tokens, based on the token info creates segments either for chat or for code\n* AiChatContentNew.svelte:  the same as current one with the refactored components instead of aiChatMarkdown.ts\n* AiChatCodeSegment.svelte: the component that renders the codeblocks + the buttons\n* AiChatSegmentsRenderer.svelte: the component that renders either chat or code based on the segments information\n\nExtras:\n\n* ScreenElements.svelte.ts: holds the default AiChatContent or the new AiChatContentNew.svelte by a feature flag `AI_CHAT_CONTENT_REFACTOR` TO discard.\n\nThe feature flag and the AiChatContentNew.svelte were used because i wanted feedback from Reinhard, and because of the need to put the code in main without affect a release",
+      "state": "Done"
+    },
+    "ETC-580": {
+      "id": "ETC-580",
+      "title": "Add Boolean Property Instance Input",
+      "description": "The design shall follow the new design in figma\n\nThe user sees a boolean toggle\n\nThe user can  switch the toggle and it will propagate to the canvas",
+      "state": "Done"
+    },
+    "ETC-581": {
+      "id": "ETC-581",
+      "title": "Add Select Property Instance Input",
+      "description": "The design shall follow the new design in figma\n\nThe user sees a select field\n\nThe options in the select field mirror the options defined in the editor\n\nSelecting an option propagates it to the canvas ",
+      "state": "Done"
+    },
+    "ETC-586": {
+      "id": "ETC-586",
+      "title": "Add Repeater Property Instance Input",
+      "description": "The design shall follow the new design form Figma\n\nThe user can see a collapsible group with the repeater name\n\nThe user can collapse the group to hide it\n\nThe user can add items to the repeater\n\nThe user can delete items in the repeater\n\nFor every item the nested properties are rendered according to their type",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:36.411Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 14,
+    "ticket_count": 6
+  }
+}

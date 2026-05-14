@@ -1,0 +1,45 @@
+{
+  "previous_version": "1.4.0",
+  "current_version": "1.4.1",
+  "commits": [
+    {
+      "hash": "343006cf94c817e950253ab577d564bcfe6c0cf5",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-10T08:53:52+01:00",
+      "subject": "improve: Allow all media types in media prop pickers",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "48e46fdfb99bd335ba09112a4d32adf91db73be5",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-09T14:08:14+01:00",
+      "subject": "feat: Get selected block hook on the etchControls window object",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f70bb0fae7617a495508cee6e49d2b31f81c3b11",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-09T09:38:27+01:00",
+      "subject": "fix: Fix unknown block type in templates",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1000883a0d435d0b4eef6215d3f203279ae27d44",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-09T09:24:14+01:00",
+      "subject": "feat: Basic drag and drop for group props",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {},
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:21.203Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 4,
+    "ticket_count": 0
+  }
+}

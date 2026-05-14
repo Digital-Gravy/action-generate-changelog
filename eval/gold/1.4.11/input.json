@@ -1,0 +1,160 @@
+{
+  "previous_version": "1.4.10",
+  "current_version": "1.4.11",
+  "commits": [
+    {
+      "hash": "a100bf160c00fcb5690b5d5d1173a6df0b451034",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-13T09:45:02+02:00",
+      "subject": "chore(ETC-622): Make html getting and filtering more robust",
+      "body": "",
+      "ticketIds": [
+        "ETC-622"
+      ]
+    },
+    {
+      "hash": "753c54e009aded62630d0b455ca01fb34a643e37",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-13T09:10:32+02:00",
+      "subject": "fix(ETC-622): Fix regression in HTML Editor rendering",
+      "body": "",
+      "ticketIds": [
+        "ETC-622"
+      ]
+    },
+    {
+      "hash": "537a3dc18236d42030c0593af402cf6b3b4b3a21",
+      "author": "Jérémy Franck",
+      "date": "2026-04-11T21:30:26+02:00",
+      "subject": "improve(Structure panel): improve styles for JS indicator in styling panel",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d7b4a333aa2026e5fc98a2ea0100b110d404818b",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-10T15:56:29-03:00",
+      "subject": "fix(ai): keep the same reasoning effort in all chain behind ENABLE_AI_KEEP_REASONING_EFFORT flag",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "b0fb8691b3e1ad01ae7e83474f9231fe405ff6f1",
+      "author": "Jérémy Franck",
+      "date": "2026-04-10T19:04:30+02:00",
+      "subject": "  test(builder): fix type flagIsOn mock in settings test",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "30ee1534f515077339db5cb823502e7b77702dce",
+      "author": "Jérémy Franck",
+      "date": "2026-04-10T18:50:44+02:00",
+      "subject": "refactor(Builder): centralize AI Assistant availability checks",
+      "body": "Add a shared `canUseAiAssistant()` helper to the Builder settings store and use it anywhere the UI needs to decide whether AI Assistant features should be\navailable.\n\nThis replaces repeated availability checks in the selected element overlay, structure context menu, AI chat screen element, and AI settings panel with one\nshared predicate. The goal is to keep all AI entry points aligned with the same definition of availability.\n\nTesting strategy:\n- add focused unit coverage for `canUseAiAssistant()` in `Settings.svelte.test.ts`\n- keep consumer tests focused on consumer behavior by mocking `canUseAiAssistant()` directly in:\n  - `SelectedBlockOverlay.test.ts`\n  - `structureUtils.test.ts`\n\nThe goal is to keep the helper logic verified in one place while avoiding repeating settings/feature-flag wiring details in every downstream test.\nConsumer tests now assert only what those components care about: whether AI controls are shown or hidden based on the helper result.",
+      "ticketIds": []
+    },
+    {
+      "hash": "d50c99b1f768e7a08306e3853c5bf396d4f6d1eb",
+      "author": "Jérémy Franck",
+      "date": "2026-04-10T16:54:52+02:00",
+      "subject": "fix(Builder): hide AI context controls when AI Assistant is disabled",
+      "body": "Prevent AI context actions from appearing when the AI Assistant setting/feature flag is off.\n\nThis keeps the selected-element overlay and structure menu aligned with the actual availability of AI features and avoids exposing a\ndead UI affordance.",
+      "ticketIds": []
+    },
+    {
+      "hash": "8782f38ed5e07109a4a08369ab3fc3181f446405",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-10T14:33:10+02:00",
+      "subject": "fix: Ensure text transform on label only affects label",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "73f39236994323f7c611dcc6e7de38e2497cb3f2",
+      "author": "Andrea Maccone",
+      "date": "2026-04-10T13:20:39+02:00",
+      "subject": "hide(ETC-617): redesign prop key display in component editor",
+      "body": "",
+      "ticketIds": [
+        "ETC-617"
+      ]
+    },
+    {
+      "hash": "2306048298f3993362746f8e856f6b7013ec307a",
+      "author": "Jérémy Franck",
+      "date": "2026-04-10T12:22:47+02:00",
+      "subject": "feat(structure): add JS indicator badge to blocks containing script (#281)",
+      "body": "Co-authored-by: Reinhard Sanz <reinhard@sanz.at>",
+      "ticketIds": []
+    },
+    {
+      "hash": "f7dcbef5558c960ae559d21ca115ccd97a9e4edb",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-10T09:27:11+02:00",
+      "subject": "improve(ETC-613): strip curlies on paste in condition codemirror input",
+      "body": "",
+      "ticketIds": [
+        "ETC-613"
+      ]
+    },
+    {
+      "hash": "9efe316b71541ce9a6a9842b33a128da175b4eee",
+      "author": "Jérémy Franck",
+      "date": "2026-04-09T22:20:15+02:00",
+      "subject": "improve(canvas): Tweak typographic styles for selected element overlay",
+      "body": "- use proper Etch font with legibility Opentype features\n- use proper multiplication symbol and typesetting for dimensions (#type nerds ❤️)\n- improve contrast of element name vs. dimensions\n- fix block badge line height\n- truncation for Block badge text",
+      "ticketIds": []
+    },
+    {
+      "hash": "49f533197e1844d6a306c8a26b3b25292b19894d",
+      "author": "Jérémy Franck",
+      "date": "2026-04-09T19:23:22+02:00",
+      "subject": "improve(AI): styles for \"Add to AI context\" button in selected block overlay",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d2d0bfe683a0f2205b5c21ee385ff34f59648f42",
+      "author": "Jérémy Franck",
+      "date": "2026-04-09T17:35:34+02:00",
+      "subject": "improve(AI Panel): Tweak styles for AI context block + use real icon",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "7b31cf19fe62a15e740115ea86a043775e0c48d1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-09T16:17:04+02:00",
+      "subject": "improve(ai): extend system prompt for build mode",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-622": {
+      "id": "ETC-622",
+      "title": "Regression bug for HTML in HTML Block",
+      "description": "Our etch specific HTML Elements do not render correctly in the HTML Editor if the parent is a plain HTML Element and is selected:\n\nQuick vid from jeremy:\n[https://kommodo.ai/recordings/W0DsDsbeTluw4BhoeQck](<https://kommodo.ai/recordings/W0DsDsbeTluw4BhoeQck>)",
+      "state": "Done"
+    },
+    "ETC-617": {
+      "id": "ETC-617",
+      "title": "Redesign prop key display in component editor",
+      "description": "When \"show keys\" mode is active in the component editor, the current two-column layout (prop name + truncated key) wastes space and truncates keys. Redesign to a single-column layout where the full key takes the entire row width, with a copy button on hover.\n\nAcceptance Criteria\n\n- [ ] In key display mode, each property row shows only the full key (e.g., {services.booleanProp}) - prop name is hidden\n- [ ] Keys are never truncated, they use the full available row width\n- [ ] On hover, a copy-to-clipboard button appears on the right side of the row\n- [ ] Clicking the copy button copies the key string (including braces) to the clipboard\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/3cd3e9e3-3fc7-4747-a364-bfde6bdb337e/d7c71c21-b5b4-4f7c-9f76-c75cd0f161bb)",
+      "state": "Done"
+    },
+    "ETC-613": {
+      "id": "ETC-613",
+      "title": "Strip curly braces when pasting into condition prop input",
+      "description": "AC:\n\n* When the user pastes dynamic data wrapped in curly braces e.g. `{props.show}` into the input for the condition prop the curly braces will be stripped\n* When the user pastes dynamic data not-wrapped in curly braces e.g. `props.show` into the input for the condition prop, it will just paste as normal\n* Paste of plain text should be untouched",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:22.906Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 15,
+    "ticket_count": 3
+  }
+}

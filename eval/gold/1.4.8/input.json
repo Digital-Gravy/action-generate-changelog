@@ -1,0 +1,495 @@
+{
+  "previous_version": "1.4.7",
+  "current_version": "1.4.8",
+  "commits": [
+    {
+      "hash": "d3cd7b68c144f8e9df0260e52099f65d409774a1",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T15:51:06+02:00",
+      "subject": "chore(ai-rag): turn RAG on for everyone",
+      "body": "Enables the `ENABLE_AI_RAG` flag",
+      "ticketIds": []
+    },
+    {
+      "hash": "dc6a84076df6a2f9fa488143bb60c9217c64ffd0",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T15:48:10+02:00",
+      "subject": "Revert \"Bump version to 1.4.8\"",
+      "body": "This reverts commit b92ea7ddd99dc0e623125aa0aaccb2144eb7a13e.",
+      "ticketIds": []
+    },
+    {
+      "hash": "0e14f37ae99b6b2e7a859129793ede00ba227934",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T13:04:08+02:00",
+      "subject": "chore(component-instance-inputs): turn on flag (still guarded by setting)",
+      "body": "Enables `COMPONENT_INSTANCE_INPUTS_REDESIGN` flag\n\nUsers still need to manually enable the feature via the \"Component Instance Inputs V2\", since this is WiP and some prop types might not work properly yet",
+      "ticketIds": []
+    },
+    {
+      "hash": "25dab7c4b1c6866b829601d920a455b304fed972",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T13:02:41+02:00",
+      "subject": "chore(condition-prop): turn on feature",
+      "body": "Enables `ENABLE_CONDITION_PROP` flag",
+      "ticketIds": []
+    },
+    {
+      "hash": "b59c224d885432b742e8d8df36cbf422f6170f9a",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T12:01:18+02:00",
+      "subject": "chore(ai-chat): enable refactored markdown rendering",
+      "body": "Enables `AI_CHAT_CONTENT_REFACTOR`",
+      "ticketIds": []
+    },
+    {
+      "hash": "bee0eee208a964798f695e5e16b6a1589c918c96",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T12:00:28+02:00",
+      "subject": "chore(ai-chat): turn on replace selected HTML flag",
+      "body": "Enables `ENABLE_AI_REPLACE_BUTTON`",
+      "ticketIds": []
+    },
+    {
+      "hash": "64a86ac35b1c94d77485131e7c72f5726c7e7931",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T12:00:00+02:00",
+      "subject": "chore(ai-chat): turn on CSS injection flag",
+      "body": "Enables `ENABLE_CSS_INSERT_BUTTON`",
+      "ticketIds": []
+    },
+    {
+      "hash": "449af277cdf457ca1ba1db8011d7ec03513f0f09",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-02T11:32:03+02:00",
+      "subject": "feat(ETC-587): redesigned condition instance inputs",
+      "body": "",
+      "ticketIds": [
+        "ETC-587"
+      ]
+    },
+    {
+      "hash": "4bcfcde2443631b48fe85b4c897b3638f850fe31",
+      "author": "Matteo Greco",
+      "date": "2026-04-02T11:10:26+02:00",
+      "subject": "fix(hooks): re-index asset queue after dedup and filter (ETC-551)",
+      "body": "array_unique() and array_filter() preserve keys, leaving gaps that\ncause json_encode() to emit a JSON object instead of an array —\nbreaking the builder iframe's asset queue for third-party plugins.",
+      "ticketIds": [
+        "ETC-551"
+      ]
+    },
+    {
+      "hash": "4fc61f715069120c9adf5b699e70e5068f87b72f",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-02T11:09:01+02:00",
+      "subject": "feat(ETC-585): Redesigned group instance inputs",
+      "body": "",
+      "ticketIds": [
+        "ETC-585"
+      ]
+    },
+    {
+      "hash": "b01ab5f724466b8df10244c7753fbda16ddbf7c1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T16:10:53+02:00",
+      "subject": "feat(ai-chat): Merge AI CSS with existing selectors",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1d4778469b965b2a557de01a043b4ebb3443d1ef",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-01T15:59:54+02:00",
+      "subject": "chore(component-instance-inputs): remove not needed binding causing errors and cleanup propertyContext",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "bde38b494d216da4923ad87a8f4636f16d245eb9",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-01T15:56:13+02:00",
+      "subject": "chore: Update svelte",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f9ef0be6140ba08a34683d2ce113b8767287761d",
+      "author": "christophsanz",
+      "date": "2026-04-01T15:16:49+02:00",
+      "subject": "[hide] phpstan",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "72baee0bd6315204a837f2a6d8aae9091450d47d",
+      "author": "christophsanz",
+      "date": "2026-04-01T14:44:04+02:00",
+      "subject": "refactor: extract duplicate code and increase readability",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "75c2d34fe55f8422389a0d87143a455727028275",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T14:22:59+02:00",
+      "subject": "refactor: ai chat content component, READ COMMIT COMMENT",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "9e2e3b91690ce1a72455faac2301590a5353d9be",
+      "author": "Christoph Sanz",
+      "date": "2026-04-01T14:13:36+02:00",
+      "subject": "Chris/fix dynamic image bugs (#276)",
+      "body": "Fixed:\n\n- alt attr not always rendering when using static url\n\n- prevent width and height rendering with value \"1\" when setting maximumSize on an svg\n\n- removed placehold.co dependency and generate custom svg data uris instead",
+      "ticketIds": []
+    },
+    {
+      "hash": "6fde8bc881f5ced6f63e14665a369f9ea3e8526e",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T14:00:47+02:00",
+      "subject": "feat: ai chat segments renderer component, tests, renders either code segments or html",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "c83fdc8570bd1ee9319d1b750f58f495a8b510c2",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T13:47:40+02:00",
+      "subject": "test: move markdown html rendering tests from aiChatMarkdown.tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "42b80d43f2a2de6d01f828f59eb481797b26a828",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T13:46:09+02:00",
+      "subject": "test: test chat sanitize, type chat sanitize",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "2bad84b9d407bf5ad1c163a65be0dc51e1c95484",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T08:09:19+02:00",
+      "subject": "refactor(ai chat): chat sanitize",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "15765ea8662e858eccbd1e5f1ae0c4d4eeccf58f",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-01T11:53:44+02:00",
+      "subject": "fix(ETC-577): Ensure group and repeater props properly expose to the parent",
+      "body": "",
+      "ticketIds": [
+        "ETC-577"
+      ]
+    },
+    {
+      "hash": "d1e45eaa937cfa94e0eb4e0a82fc9aa70e4a421a",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-01T11:40:13+02:00",
+      "subject": "fix(ETC-577): Ensure dynamic data is not reverted in group and repeater inputs",
+      "body": "",
+      "ticketIds": [
+        "ETC-577"
+      ]
+    },
+    {
+      "hash": "f812aeb95733b7093a507d1602235b08d1859264",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T07:59:21+02:00",
+      "subject": "refactor: (aiChatMarkdown) into segments, not wired..",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "bb142732d8bed98cdd264b914b6d4db335133eb4",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T07:52:44+02:00",
+      "subject": "fix(ai-chat): codescene...",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "2cf500473a71ebdd638e747e23b48fdfaa996365",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T07:51:02+02:00",
+      "subject": "fix(ai-chat): codescene...",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8977cbb2095ef712aaec378a03999ce39ae134eb",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-01T06:49:53+02:00",
+      "subject": "improve(ai-chat): error message when top level contains not supported rules",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "fc0e584ca0dc5f7f580bcd49e3a8aa88f8df245a",
+      "author": "Pedro Bartulihe",
+      "date": "2026-03-31T23:37:31-03:00",
+      "subject": "feat(ai-panel): add replace button behind feature flag",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "ce0816aec957395c1643fb45a3f7eef7346aaa1d",
+      "author": "Matteo Greco",
+      "date": "2026-03-31T18:04:36+02:00",
+      "subject": "test(ai-chat): improve test coverage for applyCssRulesToStyles",
+      "body": "Cover zero, invalid selector, many mixed, and createStyle-falsy paths.",
+      "ticketIds": []
+    },
+    {
+      "hash": "3e0cc1008ea577fec723fd26b7e84e358b62c47f",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-31T14:48:26+02:00",
+      "subject": "test(ai-chat): add toast missing test",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8c1fab0a5fc1b2f4a2d5200e2d0dc21207b1409d",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-31T14:33:29+02:00",
+      "subject": "fix(ai-chat): (tests) remove code duplication and improve helpers",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "d67002c2653455fdf6490527ac29fd59c6ae3a47",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-31T10:04:29+02:00",
+      "subject": "hide(condition-prop): Remove accordion wrapper on condition prop instance inputs (gutenberg)",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "59b9f6e8f1193305a0ea390db2462f1e33817913",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-31T09:46:47+02:00",
+      "subject": "hide(condition-prop): Remove accordion wrapper on condition prop instance inputs",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "4add5919bafd41fddce9accbd450aaa6731e45bd",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-31T09:39:44+02:00",
+      "subject": "feat(ai-chat): wire insert css logic with UI button, improve handleInsertButton toast message",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "654da50557df10323942aea0e1b3094e296c53a2",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-31T09:37:34+02:00",
+      "subject": "feat(ai-chat): parse and insert ai given css snippets, tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "758bbc3489375dc9c0d01fa8f439e106344480dc",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-30T18:40:35+02:00",
+      "subject": "chore: rename aiActions to aiHtmlActions + rename test files as well",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0d68eddcc8e34596f9584948fb2be61901775548",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-30T18:12:26+02:00",
+      "subject": "feat(ai-chat): insert css button on renderAiChatMarkdown, flag, tests, rename html insert button",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "3c48810e8d0064b8781c8d05be1748a09dcd2b02",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T16:22:39+02:00",
+      "subject": "hide(condition-prop): Ensure we also guard using the feature flag for rendering the component",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1db1658db18217eaf69af61f28a04f26fe1f902f",
+      "author": "pedro-bartulihe",
+      "date": "2026-03-30T10:56:31-03:00",
+      "subject": "feat: improve past image in AI Panel (#278)",
+      "body": "Co-authored-by: Pedro Bartulihe <pedro.bartulihe@gmail.com>",
+      "ticketIds": []
+    },
+    {
+      "hash": "421879b4eecb4827f17efdd76cb3a8902e6c452c",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T15:54:16+02:00",
+      "subject": "feat(condition-prop): Add GB handling for condition prop",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "654046dcc701c105bbd35a5b875d4424a7b27e9a",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T15:46:07+02:00",
+      "subject": "refactor: prepare react component inputs for condition prop functionality",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "b2f65aed5e03044a3e6eab0108ed62516b3fbf35",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T15:37:23+02:00",
+      "subject": "feat(condition-prop): Ensure dynamic data resolves correctly for condition prop in frontend",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "4716e137cf9ef68cd1ba06b04380a9ea8421d44d",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T15:25:59+02:00",
+      "subject": "feat(condition-prop): Add condition prop instance input",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8fadc3b9e8c747aaff80bba9b003c801ac9d6044",
+      "author": "Matteo Greco",
+      "date": "2026-03-30T15:00:51+02:00",
+      "subject": "Reapply \"ci: drop concurrency to get run unstuck (temp) [hide]\"",
+      "body": "This reverts commit 1d8328b5be872ff74fbaa8f92cff0bfe4452c87c.",
+      "ticketIds": []
+    },
+    {
+      "hash": "3617de9960fd7970e8248784d9d67470ce7fbbb1",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T14:57:28+02:00",
+      "subject": "refactor(condition-prop): add type to propertyError",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1d8328b5be872ff74fbaa8f92cff0bfe4452c87c",
+      "author": "Matteo Greco",
+      "date": "2026-03-30T13:34:58+02:00",
+      "subject": "Revert \"ci: drop concurrency to get run unstuck (temp) [hide]\"",
+      "body": "This reverts commit 7a4b0943ae70cad6c66c8ffecb77df47c136c8e7.",
+      "ticketIds": []
+    },
+    {
+      "hash": "a7d5203949d30413a945a18c6b4733321372371b",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T12:53:20+02:00",
+      "subject": "feat(condition-prop): Add ConditionProperty type to PHP",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "18f0aef0a883a1d1461da7764ebd3af47ebb0fb6",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-30T10:34:10+02:00",
+      "subject": "fix(ETC-566,ETC-568): Align toSlug modifier between JS and PHP",
+      "body": "",
+      "ticketIds": [
+        "ETC-566",
+        "ETC-568"
+      ]
+    },
+    {
+      "hash": "6a9e6bdd8b17dcbd82b5df9d2b59b9339f7fcc3e",
+      "author": "Kevin Geary",
+      "date": "2026-03-28T10:27:11-04:00",
+      "subject": "add inline quotes to anchor link reset",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "bb4babdd964c17f262484cda148ee6734f5c1bb9",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-27T19:43:18+01:00",
+      "subject": "improve(ai): better error handling, providing openai error messages to ai chat window",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0aa469f754e3b63d99737712907f1a0adbabeea6",
+      "author": "Matteo Greco",
+      "date": "2026-03-27T16:41:06+01:00",
+      "subject": "fix: copying text from AI chat no longer pastes block JSON",
+      "body": "When text was selected (e.g. in the AI chat panel) while a block was\nalso selected on the canvas, Cmd+C would copy the block's JSON instead\nof the highlighted text. The copy shortcut now checks for an active text\nselection and yields to native copy when one exists.\n\nCloses ETC-563",
+      "ticketIds": [
+        "ETC-563"
+      ]
+    },
+    {
+      "hash": "b086e428a1dbce4d6b5f8521b2f8d8271a6b977e",
+      "author": "Matteo Greco",
+      "date": "2026-03-27T15:15:15+01:00",
+      "subject": "Revert \"feat: condition-prop (ENABLE_CONDITON_PROP)\"",
+      "body": "This commit is a squash of a rather large feature branch. It's hard to review like this, and didn't follow process (one acceptance criteria -> one commit). Feels risky to keep.\n\nWe'll go through the changes on the feature branch on Monday morning, and push them as multiple commits, TBD-style.\n\nThis reverts commit a91d82e885f92c3bb3e64f0f08277dc181eb4f82.",
+      "ticketIds": []
+    },
+    {
+      "hash": "a91d82e885f92c3bb3e64f0f08277dc181eb4f82",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-27T13:30:07+01:00",
+      "subject": "feat: condition-prop (ENABLE_CONDITON_PROP)",
+      "body": "Co-authored-by: Andrea Maccone <andrea@digitalgravy.co>",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-587": {
+      "id": "ETC-587",
+      "title": "Add condition Instance input",
+      "description": "The new design shall follow the design from figma\n\nAll the properties in the condition are rendered according to their type\n\nThe properties are hidden if the condition computes to false\n\nThe properties are visible if the condition computes to true\n\nThe condition itself will not render an accordion or conditional wrapper",
+      "state": "Done"
+    },
+    "ETC-551": {
+      "id": "ETC-551",
+      "title": "ACSS stylesheets are no longer loaded into the builder if Yabe Webfont plugin is active",
+      "description": "## Summary\n\nThird-party plugin stylesheets (ACSS, Yabe Font, etc.) stop rendering inside the builder canvas while still working on the frontend. Any plugin that appends stylesheets to the queue can trigger this — confirmed with Yabe Font but not plugin-specific.\n\n**Root cause identified**: `normalize_assets_queue()` in `Hooks.php` calls `array_unique()` without `array_values()`, leaving non-sequential array keys. When `json_encode()` serializes this array, it silently converts it to an object, breaking the builder iframe's asset queue.\n\n## Acceptance Criteria\n\n- [X] Third-party plugin stylesheets (e.g. ACSS, Yabe Font) render correctly inside the builder canvas\n- [X] Adding or removing plugins that register stylesheets does not break existing asset loading in the builder",
+      "state": "Done"
+    },
+    "ETC-585": {
+      "id": "ETC-585",
+      "title": "Add Group Property Instance Input",
+      "description": "The design shall follow the new design form Figma\n\nThe user can see a collapsible group with the group name\n\nAll the properties in the group are rendered according to their type\n\nThe user can collapse the group to hide it",
+      "state": "Done"
+    },
+    "ETC-577": {
+      "id": "ETC-577",
+      "title": "Group Props Exposing not working",
+      "description": "Linked to this:\n[https://community.etchwp.com/c/general-discussion/nested-component-group-prop-exposing-props-to-parent-broken](<https://community.etchwp.com/c/general-discussion/nested-component-group-prop-exposing-props-to-parent-broken>)",
+      "state": "Done"
+    },
+    "ETC-566": {
+      "id": "ETC-566",
+      "title": ".toSlug() modifier strips initial umlauts instead of converting them",
+      "description": "## .toSlug() fails to properly handle German umlauts (ä, ö, ü) when they are positioned at the very beginning of a string. Instead of converting the character as stated in the documentation, it completely removes it.\n\n### Steps to reproduce\n\nUse the .toSlug() modifier on a string that starts with an umlaut.\nFor example, use the exact string from the official documentation: \"Über Theme\".\n\nAccording to the documentation, the expected output for \"Über Theme\" is \"uber-theme\". But the first character is stripped entirely, resulting in the output \"ber-theme\".\n\nWhile looking into this bug, I wanted to suggest a small enhancement regarding how umlauts are transliterated. Currently, the documentation states that umlauts drop their dots (e.g., \"Ü\" becomes \"u\"). The standard convention for transliterating German umlauts in URLs/slugs is actually to convert them to \"ae\", \"oe\", and \"ue\".\n\nIt would be fantastic if the .toSlug() modifier could be updated to reflect this standard. Ideally, \"Über Theme\" should become \"ueber-theme\" instead of \"uber-theme\".\n\n---\n\n### Environment\n\nPlugin Version: 1.4.7\n\nTheme Version: 0.0.7\n\nWordPress Version: 6.9.4\n\nMachine: PC\n\nBrowser: Chromium\n\n---\n\n### Magic Login\n\n---\n\n### Attachments\n\n---\n\n### Reporter\n\nName: Paul Gossen\n\nEmail: [paul@gosuccess.io](<mailto:paul@gosuccess.io>)",
+      "state": "Done"
+    },
+    "ETC-568": {
+      "id": "ETC-568",
+      "title": "Slug letter changing",
+      "description": "## If i have page name with latin letters ( śćńóżź) it change to \"-\"  but if i have ł it change next letter do capital. perfect will be if i use latin letters to change to default.\n\n### Steps to reproduce\n\njust wrote page name like:  Strona główna - its home page in polish\n\n---\n\n### Environment\n\nPlugin Version: latest\n\nTheme Version: latest\n\nWordPress Version: latest\n\nMachine: Mac\n\nBrowser: Safari\n\n---\n\n### Magic Login\n\n---\n\n### Attachments\n\n---\n\n### Reporter\n\nName: Michał\n\nEmail: [michalczajka.pl@gmail.com](<mailto:michalczajka.pl@gmail.com>)",
+      "state": "Done"
+    },
+    "ETC-563": {
+      "id": "ETC-563",
+      "title": "Copying text from AI chat panel pastes page JSON instead of selected text",
+      "description": "## Description\n\nWhen selecting and copying text from the AI chat panel (e.g. a response from the AI) **while having a block selected**, pasting it elsewhere produces the JSON representation of the selected block instead of the copied text.\n\nThis is the same class of bug as [ETC-152](https://linear.app/digital-gravy/issue/ETC-152/copying-text-from-canvas-pulls-copy-paste-json), which was fixed for the canvas. The clipboard interception that powers Etch's copy/paste system is too broad and captures copy events originating from the AI chat panel, overwriting the clipboard with Etch's internal JSON format.\n\n## Steps to reproduce\n\n1. Open a page in the builder and **select a block** in the canvas\n2. Open the AI chat panel and send a prompt\n3. Select some text from the AI response\n4. Copy it (Cmd+C / Ctrl+C)\n5. Paste it anywhere (e.g. a text editor, browser URL bar)\n6. Observe that the pasted content is JSON (page structure) instead of the text you selected\n\n**NOTE: if you don't select a block, the bug will not be triggered.**\n\n## Expected behavior\n\nThe copied text should be the actual text selected in the AI chat panel.\n\n## Actual behavior\n\nThe clipboard contains the Etch page JSON instead of the selected text.\n\n## Root cause analysis\n\nThe `copy` shortcut in `src/frontend/Builder/src/composables/stores/shortcuts/builder/copyPaste/index.ts` intercepts Cmd+C when all of the following are true:\n\n1. `!focusWatcher.isInsideEditableText()` — the active element is not an input/textarea/contentEditable\n2. `context.active === 'builder'`\n3. `!(builder.selectedBlock instanceof EtchFocusBlock)`\n\nWhen the user selects text from the AI response (which is rendered HTML, not an editable element), condition 1 passes. Combined with a selected block and builder context, the shortcut fires `copyBlock()`, which writes page JSON to the clipboard and calls `preventDefault()`, suppressing the browser's native copy.\n\n**The bug only manifests when a block is selected.** If no block is selected, `onKeyTrigger` returns `false`, `preventDefault()` is not called, and native copy works normally. This is why the bug initially appeared to be fixed in 1.4.7 — testing without a selected block masked the issue.\n\nA proper fix was attempted on the `experimental-ai-integration` branch (commit `05df0154`) which registered the AI chat as a focus container in `FocusWatcher`, but that branch was never merged to main.\n\n## Suggested fix\n\n**If the user has text selected in the main window, let native copy win.**\n\nCheck selection origin in the copy shortcut's condition — e.g., if `window.getSelection()` is anchored within the AI chat container, skip the shortcut:\n\n```\nconst hasTextSelection = () => {\n    const selection = window.getSelection();\n    return selection && selection.toString().length > 0;\n};\n```",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:35.274Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 53,
+    "ticket_count": 7
+  }
+}

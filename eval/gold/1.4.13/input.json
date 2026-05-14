@@ -1,0 +1,170 @@
+{
+  "previous_version": "1.4.12",
+  "current_version": "1.4.13",
+  "commits": [
+    {
+      "hash": "9e19340000b9f5ff46149e929571c69879628fd8",
+      "author": "Matteo Greco",
+      "date": "2026-04-20T19:01:16+02:00",
+      "subject": "test(ETC-656): remove test guarding against turning ENABLE_AI_USE_MIDDLEWARE on",
+      "body": "",
+      "ticketIds": [
+        "ETC-656"
+      ]
+    },
+    {
+      "hash": "6cd41bab75844ccd161dd0c1f27b9699edc7bfe1",
+      "author": "Matteo Greco",
+      "date": "2026-04-20T18:46:50+02:00",
+      "subject": "feat(ETC-675): direct AI traffic to our API gateway",
+      "body": "",
+      "ticketIds": [
+        "ETC-675"
+      ]
+    },
+    {
+      "hash": "ce2c5b977836641b166f2b94b7bbd31181a1024d",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-17T11:30:04+02:00",
+      "subject": "feat(ETC-641): Migrate instance inputs to also use stacked layoue [WIP]",
+      "body": "",
+      "ticketIds": [
+        "ETC-641"
+      ]
+    },
+    {
+      "hash": "bd74914b0f65e7e8ca4f877b20325df24443b6ca",
+      "author": "Pedro Bartulihe",
+      "date": "2026-04-16T15:32:54-03:00",
+      "subject": "refactor: refactor the WpCurlHttpTransport and add some tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "01e9337bcd7577c1a783f26ddac76292d7f3a504",
+      "author": "Andrea Maccone",
+      "date": "2026-04-16T19:21:52+02:00",
+      "subject": "feat(ETC-666): prop mapping pulse animation and mapped state styling",
+      "body": "",
+      "ticketIds": [
+        "ETC-666"
+      ]
+    },
+    {
+      "hash": "a99377b477602a6c204e9ac74bc204ae9f13b2f1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-04-16T17:27:45+02:00",
+      "subject": "feat(ai api): reintroduce reasoning setting and payload key, remove flag in favor of user setting",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "86f79b43fcca24ee451c106f5ef49f640ddc7ef6",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-16T15:33:15+02:00",
+      "subject": "ETC-666 redesigned Component editor header (#283)",
+      "body": "Co-authored-by: Andrea Maccone <andrea@digitalgravy.co>",
+      "ticketIds": [
+        "ETC-666"
+      ]
+    },
+    {
+      "hash": "cbbe0eea70a1dbeaa47fb2834ef3ad6de065923e",
+      "author": "Reinhard Sanz",
+      "date": "2026-04-16T13:55:23+02:00",
+      "subject": "feat(ETC-633): Boolean prop switch",
+      "body": "",
+      "ticketIds": [
+        "ETC-633"
+      ]
+    },
+    {
+      "hash": "4f2c6e8ef8393d502c884bac96977fee1ffa01ef",
+      "author": "Andrea Maccone",
+      "date": "2026-04-16T13:04:25+02:00",
+      "subject": "feat(ETC-666): new component instance icons and edit shortcut",
+      "body": "",
+      "ticketIds": [
+        "ETC-666"
+      ]
+    },
+    {
+      "hash": "c0eabc53f8e751189894d9105bd2366ae9e8584b",
+      "author": "Jérémy Franck",
+      "date": "2026-04-16T04:52:57+02:00",
+      "subject": "improve(Selector badges): improve selector pill design (UI), bigger click targets and harder to remove by accident (UX)",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e3d29d6496fd7e03c177d5da23666f053f265792",
+      "author": "Jérémy Franck",
+      "date": "2026-04-14T14:28:36+02:00",
+      "subject": "improve(Selector badges): custom icon for selector pill remove button",
+      "body": "Given how strokes scale in SVGs, we need icons more specific to their usage (and some declinations depending on size for\na few icons, aside from stroke width).\nI'm starting the process with this one.",
+      "ticketIds": []
+    },
+    {
+      "hash": "70247c0586c2c82f33e60ac987d7346c0ca16fa9",
+      "author": "Jérémy Franck",
+      "date": "2026-04-16T04:12:48+02:00",
+      "subject": "improve(builder): draw a visible border above bottom panels when the canvas doesn't use the full height",
+      "body": "- add isFullHeight to CanvasState\n- split resized canvas wrapper classes into horizontal and vertical variants\n- add and tidy tests for full-height detection",
+      "ticketIds": []
+    },
+    {
+      "hash": "8c9f067c3292643b0a90fed475de3a7cf3cf188d",
+      "author": "Jérémy Franck",
+      "date": "2026-04-15T17:51:58+02:00",
+      "subject": "improve(builder): draw a visible sidebar border when the canvas doesn't take up the full width",
+      "body": "- add CanvasState.isFullWidth to detect when the canvas fills the available width\n- toggle a builder wrapper class from canvas width state\n- keep the sidebar resize handle border visible when the canvas is detached\n- cover full-width detection with focused CanvasState tests",
+      "ticketIds": []
+    },
+    {
+      "hash": "77550f67e64cb031ffa9cfca11a2454b1d191b69",
+      "author": "Matteo Greco",
+      "date": "2026-04-15T20:26:28+02:00",
+      "subject": "docs(adr): add ADR 0014 — AI Assistant expects OpenAI-shaped events via middleware [skip ci]",
+      "body": "Records the plugin-side expectation of the SSE wire format on the new\nmiddleware path. Paired with middleware ADR 0012.",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-656": {
+      "id": "ETC-656",
+      "title": "I can send “hello world” and get a streaming response back",
+      "description": "Let's front-load the work by getting the risky part out of the way: \n\nLet's get the plugin, the middleware and Open AI to communicate\n\n**Technical decisions:**\n\n* The endpoint on the middleware side is `/assistant` (already created)\n* A feature flag must be created in the plugin\n* The feature flag is OFF by default\n* We send a dummy message (\"hello\"), not the actual user message\n* The middleware injects something in the message so we can identify it came through the middleware\n\n**Acceptance criteria:**\n\n- [X] Given the feature flag is OFF, the plugin contacts Open AI directly\n- [X] Given the feature flag is ON, I can see a response from Open AI through the middleware being streamed in chunks\n- [X] If I don't receive a response from Open AI under 30 seconds, the middleware sends back an error to the plugin stating the issue\n- [X] If Open AI responds back with an error, the error is forwarded to the plugin\n- [X] If the middleware responds back with an error, the plugin displays it.\n\n**Findings**\n\n* from svelte we receive message\n* from php, we take the messages, we grab the api key, we send to middleware\n* from middleware to php, we reuse the streaming, we reuse the events types, and it goes back to svelte\n* on middleware receives messages and api key\n* sends to open ai\n* receives stream",
+      "state": "Done"
+    },
+    "ETC-675": {
+      "id": "ETC-675",
+      "title": "Turn `ENABLE_AI_USE_MIDDLEWARE` flag `on`",
+      "description": "",
+      "state": "Done"
+    },
+    "ETC-641": {
+      "id": "ETC-641",
+      "title": "Make each prop look like a separate item (remove stacked layout)",
+      "description": "### 🔖 Summary\n\nRight now, \"free floating\" props are stacked below each other without any gap.\n\n### 📗 Acceptance Criteria\n\n* User can see each prop input as its own entity, separated from other props with gap\n\n![CleanShot 2026-04-17 at 13.34.32.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/d1f0d2a5-ec1b-4a93-82d3-74d13f21bb12/2874b952-6ffa-4c21-89f4-4d24efc892c9)",
+      "state": "Done"
+    },
+    "ETC-666": {
+      "id": "ETC-666",
+      "title": "Component properties panel redesign",
+      "description": "## 🔖 Summary\n\nOur new component properties panel has to support new JSON editor functionality. Because of that, the props panel header design needs a slight re-design.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/4a5b7343-a7ee-4fb3-bcc8-0e9c47d781cf/ba80e2fd-6b02-4c24-aae3-48535c2cb5c1)\n\n## 📗 Acceptance Criteria\n\n1. When previewing a component instance, user can see:\n   * detach component instance icon\n   * edit component icon\n2. When inside the component editor mode, user can see:\n   * a dev switch for the JSON editor\n   * a \"Format JSON\" icon when the JSON editor is enabled\n   * a key icon for showing prop keys\n   * a plus icon for adding component props\n3. Each action icon in the `Component properties` header has a descriptive tooltip (e.g. Key icon = \"Show property keys\")\n4. User sees an actual `component name` instead of \"Component editor\" label\n5. `Component name` turns into a `component key` when the user enables \"Show property keys\" icon button\n6. User no longer sees the purple border around the props\n7. User no longer sees the component description (unnecessary for now)\n8. User no longer sees a `toggle preview` icon",
+      "state": "Done"
+    },
+    "ETC-633": {
+      "id": "ETC-633",
+      "title": "Redesign Boolean Prop Input",
+      "description": "### 🔖 Summary\n\nImplement vertically stacked layout and other small UI changes for component's `Boolean Prop` input.\n\n![image.png](https://uploads.linear.app/48a03f57-ea0e-4dba-b596-2bf09659f4d1/6a078d5a-6d01-4f01-8be4-71b8c7914f90/6fc295cb-0742-4c98-8bcd-d3377f8fc4ad)\n\n### 📗 Acceptance Criteria\n\n* The user can see vertically stacked layout for the `Boolean prop` input in both the component editor mode and when previewing the component instance.\n* The user can see `Boolean Prop Icon` when previewing component instance\n* The user can manually write some dynamic data in the `Boolean prop` value field\n* Clicking the switch changes the states from {true} to {false} to {data} in a cycling sequence\n* Inputing values manually (e.g. from {true} to {false}) also changes the switch accordingly\n* Dynamic data input field persists its value when toggling between static boolean states and dynamic mode.\n* User can now see a target icon in the boolean prop as well. Assigning a Boolean prop to the element will automatically wrap that HTML element in the condition wrapper with the correct condition rules",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:26.281Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 14,
+    "ticket_count": 5
+  }
+}

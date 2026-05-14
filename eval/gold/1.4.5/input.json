@@ -1,0 +1,182 @@
+{
+  "previous_version": "1.4.4",
+  "current_version": "1.4.5",
+  "commits": [
+    {
+      "hash": "30a82b65c146a254fbd0cefe7f0bc958088f0011",
+      "author": "Jérémy Franck",
+      "date": "2026-03-19T09:57:14+01:00",
+      "subject": "hide(AI): speed up AI by reducing reasoning",
+      "body": "The \"medium\" level of reasoning was an experiment to see if it would improve the output of the model.\n\nIt doesn't improve results in a meaningful way, and it's becoming increasignly apparent that the right levers to action are:\n- rewritting the documentation\n- use of the RAG system\n\nAs a result, switching back to \"low\" reasoning effort, which halves the time AI takes to return results",
+      "ticketIds": []
+    },
+    {
+      "hash": "9b0473cdd0ed3e60cbfcd6a09ce5a91ce1913002",
+      "author": "Jérémy Franck",
+      "date": "2026-03-19T09:46:40+01:00",
+      "subject": "hide(AI): Tweak system prompt",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "0c2894a9b7037d6b49cabbfaf703c724a6d9f7a1",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-19T09:48:25+01:00",
+      "subject": "fix(ETC-525): Copy pasting in input elements (#266)",
+      "body": "",
+      "ticketIds": [
+        "ETC-525"
+      ]
+    },
+    {
+      "hash": "8f306d02240541307e29aef7ce32d4eca92484c8",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T20:55:08+01:00",
+      "subject": "improve: test coverage on copy code from ai chat, implementation and clean up",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "791023c2ea49082f92c1efac121e8b7edab47593",
+      "author": "Andrea Maccone",
+      "date": "2026-03-18T20:24:41+01:00",
+      "subject": "fix: prevent accidental template content wipe",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "fae0111bc23fd5f7a0bb4982638550f32eed83c6",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T19:22:05+01:00",
+      "subject": "improve: Ai Chat action buttons implementation and testing",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "907d753d2b5b61c40aa0a8228c0c66e23b9830c9",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T19:21:05+01:00",
+      "subject": "improve: better clarity on aiActions method and tests",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "3a40ffb3ccd0c18c2de67471a106d8f836a3bff9",
+      "author": "Pedro Bartulihe",
+      "date": "2026-03-18T14:24:38-03:00",
+      "subject": "chore: move the reamins classes in preprocessor to global",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1d12935a1f0adf794aceedcdd943c6971016cabe",
+      "author": "Pedro Bartulihe",
+      "date": "2026-03-18T12:52:13-03:00",
+      "subject": "chore: unify EtchTypeAsserter and remove the one in the Preprocessor",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "083170afd8e6721d8afdc8f5e1c6f5acb505a570",
+      "author": "Pedro Bartulihe",
+      "date": "2026-03-18T10:12:22-03:00",
+      "subject": "chore: remove all unused classes inside Preprocessor directory",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "6fb0149c96fcdce580b5ed0db49da375b9b3f786",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T17:58:14+01:00",
+      "subject": "fix: codescene at AiChatContent test",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "cb17850caf1308552f3cc6c1f2d79251f3b4e005",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T17:30:08+01:00",
+      "subject": "improve: tests on AiChatContent component",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "a353ff8571ae1e7ae18f0ee9e9197c51c8e98057",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T17:20:35+01:00",
+      "subject": "improve: remove type BuilderInsertApi in favor of builder store types directly",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "40f12b65c0356f3a0df65c00dde3d3be694d1586",
+      "author": "Andrea Maccone",
+      "date": "2026-03-18T17:12:38+01:00",
+      "subject": "fix: prevent selector mode from opening when using cmd+enter in AI chat",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "8bb6c936fb5c0c9d7fdfffb000b2d7bd7e9490fc",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T17:00:35+01:00",
+      "subject": "test: improve tests on insertBlocksFromCode",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f26337f92fdcf23e77639257a7223b78705d4c68",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T16:52:44+01:00",
+      "subject": "test: keep improving tests on insertBlocksFromCode",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "1e588abed57ec9d7506a194815bc159d5c9382e1",
+      "author": "Hakira-Shymuy",
+      "date": "2026-03-18T16:23:55+01:00",
+      "subject": "test: improve tests on insertBlocksFromCode",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "f84ef1e921d3ea85d07056fda042f7a6d4ea614c",
+      "author": "Kevin Geary",
+      "date": "2026-03-18T09:01:08-04:00",
+      "subject": "feat: Add wrap in span and wrap in anchor options to CMDK.",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "568028967b60db1a4a5f79889151f5682015f752",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-18T13:22:47+01:00",
+      "subject": "chore: Remove unused legacy EtchSidebar",
+      "body": "",
+      "ticketIds": []
+    },
+    {
+      "hash": "e1e00fc8ad22d9bad0f88c46dd1b862e2b9088f7",
+      "author": "Reinhard Sanz",
+      "date": "2026-03-18T11:50:43+01:00",
+      "subject": "chore: Remove some old types and readd legacy from gutenberg due to ancient copy paste objects (#265)",
+      "body": "",
+      "ticketIds": []
+    }
+  ],
+  "tickets": {
+    "ETC-525": {
+      "id": "ETC-525",
+      "title": "Prevent Copy/Paste highjacking in inputs",
+      "description": "[https://community.etchwp.com/c/general-discussion/copy-paste](<https://community.etchwp.com/c/general-discussion/copy-paste>)\nCurrently alot of our inputs break when copy pasting, because our \"Copy/Paste Block\" wins.\n\n* The user can copy paste in inputs without our Copy/Paste highjacking it\n* If no input is focused he can copy paste blocks as normal\n",
+      "state": "Done"
+    }
+  },
+  "_meta": {
+    "snapshotted_at": "2026-05-14T10:50:33.827Z",
+    "target_repo": "/Users/matteo/code/etch",
+    "commit_count": 20,
+    "ticket_count": 1
+  }
+}
