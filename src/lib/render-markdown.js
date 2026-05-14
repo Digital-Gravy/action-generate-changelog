@@ -9,12 +9,12 @@ function renderMarkdown({ summary, items }) {
   const bullets = [];
   for (const cat of CATEGORY_ORDER) {
     for (const item of grouped.get(cat)) {
-      bullets.push(`**${cat}:** ${item.text}`);
+      bullets.push(`* **${cat}:** ${item.text}`);
     }
   }
 
-  if (bullets.length === 0) return summary;
-  return `${summary}\n\n${bullets.join('\n')}`;
+  if (bullets.length === 0) return `${summary}\n`;
+  return `${summary}\n\n${bullets.join('\n')}\n`;
 }
 
 module.exports = { renderMarkdown, CATEGORY_ORDER };

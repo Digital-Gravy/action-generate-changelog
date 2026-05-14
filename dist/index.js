@@ -34679,13 +34679,15 @@ var require_render_markdown = __commonJS({
       const bullets = [];
       for (const cat of CATEGORY_ORDER) {
         for (const item of grouped.get(cat)) {
-          bullets.push(`**${cat}:** ${item.text}`);
+          bullets.push(`* **${cat}:** ${item.text}`);
         }
       }
-      if (bullets.length === 0) return summary2;
+      if (bullets.length === 0) return `${summary2}
+`;
       return `${summary2}
 
-${bullets.join("\n")}`;
+${bullets.join("\n")}
+`;
     }
     module2.exports = { renderMarkdown: renderMarkdown2, CATEGORY_ORDER };
   }
