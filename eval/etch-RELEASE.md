@@ -25,6 +25,18 @@ Open every release with a short prose summary above the bullet list — typicall
 - Feature-flag names appear in bullets ONLY when the user must flip the flag to opt in (e.g., a workaround flag like `ENABLE_CLEAR_BUFFER_IN_STREAM_REQUEST`). Internal rollout flags (e.g., `ENABLE_AI_TOOL_CALLS_DISPLAY` being turned on in production) are an implementation detail — rephrase as the user-observable outcome ("tool calls now appear in chat"), don't mention the flag.
 - Inline links for external references (docs, migration guides, community threads).
 
+## Feature flag → user-feature decoder
+
+Etch ships some features behind feature flags. When a release flips a flag on (e.g., `chore: turn ENABLE_X on`), the user-visible release is the *feature*, not the flag flip. Translate flag flips using this table when present in commits:
+
+- `PROPS_PANEL_REDESIGN` → refreshed properties panel (component name + key in panel header, redesigned property inputs with vertically-stacked layout)
+- `ENABLE_COMPONENT_NAMESPACE` → new `{component}` dynamic data scope; ability to detach a component instance from its component
+- `ENABLE_AI_TOOL_CALLS_DISPLAY` → AI Assistant tool calls now appear in chat
+- `RESPECT_ACF_RETURN_FORMAT` → ACF post object / relationship fields now respect the configured ACF return format (returns IDs when set to "ID" instead of always expanding)
+- `ENABLE_CLEAR_BUFFER_IN_STREAM_REQUEST` → opt-in workaround for hosts where PHP output buffering causes empty AI Assistant responses. **Mention this flag name in the bullet text** — users have to enable it manually.
+
+When a release commit is just a flag flip (no new code), produce a bullet describing the feature listed above. When a release commit ADDS a flag without flipping it on, drop it — the feature isn't shipping yet.
+
 ## Ticket IDs
 
 Don't include ticket IDs (`ETC-XXX`) in bullet text unless the bullet specifically references a community-reported issue and the ticket gives important context. When in doubt, omit. Ticket metadata is for your understanding while writing, not for the reader.
@@ -73,7 +85,30 @@ When a change requires migration, surface it prominently with a `**Breaking:**` 
 
 Link to the migration guide if one exists.
 
-## Examples
+## Small user-facing capabilities to keep
+
+The following kinds of changes are *small but real* user-facing capabilities and should produce their own bullets — don't bundle them into a generic "UI polish" line and don't drop them as internal:
+
+- New dynamic-data modifiers (e.g., `replace`, `replaceAll`, `toSlug`)
+- New dynamic-data scopes (e.g., `{component}`)
+- New component-system primitives (e.g., detach component instance, condition-in-condition, new property type)
+- New right-click / context-menu options (e.g., "Wrap in div / loop / condition")
+- New keyboard shortcuts and CMD+K commands
+- New `data-*` attributes exposed to third-party integrations
+- AI Assistant new tools / capabilities (e.g., "create posts", "list post types", "find media")
+- UI panel refreshes and redesigns
+
+## Specificity examples (Etch-flavored)
+
+Always pin the concrete observable detail. Etch-relevant examples of the specificity rule:
+
+- Bad: "Nested components now show the actual content instead of raw dynamic keys."
+- Good: "Components nested in slots now display their content preview instead of raw `{props.x}` placeholders."
+
+- Bad: "Dynamic data comparison modifiers now handle some edge cases better."
+- Good: "Data comparison modifiers (equal, less, greater, etc.) now correctly handle `null` values."
+
+## Etch-specific examples
 
 Raw commit: `feat(ETC-705): add dark mode toggle to settings panel`
 → `**New:** Settings panel now includes a dark mode toggle.`
@@ -85,3 +120,23 @@ Raw commits:
 
 Raw commit: `refactor: extract auth middleware into a separate module`
 → Drop (internal-only).
+
+Raw commit: `chore: turn ENABLE_AI_TOOL_CALLS_DISPLAY flag on`
+→ Rollout flag flip, not a user-facing change *by itself*. If a corresponding feature is being shipped in the same release, the bullet describes that feature ("**Improvement:** AI Assistant tool calls now appear in chat"), not the flag flip. If no associated user-visible feature, drop.
+
+Raw commits:
+- `feat(ai-chat): add SSE frame parser with tests`
+- `feat(ai-chat): SSE AiProviderInterface stream function`
+- `feat(ai-chat): OpenAiProvider SSE response method`
+- `feat(ai-chat): AiRoutes stream endpoint and handler`
+- `feat(ai-chat): stream AI responses via Server-Sent Events (#256)`
+→ One bullet: `**New:** AI Assistant now streams responses as the model generates them.` Four "feat" commits are implementation steps; the user only sees one new behavior. No mention of `SSE`, `AiProviderInterface`, `OpenAiProvider`, or `AiRoutes` in the bullet text.
+
+Raw commit: `feat: add web search as fallback when RAG is unavailable`
+→ `**Improvement:** AI Assistant falls back to web search when its knowledge base is unavailable.` No internal symbol (`RAG`) in the user-facing text.
+
+Raw commit: `feat: Components expose a new `{component}` dynamic data scope`
+→ `**New:** Components expose a new `{component}` dynamic data scope — see the component namespace docs for what's available.` This is a small but distinct user-facing capability; don't merge it into a generic "props panel improvements" line.
+
+Raw commit: `feat: Detach a component instance from its component`
+→ `**New:** Detach a component instance from its component — breaks the link so the block becomes a regular set of elements you can edit freely.` Distinct, user-visible builder primitive — own bullet.
