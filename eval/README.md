@@ -1,46 +1,89 @@
 # Changelog refinement eval harness
 
-Iterates v2 over historical etch (or other consumer) releases and compares to human-polished gold.
+Runs v2 over historical releases of a consumer repo (e.g. etch) and compares output to human-polished gold.
+
+## Two-mode design (snapshot + replay)
+
+Eval is split so prompt iteration is hermetic:
+
+- **Snapshot** runs git-log + Linear fetch against a live consumer checkout and freezes the result to `gold/<v>/input.json`. Slow, hits external services. Run once, re-run only when upstream history is deliberately re-evaluated.
+- **Replay** loads `input.json`, calls OpenAI, writes `actual/<v>.md`. Fast, deterministic, no git/Linear access. This is the loop you run while iterating on prompts or `etch-RELEASE.md`.
 
 ## Adding a gold version
 
-1. Pick a released tag of the consumer repo (e.g. `v1.4.18` on etch).
-2. Make a directory: `eval/gold/v1.4.18/`
-3. Write `eval/gold/v1.4.18/meta.json`:
+1. Pick a released tag of the consumer repo (e.g. `1.4.18` on etch).
+2. `eval/gold/1.4.18/meta.json`:
    ```json
    {
-     "previous_version": "v1.4.17",
-     "current_version": "v1.4.18"
+     "previous_version": "1.4.17",
+     "current_version": "1.4.18",
+     "ticket_pattern": "ETC-\\d+"
    }
    ```
-4. Write `eval/gold/v1.4.18/expected.md` — copy-paste the human-polished release notes (e.g. from https://etchwp.com/changelog).
+3. `eval/gold/1.4.18/expected.md` — copy-paste the human-polished release notes (e.g. from `https://etchwp.com/changelog/1-4-18/`).
+4. Snapshot the input (see below) to produce `input.json`.
 
-Optional fields in `meta.json`:
-- `ticket_pattern` — regex override for ticket extraction.
-
-## Running
+## Snapshot — generate input.json (one-time per version)
 
 ```bash
-OPENAI_API_KEY=sk-... LINEAR_API_KEY=lin_... \
-  node eval/eval-runner.js \
+LINEAR_API_KEY=lin_... \
+  node eval/eval-runner.js --snapshot \
     --target-repo ~/code/etch \
-    --release-config ~/code/etch/RELEASE.md
+    [--only 1.4.18]
 ```
 
-Outputs land in `eval/actual/<version>.md` (gitignored).
+Writes `gold/<v>/input.json` with the frozen commit array + Linear ticket metadata. Commit this so replays months from now use identical inputs.
 
-Filter to one version with `--only v1.4.18`.
+`LINEAR_API_KEY` optional — without it, snapshot still captures commits but `tickets` will be empty.
 
-## Manual review
+## Replay — iterate prompts
 
-`diff -u eval/gold/v1.4.18/expected.md eval/actual/v1.4.18.md | less`
+```bash
+OPENAI_API_KEY=sk-... \
+  node eval/eval-runner.js \
+    --release-config ./eval/etch-RELEASE.md \
+    [--only 1.4.18]
+```
+
+Writes `actual/<v>.md` for each version. Hermetic — no git/Linear access.
+
+Override the model: `OPENAI_MODEL=gpt-5.4 node eval/eval-runner.js ...`
+
+## Iteration loop
+
+1. Edit `src/prompts/system.md` or `eval/etch-RELEASE.md`.
+2. `node eval/eval-runner.js --release-config ./eval/etch-RELEASE.md`
+3. Manual diff:
+   ```
+   diff -u eval/gold/1.4.18/expected.md eval/actual/1.4.18.md | less
+   ```
+4. Repeat.
 
 ## LLM-as-judge
 
-For sweeping prompt changes, batch-score with `gpt-5.4`:
+For sweeping prompt changes, batch-score with a stronger model:
 
 ```bash
 OPENAI_API_KEY=sk-... node eval/eval-judge.js
 ```
 
-Prints JSON with per-version scores on four axes (faithfulness, categorization, conciseness, tone) plus one-sentence rationales.
+Outputs JSON with per-version scores on faithfulness / categorization / conciseness / tone.
+
+## File layout
+
+```
+eval/
+├── README.md                      # this file
+├── etch-RELEASE.md                # eval-local copy of etch's RELEASE.md
+├── eval-runner.js                 # snapshot + replay driver
+├── eval-judge.js                  # LLM-as-judge scorer
+├── gold/
+│   ├── 1.4.0/
+│   │   ├── meta.json              # version range + ticket regex
+│   │   ├── input.json             # FROZEN commits + Linear metadata (generated)
+│   │   └── expected.md            # human-polished gold (manually authored)
+│   ├── 1.4.1/...
+│   └── 1.4.18/...
+├── actual/                        # gitignored, replay output
+└── .gitignore
+```

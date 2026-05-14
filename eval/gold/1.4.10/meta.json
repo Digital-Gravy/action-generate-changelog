@@ -1,0 +1,5 @@
+{
+  "previous_version": "1.4.9",
+  "current_version": "1.4.10",
+  "ticket_pattern": "ETC-\\d+"
+}
