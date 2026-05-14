@@ -1,6 +1,6 @@
 # action.yml
 name: Generate Changelog
-description: Generates a changelog from commit messages between releases
+description: Generates a changelog from commit messages between releases. When OPENAI_API_KEY is set, produces LLM-refined release notes; otherwise falls back to a raw commit-log changelog.
 
 inputs:
   previous_version:
@@ -9,10 +9,22 @@ inputs:
   current_version:
     description: 'Current version after bump'
     required: false
+  ticket_pattern:
+    description: 'Regex used to extract project-management ticket IDs from commit subjects and bodies. Used only in v2 (LLM) mode.'
+    required: false
+    default: '[A-Z]{2,10}-\d+'
+  release_config_file:
+    description: 'Path (relative to the repo root) of a RELEASE.md describing the project audience, tone, and changelog conventions. Read verbatim and passed to the LLM as project guidance. Used only in v2 mode.'
+    required: false
+    default: './RELEASE.md'
+  openai_model:
+    description: 'OpenAI model to use for changelog refinement. Used only in v2 mode.'
+    required: false
+    default: 'gpt-5.4-mini'
 
 outputs:
   changelog:
-    description: 'Generated changelog content'
+    description: 'Generated changelog content. In v2 mode this is polished markdown; in v1 mode this is a list of <details> accordion blocks.'
 
 runs:
   using: 'node20'

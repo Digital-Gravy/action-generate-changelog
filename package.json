@@ -21,6 +21,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "openai": "^6.37.0",
     "semver": "^7.6.3"
   },
   "devDependencies": {
