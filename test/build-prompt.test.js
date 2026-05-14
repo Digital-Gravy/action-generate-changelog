@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { buildPrompt } = require('../src/lib/build-prompt');
 
 const SAMPLE_COMMITS = [
@@ -112,5 +114,21 @@ describe('buildPrompt', () => {
     const { messages } = callBuild({ commits: [], ticketMap: new Map() });
     const parsed = JSON.parse(messages[1].content.match(/<commits>([\s\S]*?)<\/commits>/)[1]);
     expect(parsed).toEqual([]);
+  });
+
+  // REGRESSION: when bundled via esbuild, __dirname becomes dist/ so the original
+  // path ../prompts/system.md resolves to <repo>/prompts/system.md (wrong — the file
+  // is at <repo>/src/prompts/system.md). The action loader must accept either layout.
+  test('REGRESSION: loads system.md from both src/lib and dist relative layouts', () => {
+    const srcLibPath = path.join(__dirname, '..', 'src', 'lib', 'build-prompt.js');
+    const buildPromptSrc = fs.readFileSync(srcLibPath, 'utf8');
+
+    // Find the candidate list in the source — must include at least two entries
+    // covering BOTH the src/lib-relative and the dist-relative path.
+    const hasSrcLibLayout = /\.\.\/prompts\/system\.md/.test(buildPromptSrc) || /'\.\.', 'prompts'/.test(buildPromptSrc);
+    const hasDistLayout = /\.\.\/src\/prompts\/system\.md/.test(buildPromptSrc) || /'\.\.', 'src', 'prompts'/.test(buildPromptSrc);
+
+    expect(hasSrcLibLayout).toBe(true);
+    expect(hasDistLayout).toBe(true);
   });
 });

@@ -23065,9 +23065,19 @@ var require_build_prompt = __commonJS({
   "src/lib/build-prompt.js"(exports2, module2) {
     var fs3 = require("fs");
     var path6 = require("path");
-    var SYSTEM_PROMPT_PATH = path6.join(__dirname, "..", "prompts", "system.md");
+    var SYSTEM_PROMPT_CANDIDATES = [
+      path6.join(__dirname, "..", "prompts", "system.md"),
+      path6.join(__dirname, "..", "src", "prompts", "system.md")
+    ];
     function loadSystemPrompt() {
-      return fs3.readFileSync(SYSTEM_PROMPT_PATH, "utf8");
+      for (const candidate of SYSTEM_PROMPT_CANDIDATES) {
+        if (fs3.existsSync(candidate)) {
+          return fs3.readFileSync(candidate, "utf8");
+        }
+      }
+      throw new Error(
+        `system.md not found in any of: ${SYSTEM_PROMPT_CANDIDATES.join(", ")}`
+      );
     }
     function pluralize(n, word) {
       return `${n} ${word}${n === 1 ? "" : "s"}`;
@@ -34764,9 +34774,6 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
     const openaiMaxCompletionTokens = core.getInput("openai_max_completion_tokens") || "";
     const openaiKey = env.OPENAI_API_KEY;
     const linearKey = env.LINEAR_API_KEY;
-    core.info(
-      `[mode-gate] OPENAI_API_KEY ${openaiKey ? `set (len ${openaiKey.length})` : "EMPTY"} | LINEAR_API_KEY ${linearKey ? `set (len ${linearKey.length})` : "EMPTY"}`
-    );
     let changelog;
     if (openaiKey) {
       try {

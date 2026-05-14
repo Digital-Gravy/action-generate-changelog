@@ -1,10 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
-const SYSTEM_PROMPT_PATH = path.join(__dirname, '..', 'prompts', 'system.md');
+// Try both layouts:
+// - running from source (__dirname = src/lib): ../prompts/system.md
+// - running from bundled dist (__dirname = dist): ../src/prompts/system.md
+const SYSTEM_PROMPT_CANDIDATES = [
+  path.join(__dirname, '..', 'prompts', 'system.md'),
+  path.join(__dirname, '..', 'src', 'prompts', 'system.md'),
+];
 
 function loadSystemPrompt() {
-  return fs.readFileSync(SYSTEM_PROMPT_PATH, 'utf8');
+  for (const candidate of SYSTEM_PROMPT_CANDIDATES) {
+    if (fs.existsSync(candidate)) {
+      return fs.readFileSync(candidate, 'utf8');
+    }
+  }
+  throw new Error(
+    `system.md not found in any of: ${SYSTEM_PROMPT_CANDIDATES.join(', ')}`
+  );
 }
 
 function pluralize(n, word) {
