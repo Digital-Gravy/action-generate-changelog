@@ -70,6 +70,9 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
     const openaiMaxCompletionTokens = core.getInput('openai_max_completion_tokens') || '';
     const openaiKey = env.OPENAI_API_KEY;
     const linearKey = env.LINEAR_API_KEY;
+    core.info(
+      `[mode-gate] OPENAI_API_KEY ${openaiKey ? `set (len ${openaiKey.length})` : 'EMPTY'} | LINEAR_API_KEY ${linearKey ? `set (len ${linearKey.length})` : 'EMPTY'}`
+    );
 
     let changelog;
     if (openaiKey) {
