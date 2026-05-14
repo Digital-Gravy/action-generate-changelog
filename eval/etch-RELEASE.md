@@ -27,15 +27,28 @@ Open every release with a short prose summary above the bullet list — typicall
 
 ## Feature flag → user-feature decoder
 
-Etch ships some features behind feature flags. When a release flips a flag on (e.g., `chore: turn ENABLE_X on`), the user-visible release is the *feature*, not the flag flip. Translate flag flips using this table when present in commits:
+Etch ships some features behind feature flags. When a release flips a flag on (e.g., `chore: turn ENABLE_X on`), the user-visible release is the *feature*, not the flag flip. Translate flag flips using this table — **emit one bullet per listed feature**, not one bullet per flag.
 
-- `PROPS_PANEL_REDESIGN` → refreshed properties panel (component name + key in panel header, redesigned property inputs with vertically-stacked layout)
-- `ENABLE_COMPONENT_NAMESPACE` → new `{component}` dynamic data scope; ability to detach a component instance from its component
-- `ENABLE_AI_TOOL_CALLS_DISPLAY` → AI Assistant tool calls now appear in chat
-- `RESPECT_ACF_RETURN_FORMAT` → ACF post object / relationship fields now respect the configured ACF return format (returns IDs when set to "ID" instead of always expanding)
-- `ENABLE_CLEAR_BUFFER_IN_STREAM_REQUEST` → opt-in workaround for hosts where PHP output buffering causes empty AI Assistant responses. **Mention this flag name in the bullet text** — users have to enable it manually.
+`PROPS_PANEL_REDESIGN` gates these user-facing features (one bullet each):
+- **Improvement:** Refreshed properties panel — the component name and key now live in the panel header instead of taking up a row.
+- **Improvement:** Property inputs (Media, Class, Object, Select, Loop, Group, Condition) redesigned with a vertically-stacked layout.
 
-When a release commit is just a flag flip (no new code), produce a bullet describing the feature listed above. When a release commit ADDS a flag without flipping it on, drop it — the feature isn't shipping yet.
+`ENABLE_COMPONENT_NAMESPACE` gates these user-facing features (one bullet each):
+- **New:** Components expose a new `{component}` dynamic data scope.
+- **New:** Detach a component instance from its component — breaks the link so the block becomes a regular set of elements you can edit freely.
+
+`ENABLE_AI_TOOL_CALLS_DISPLAY` gates:
+- **Improvement:** AI Assistant tool calls now appear in chat.
+
+`RESPECT_ACF_RETURN_FORMAT` gates:
+- **New:** ACF post object and relationship fields now respect the return format configured in ACF (returns IDs when set to "ID" instead of always expanding to full objects).
+
+`ENABLE_CLEAR_BUFFER_IN_STREAM_REQUEST` gates an opt-in workaround:
+- **Fix:** Some hosts' PHP output buffering causes the AI Assistant's response to come back empty — enable `ENABLE_CLEAR_BUFFER_IN_STREAM_REQUEST` if you're seeing this. **Mention the flag name in the bullet** — users have to enable it manually.
+
+**Critical:** emit the decoder bullets above ONLY if a commit in THIS release's commit list flips the flag on (commit subject contains the flag name and "on" / "enable" / "turn on"). Do not emit the bullets just because a flag appears in this decoder — features behind flags ship in the release where the flag is flipped, not in releases that merely touch flag-related code. When in doubt, search the provided commits for the exact flag name; if you don't find a flip-on commit for that flag, don't emit those bullets.
+
+When a release commit ADDS a flag without flipping it on, drop it — the feature isn't shipping yet.
 
 ## Ticket IDs
 
@@ -72,6 +85,27 @@ These topics show up in commits but are NOT user-facing, even when the commit me
 - Reasoning enable/disable, default model swaps, internal request flags
 
 A change in this area is user-facing only if it produces a behavior the user would notice in chat (e.g., "AI Assistant no longer drops streamed content" describes a visible bug fix). If you can't describe it in terms of what the user sees, drop it.
+
+#### Do NOT write bullets like these — these are the AI plumbing items you must drop, no matter how the commit subject phrases them:
+
+- ❌ "AI Assistant now negotiates supported client tools with the server."
+- ❌ "AI Assistant now negotiates supported client capabilities so newer tool schemas can be enabled."
+- ❌ "AI Assistant now supports `supported_client_capabilities` negotiation."
+- ❌ "AI Assistant tool-call results stream through the middleware with the supported tool set."
+- ❌ "AI Assistant now keeps streamed reasoning and tool-call details in the order they arrive."
+- ❌ "AI Assistant now recovers final streamed content from `done` events."
+- ❌ "`create_posts` now requires an explicit `post_type` and validates input." — `create_posts` is an internal AI tool name; never name AI tools in bullets. The user-facing bullet for "AI can create posts of any post type" is fine, but the validation/required-fields detail is implementation, not user-observable.
+- ❌ "`list_loop_definitions` is now available as a tool." — internal AI tool name. Drop or rephrase as the user-observable capability ("AI can list your loop definitions") if and only if it materially changes what the user can ask the AI to do.
+- ❌ "Etch now converts `etch/condition` blocks through the new PHP Gutenberg↔Etch pipeline."
+
+**Naming rule for AI tools:** never use the snake_case tool name (`create_posts`, `list_loop_definitions`, `list_post_types`, `find_media`) in a bullet. These are how the model addresses tools internally. The user-facing form is the capability ("AI can create posts", "AI can list your post types"). If the only thing being described is "the tool was made stricter", drop the bullet — it's plumbing.
+
+A change in this area is user-facing only when a user reports a visible problem (empty AI responses, dropped text mid-stream) and the bullet describes the **observable outcome from the user's seat** — not the protocol-level fix.
+
+Good rewrites of those plumbing items, when they fix a user-observable bug:
+
+- ✅ "AI Assistant no longer drops streamed content under certain timing conditions." (covers ordering / done-event recovery / streaming bugs from the user's perspective)
+- ✅ "Newly AI-created custom post types are now properly visible in Content Hub." (covers `create_posts` / post_type validation issues from the user's perspective)
 
 ### Block / format conversion — always internal
 
