@@ -57,13 +57,15 @@ describe('run (action entrypoint)', () => {
     expect(core.setOutput).toHaveBeenCalledWith('changelog', '<details>fallback</details>');
   });
 
-  test('passes the resolved inputs (model, ticket_pattern, release_config_file) to v2', async () => {
+  test('passes the resolved inputs (model, ticket_pattern, release_config_file, reasoning, max-tokens) to v2', async () => {
     setInputs({
       previous_version: 'v2.0.0',
       current_version: 'HEAD',
       ticket_pattern: 'JIRA-\\d+',
       release_config_file: 'docs/RELEASE.md',
-      openai_model: 'custom-model',
+      openai_model: 'gpt-5.4',
+      openai_reasoning: 'medium',
+      openai_max_completion_tokens: '12000',
     });
     const v2 = jest.fn().mockResolvedValue('out');
     await run({ env: { OPENAI_API_KEY: 'sk-test', LINEAR_API_KEY: 'lin' }, v1: jest.fn(), v2 });
@@ -73,9 +75,21 @@ describe('run (action entrypoint)', () => {
     expect(opts.currentVersion).toBe('HEAD');
     expect(opts.ticketPattern).toBe('JIRA-\\d+');
     expect(opts.releaseConfigFile).toBe('docs/RELEASE.md');
-    expect(opts.openaiModel).toBe('custom-model');
+    expect(opts.openaiModel).toBe('gpt-5.4');
+    expect(opts.openaiReasoning).toBe('medium');
+    expect(opts.openaiMaxCompletionTokens).toBe('12000');
     expect(opts.openaiKey).toBe('sk-test');
     expect(opts.linearKey).toBe('lin');
+  });
+
+  test('reasoning + max-tokens default to empty string when unset (passthrough to v2)', async () => {
+    setInputs(defaultInputs());
+    const v2 = jest.fn().mockResolvedValue('out');
+    await run({ env: { OPENAI_API_KEY: 'sk' }, v1: jest.fn(), v2 });
+
+    const opts = v2.mock.calls[0][0];
+    expect(opts.openaiReasoning).toBe('');
+    expect(opts.openaiMaxCompletionTokens).toBe('');
   });
 
   test('uses default values when action inputs are empty strings', async () => {

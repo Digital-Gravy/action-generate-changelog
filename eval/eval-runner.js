@@ -109,12 +109,14 @@ async function replayOne(versionDir, opts) {
     ticketMap,
   });
   const client = createClient(process.env.OPENAI_API_KEY);
-  const response = await callOpenAI({
-    model: process.env.OPENAI_MODEL || 'gpt-5.4-mini',
+  const { content, usage } = await callOpenAI({
+    model: opts.model,
     messages,
     client,
+    reasoningEffort: opts.reasoningEffort,
+    returnMeta: true,
   });
-  return renderMarkdown(validateResponse(response));
+  return { markdown: renderMarkdown(validateResponse(content)), usage };
 }
 
 async function main() {
@@ -164,20 +166,49 @@ async function main() {
     process.exit(1);
   }
 
+  const model = args.model || process.env.OPENAI_MODEL || 'gpt-5.4-mini';
+  const reasoningEffort = args.reasoning || process.env.OPENAI_REASONING || undefined;
+
   const actualDir = path.join(__dirname, 'actual');
   fs.mkdirSync(actualDir, { recursive: true });
+
+  const totals = { prompt_tokens: 0, completion_tokens: 0, reasoning_tokens: 0 };
+  process.stderr.write(`model=${model}${reasoningEffort ? ` reasoning=${reasoningEffort}` : ''}\n`);
 
   for (const v of versions) {
     process.stderr.write(`[${v}] replaying... `);
     try {
-      const output = await replayOne(path.join(goldDir, v), { releaseConfig });
+      const { markdown, usage } = await replayOne(path.join(goldDir, v), {
+        releaseConfig,
+        model,
+        reasoningEffort,
+      });
       const outPath = path.join(actualDir, `${v}.md`);
-      fs.writeFileSync(outPath, output);
-      process.stderr.write(`wrote ${outPath}\n`);
+      fs.writeFileSync(outPath, markdown);
+      if (usage) {
+        const reasoning =
+          (usage.completion_tokens_details && usage.completion_tokens_details.reasoning_tokens) || 0;
+        totals.prompt_tokens += usage.prompt_tokens || 0;
+        totals.completion_tokens += usage.completion_tokens || 0;
+        totals.reasoning_tokens += reasoning;
+        process.stderr.write(
+          `wrote (in=${usage.prompt_tokens} out=${usage.completion_tokens}` +
+            (reasoning ? ` reason=${reasoning}` : '') +
+            `)\n`
+        );
+      } else {
+        process.stderr.write(`wrote ${outPath}\n`);
+      }
     } catch (e) {
       process.stderr.write(`FAILED: ${e.message}\n`);
     }
   }
+
+  process.stderr.write(
+    `\nTOTAL tokens: in=${totals.prompt_tokens} out=${totals.completion_tokens}` +
+      (totals.reasoning_tokens ? ` (reasoning=${totals.reasoning_tokens})` : '') +
+      `\n`
+  );
 }
 
 main().catch((e) => {

@@ -34,14 +34,21 @@ function createClient(apiKey, { timeout = 60_000 } = {}) {
   return new ctor({ apiKey, timeout });
 }
 
-async function callOpenAI({ model, messages, client }) {
-  const response = await client.chat.completions.create({
+async function callOpenAI({ model, messages, client, reasoningEffort, maxCompletionTokens, returnMeta }) {
+  // Reasoning tokens count against max_completion_tokens, so bump the default
+  // when reasoning is enabled. Medium reasoning on a 20-50 commit release can
+  // burn 5-10k tokens before producing the final JSON.
+  const defaultMax = reasoningEffort ? 16000 : 2000;
+  const params = {
     model,
     messages,
     response_format: RESPONSE_FORMAT,
-    temperature: 0.3,
-    max_completion_tokens: 2000,
-  });
+    max_completion_tokens: maxCompletionTokens || defaultMax,
+  };
+  if (reasoningEffort) {
+    params.reasoning_effort = reasoningEffort;
+  }
+  const response = await client.chat.completions.create(params);
   if (!response || !response.choices || !response.choices.length) {
     throw new Error('callOpenAI: empty response from OpenAI');
   }
@@ -49,7 +56,11 @@ async function callOpenAI({ model, messages, client }) {
   if (typeof content !== 'string') {
     throw new Error('callOpenAI: response message had no string content');
   }
-  return JSON.parse(content);
+  const parsed = JSON.parse(content);
+  if (returnMeta) {
+    return { content: parsed, usage: response.usage };
+  }
+  return parsed;
 }
 
 module.exports = { callOpenAI, createClient, SCHEMA, RESPONSE_FORMAT };

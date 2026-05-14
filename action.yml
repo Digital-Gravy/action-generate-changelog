@@ -21,6 +21,14 @@ inputs:
     description: 'OpenAI model to use for changelog refinement. Used only in v2 mode.'
     required: false
     default: 'gpt-5.4-mini'
+  openai_reasoning:
+    description: 'Reasoning effort for gpt-5 reasoning models: "low" | "medium" | "high". Omit (default) for non-reasoning models. Used only in v2 mode.'
+    required: false
+    default: ''
+  openai_max_completion_tokens:
+    description: 'Cap on completion tokens (includes reasoning tokens for reasoning models). Defaults: 2000 without reasoning, 16000 with reasoning. Used only in v2 mode.'
+    required: false
+    default: ''
 
 outputs:
   changelog:

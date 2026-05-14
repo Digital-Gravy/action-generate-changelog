@@ -43,12 +43,68 @@ describe('callOpenAI', () => {
       .toEqual(['Breaking', 'New', 'Improvement', 'Fix']);
   });
 
-  test('uses a low temperature and a max_completion_tokens cap', async () => {
+  test('caps completion length via max_completion_tokens', async () => {
     const client = fakeClient();
     await callOpenAI({ model: 'gpt-5.4-mini', messages: MESSAGES, client });
     const args = client.chat.completions.create.mock.calls[0][0];
-    expect(args.temperature).toBeLessThanOrEqual(0.5);
     expect(args.max_completion_tokens).toBeGreaterThan(0);
+  });
+
+  test('does not send temperature (gpt-5 reasoning models reject it)', async () => {
+    const client = fakeClient();
+    await callOpenAI({ model: 'gpt-5.4-mini', messages: MESSAGES, client });
+    const args = client.chat.completions.create.mock.calls[0][0];
+    expect(args.temperature).toBeUndefined();
+  });
+
+  test('passes reasoning_effort when provided', async () => {
+    const client = fakeClient();
+    await callOpenAI({
+      model: 'gpt-5.4',
+      messages: MESSAGES,
+      client,
+      reasoningEffort: 'medium',
+    });
+    const args = client.chat.completions.create.mock.calls[0][0];
+    expect(args.reasoning_effort).toBe('medium');
+  });
+
+  test('omits reasoning_effort when not provided', async () => {
+    const client = fakeClient();
+    await callOpenAI({ model: 'gpt-5.4-mini', messages: MESSAGES, client });
+    const args = client.chat.completions.create.mock.calls[0][0];
+    expect(args).not.toHaveProperty('reasoning_effort');
+  });
+
+  test('returns parsed content alongside usage metadata when available', async () => {
+    const client = {
+      chat: {
+        completions: {
+          create: jest.fn().mockResolvedValue({
+            choices: [{ message: { content: '{"summary":"s","items":[]}' } }],
+            usage: { prompt_tokens: 1234, completion_tokens: 567, total_tokens: 1801 },
+          }),
+        },
+      },
+    };
+    const result = await callOpenAI({
+      model: 'gpt-5.4',
+      messages: MESSAGES,
+      client,
+      returnMeta: true,
+    });
+    expect(result.content).toEqual({ summary: 's', items: [] });
+    expect(result.usage).toEqual({
+      prompt_tokens: 1234,
+      completion_tokens: 567,
+      total_tokens: 1801,
+    });
+  });
+
+  test('returns content directly when returnMeta is not set (back-compat)', async () => {
+    const client = fakeClient();
+    const result = await callOpenAI({ model: 'gpt-5.4-mini', messages: MESSAGES, client });
+    expect(result).toEqual({ summary: 's', items: [] });
   });
 
   test('propagates errors from the client (caller handles fallback)', async () => {

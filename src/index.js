@@ -20,6 +20,8 @@ async function generateV2({
   ticketPattern,
   releaseConfigFile,
   openaiModel,
+  openaiReasoning,
+  openaiMaxCompletionTokens,
   openaiKey,
   linearKey,
   openaiClient,
@@ -46,7 +48,13 @@ async function generateV2({
   });
 
   const client = openaiClient || createClient(openaiKey);
-  const response = await callOpenAI({ model: openaiModel, messages, client });
+  const response = await callOpenAI({
+    model: openaiModel,
+    messages,
+    client,
+    reasoningEffort: openaiReasoning || undefined,
+    maxCompletionTokens: openaiMaxCompletionTokens ? Number(openaiMaxCompletionTokens) : undefined,
+  });
   const validated = validateResponse(response);
   return renderMarkdown(validated);
 }
@@ -58,6 +66,8 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
     const ticketPattern = core.getInput('ticket_pattern') || DEFAULT_TICKET_PATTERN;
     const releaseConfigFile = core.getInput('release_config_file') || DEFAULT_RELEASE_CONFIG;
     const openaiModel = core.getInput('openai_model') || DEFAULT_MODEL;
+    const openaiReasoning = core.getInput('openai_reasoning') || '';
+    const openaiMaxCompletionTokens = core.getInput('openai_max_completion_tokens') || '';
     const openaiKey = env.OPENAI_API_KEY;
     const linearKey = env.LINEAR_API_KEY;
 
@@ -70,6 +80,8 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
           ticketPattern,
           releaseConfigFile,
           openaiModel,
+          openaiReasoning,
+          openaiMaxCompletionTokens,
           openaiKey,
           linearKey,
         });

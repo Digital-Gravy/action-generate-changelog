@@ -34613,14 +34613,18 @@ var require_openai_client = __commonJS({
       const ctor = OpenAI.default || OpenAI;
       return new ctor({ apiKey, timeout });
     }
-    async function callOpenAI2({ model, messages, client }) {
-      const response = await client.chat.completions.create({
+    async function callOpenAI2({ model, messages, client, reasoningEffort, maxCompletionTokens, returnMeta }) {
+      const defaultMax = reasoningEffort ? 16e3 : 2e3;
+      const params = {
         model,
         messages,
         response_format: RESPONSE_FORMAT,
-        temperature: 0.3,
-        max_completion_tokens: 2e3
-      });
+        max_completion_tokens: maxCompletionTokens || defaultMax
+      };
+      if (reasoningEffort) {
+        params.reasoning_effort = reasoningEffort;
+      }
+      const response = await client.chat.completions.create(params);
       if (!response || !response.choices || !response.choices.length) {
         throw new Error("callOpenAI: empty response from OpenAI");
       }
@@ -34628,7 +34632,11 @@ var require_openai_client = __commonJS({
       if (typeof content !== "string") {
         throw new Error("callOpenAI: response message had no string content");
       }
-      return JSON.parse(content);
+      const parsed = JSON.parse(content);
+      if (returnMeta) {
+        return { content: parsed, usage: response.usage };
+      }
+      return parsed;
     }
     module2.exports = { callOpenAI: callOpenAI2, createClient: createClient2, SCHEMA, RESPONSE_FORMAT };
   }
@@ -34714,6 +34722,8 @@ async function generateV2({
   ticketPattern,
   releaseConfigFile,
   openaiModel,
+  openaiReasoning,
+  openaiMaxCompletionTokens,
   openaiKey,
   linearKey,
   openaiClient
@@ -34733,7 +34743,13 @@ async function generateV2({
     ticketMap
   });
   const client = openaiClient || createClient(openaiKey);
-  const response = await callOpenAI({ model: openaiModel, messages, client });
+  const response = await callOpenAI({
+    model: openaiModel,
+    messages,
+    client,
+    reasoningEffort: openaiReasoning || void 0,
+    maxCompletionTokens: openaiMaxCompletionTokens ? Number(openaiMaxCompletionTokens) : void 0
+  });
   const validated = validateResponse(response);
   return renderMarkdown(validated);
 }
@@ -34744,6 +34760,8 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
     const ticketPattern = core.getInput("ticket_pattern") || DEFAULT_TICKET_PATTERN;
     const releaseConfigFile = core.getInput("release_config_file") || DEFAULT_RELEASE_CONFIG;
     const openaiModel = core.getInput("openai_model") || DEFAULT_MODEL;
+    const openaiReasoning = core.getInput("openai_reasoning") || "";
+    const openaiMaxCompletionTokens = core.getInput("openai_max_completion_tokens") || "";
     const openaiKey = env.OPENAI_API_KEY;
     const linearKey = env.LINEAR_API_KEY;
     let changelog;
@@ -34755,6 +34773,8 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
           ticketPattern,
           releaseConfigFile,
           openaiModel,
+          openaiReasoning,
+          openaiMaxCompletionTokens,
           openaiKey,
           linearKey
         });
