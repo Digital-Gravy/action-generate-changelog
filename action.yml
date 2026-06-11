@@ -29,6 +29,10 @@ inputs:
     description: 'Cap on completion tokens (includes reasoning tokens for reasoning models). Defaults: 2000 without reasoning, 16000 with reasoning. Used only in v2 mode.'
     required: false
     default: ''
+  openai_timeout:
+    description: 'Timeout in seconds for the OpenAI API call. Defaults to 60. Used only in v2 mode.'
+    required: false
+    default: ''
 
 outputs:
   changelog:

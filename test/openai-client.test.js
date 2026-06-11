@@ -1,4 +1,7 @@
-const { callOpenAI } = require('../src/lib/openai-client');
+const mockOpenAICtor = jest.fn();
+jest.mock('openai', () => mockOpenAICtor, { virtual: true });
+
+const { callOpenAI, createClient } = require('../src/lib/openai-client');
 
 function fakeClient(returnContent = '{"summary":"s","items":[]}') {
   return {
@@ -130,5 +133,19 @@ describe('callOpenAI', () => {
     await expect(
       callOpenAI({ model: 'gpt-5.4-mini', messages: MESSAGES, client })
     ).rejects.toThrow();
+  });
+});
+
+describe('createClient', () => {
+  beforeEach(() => mockOpenAICtor.mockClear());
+
+  test('defaults timeout to 60000ms when no options given', () => {
+    createClient('sk-test');
+    expect(mockOpenAICtor).toHaveBeenCalledWith({ apiKey: 'sk-test', timeout: 60000 });
+  });
+
+  test('passes through a custom timeout', () => {
+    createClient('sk-test', { timeout: 120000 });
+    expect(mockOpenAICtor).toHaveBeenCalledWith({ apiKey: 'sk-test', timeout: 120000 });
   });
 });

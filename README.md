@@ -35,6 +35,7 @@ The output name (`changelog`) is the same in both modes, so v1 consumers can upg
     release_config_file: ./RELEASE.md
     openai_model: gpt-5.4-mini       # or gpt-5.4 for higher quality
     openai_reasoning: ''             # 'low' | 'medium' | 'high' for gpt-5 reasoning models
+    openai_timeout: ''               # request timeout in seconds (default 60)
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}   # optional; enables ticket enrichment
@@ -59,6 +60,7 @@ The consuming workflow must check out the repo with `fetch-depth: 0` so the acti
 | `openai_model` | OpenAI model to use. | v2 | No | `gpt-5.4-mini` |
 | `openai_reasoning` | Reasoning effort for gpt-5 reasoning models: `low` / `medium` / `high`. Leave empty for non-reasoning models. | v2 | No | `''` |
 | `openai_max_completion_tokens` | Cap on completion tokens (includes reasoning tokens for reasoning models). Defaults: 2000 without reasoning, 16000 with reasoning. | v2 | No | `''` |
+| `openai_timeout` | Timeout in seconds for the OpenAI API call. | v2 | No | `60` |
 
 ## Outputs
 

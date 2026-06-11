@@ -82,6 +82,22 @@ describe('run (action entrypoint)', () => {
     expect(opts.linearKey).toBe('lin');
   });
 
+  test('passes openai_timeout through to v2', async () => {
+    setInputs({ ...defaultInputs(), openai_timeout: '120' });
+    const v2 = jest.fn().mockResolvedValue('out');
+    await run({ env: { OPENAI_API_KEY: 'sk' }, v1: jest.fn(), v2 });
+
+    expect(v2.mock.calls[0][0].openaiTimeout).toBe('120');
+  });
+
+  test('openai_timeout defaults to empty string when unset (passthrough to v2)', async () => {
+    setInputs(defaultInputs());
+    const v2 = jest.fn().mockResolvedValue('out');
+    await run({ env: { OPENAI_API_KEY: 'sk' }, v1: jest.fn(), v2 });
+
+    expect(v2.mock.calls[0][0].openaiTimeout).toBe('');
+  });
+
   test('reasoning + max-tokens default to empty string when unset (passthrough to v2)', async () => {
     setInputs(defaultInputs());
     const v2 = jest.fn().mockResolvedValue('out');

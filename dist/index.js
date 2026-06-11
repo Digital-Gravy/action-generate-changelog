@@ -34734,6 +34734,7 @@ async function generateV2({
   openaiModel,
   openaiReasoning,
   openaiMaxCompletionTokens,
+  openaiTimeout,
   openaiKey,
   linearKey,
   openaiClient
@@ -34752,7 +34753,7 @@ async function generateV2({
     commits,
     ticketMap
   });
-  const client = openaiClient || createClient(openaiKey);
+  const client = openaiClient || createClient(openaiKey, openaiTimeout ? { timeout: Number(openaiTimeout) * 1e3 } : void 0);
   const response = await callOpenAI({
     model: openaiModel,
     messages,
@@ -34772,6 +34773,7 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
     const openaiModel = core.getInput("openai_model") || DEFAULT_MODEL;
     const openaiReasoning = core.getInput("openai_reasoning") || "";
     const openaiMaxCompletionTokens = core.getInput("openai_max_completion_tokens") || "";
+    const openaiTimeout = core.getInput("openai_timeout") || "";
     const openaiKey = env.OPENAI_API_KEY;
     const linearKey = env.LINEAR_API_KEY;
     let changelog;
@@ -34785,6 +34787,7 @@ async function run({ env = process.env, v1 = generateV1, v2 = generateV2 } = {})
           openaiModel,
           openaiReasoning,
           openaiMaxCompletionTokens,
+          openaiTimeout,
           openaiKey,
           linearKey
         });
